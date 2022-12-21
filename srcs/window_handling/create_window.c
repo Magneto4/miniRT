@@ -6,19 +6,31 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 18:45:12 by nseniak           #+#    #+#             */
-/*   Updated: 2022/12/21 18:50:00 by nseniak          ###   ########.fr       */
+/*   Updated: 2022/12/21 19:09:42 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	init_window(t_minirt *minirt)
+#include "minirt.h"
+
+int	init_window(t_minirt *minirt)
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_mlx	*mlx;
 
+	mlx = malloc(sizeof(*mlx));
+	if (!mlx)
+	{
+		free (minirt->scene);
+		free (minirt);
+		return (1);
+	}
 	mlx_ptr = mlx_init();
-	minirt->mlx->mlx_ptr = mlx_ptr;
+	mlx->mlx_ptr = mlx_ptr;
 	win_ptr = mlx_new_window(mlx_ptr, WIDTH, HEIGHT, "test");
-	minirt->mlx->win_ptr = win_ptr;
+	mlx->win_ptr = win_ptr;
+	minirt->mlx = mlx;
+	return (0);
 }
 
 void	start_loop(t_minirt *minirt)

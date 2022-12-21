@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:51:06 by ngiroux           #+#    #+#             */
-/*   Updated: 2022/12/21 18:51:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2022/12/21 19:06:48 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ int	main(int ac, char **av)
 	minirt->scene = __parse(av[1]);
 	if (!(minirt->scene))
 		return (free(minirt), put_error("malloc failure"), EXIT_SUCCESS);
-	minirt->mlx = init_window();
-	if (!(minirt->mlx))
-		return (free(minirt), put_error("malloc failure"), EXIT_SUCCESS);
+	if (init_window(minirt))
+		return (put_error("malloc failure"), EXIT_SUCCESS);
 	//here we create the image and put it on the screen
 	start_loop(minirt);
 	return (EXIT_SUCCESS);

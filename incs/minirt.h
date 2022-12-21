@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2022/12/21 18:56:08 by nseniak          ###   ########.fr       */
+/*   Updated: 2022/12/21 19:11:08 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "scene.h"
 # include "types.h"
 # include "elem.h"
+# include "../mlx/mlx.h"
 
 // 🕵️‍♂️ Define
 # define HEIGHT 500
@@ -41,5 +42,11 @@ bool	put_error_false(char *str);
 // 📚 Libs
 int		__strlen(char *str);
 int		__strcmp(const char *s1, const char *s2);
+
+//window
+int		init_window(t_minirt *minirt);
+void	start_loop(t_minirt *minirt);
+int		close_hook(void *void_minirt);
+int		key(int keycode, void *void_minirt);
 
 #endif /* MINIRT_H */

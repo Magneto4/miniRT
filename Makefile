@@ -6,7 +6,7 @@
 #    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2022/12/21 18:57:09 by nseniak          ###   ########.fr        #
+#    Updated: 2022/12/21 19:59:27 by nseniak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ F_PARS		= parse.c check.c
 FILES		+= $(addprefix parsing/, $(F_PARS))
 F_PKG		= list.c string.c
 FILES		+= $(addprefix pkg/, $(F_PKG))
-F_PKG		= create_window.c
-FILES		+= $(addprefix window_handling/, $(F_PKG))
+F_WIN		= create_window.c hooks.c
+FILES		+= $(addprefix window_handling/, $(F_WIN))
 
 # Paths
 SRCS_PATH	= srcs/
@@ -39,7 +39,7 @@ OBJS		= $(addprefix $(OBJS_PATH), $(FILES:.c=.o))
 CFLAGS		= -Wall -Wextra -Werror -O0 -g3
 CC			= cc
 INCS		= $(addprefix -I, $(INCS_PATH))
-# LIB_INC		= -lm -Lmlx -lmlx_Linux -lmlx -lXext -lX11
+LIB_INC		= -lm -Lmlx -lmlx_Linux -lmlx -lXext -lX11
 
 # Create obj and dir
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
