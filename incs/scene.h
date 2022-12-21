@@ -6,12 +6,16 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:12:27 by ngiroux           #+#    #+#             */
-/*   Updated: 2022/12/21 18:48:24 by nseniak          ###   ########.fr       */
+/*   Updated: 2022/12/21 18:56:44 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #ifndef SCENE_H
 # define SCENE_H
+
+# include "types.h"
+# include "elem.h"
 
 typedef struct s_list
 {

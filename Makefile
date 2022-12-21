@@ -6,7 +6,7 @@
 #    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2022/12/21 18:36:25 by nseniak          ###   ########.fr        #
+#    Updated: 2022/12/21 18:57:09 by nseniak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIB			= mlx/libmlx_Linux.a
 FILES		= cmd/main.c
 F_INT		= error.c
 FILES		+= $(addprefix internal/, $(F_INT))
-F_PARS		= parse.c
+F_PARS		= parse.c check.c
 FILES		+= $(addprefix parsing/, $(F_PARS))
 F_PKG		= list.c string.c
 FILES		+= $(addprefix pkg/, $(F_PKG))
