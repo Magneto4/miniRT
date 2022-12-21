@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+         #
+#    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2022/12/20 17:12:49 by ngiroux          ###   ########.fr        #
+#    Updated: 2022/12/21 18:36:25 by nseniak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ include colors.mk
 
 # Names 
 NAME		= minirt
+MLX			= minilibx_opengl
 
 LIB			= mlx/libmlx_Linux.a
 FILES		= cmd/main.c
@@ -23,6 +24,8 @@ F_PARS		= parse.c
 FILES		+= $(addprefix parsing/, $(F_PARS))
 F_PKG		= list.c string.c
 FILES		+= $(addprefix pkg/, $(F_PKG))
+F_PKG		= create_window.c
+FILES		+= $(addprefix window_handling/, $(F_PKG))
 
 # Paths
 SRCS_PATH	= srcs/

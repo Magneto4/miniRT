@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2022/12/20 19:13:43 by ngiroux          ###   ########.fr       */
+/*   Updated: 2022/12/21 18:49:36 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include "scene.h"
 
 // 🕵️‍♂️ Define
+# define HEIGHT 500
+# define WIDTH 500
 
 // 🏳️ Parse
 t_scene	*__parse(char *file);
