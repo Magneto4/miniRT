@@ -6,12 +6,15 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:12:27 by ngiroux           #+#    #+#             */
-/*   Updated: 2022/12/20 19:16:26 by ngiroux          ###   ########.fr       */
+/*   Updated: 2022/12/21 18:43:58 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
+
+# include "types.h"
+# include "elem.h"
 
 typedef struct s_list
 {
