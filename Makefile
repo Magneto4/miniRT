@@ -6,7 +6,7 @@
 #    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2022/12/21 19:59:27 by nseniak          ###   ########.fr        #
+#    Updated: 2022/12/22 22:36:39 by nseniak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ F_PKG		= list.c string.c
 FILES		+= $(addprefix pkg/, $(F_PKG))
 F_WIN		= create_window.c hooks.c
 FILES		+= $(addprefix window_handling/, $(F_WIN))
+F_IM		= loop.c colour.c intersection.c maths.c sphere.c cylinder.c plane.c
+FILES		+= $(addprefix image_calculation/, $(F_IM))
 
 # Paths
 SRCS_PATH	= srcs/

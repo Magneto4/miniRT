@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 18:36:44 by nseniak           #+#    #+#             */
-/*   Updated: 2022/12/21 20:08:15 by nseniak          ###   ########.fr       */
+/*   Updated: 2022/12/22 22:47:16 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,21 @@
 
 void	clean_end(t_minirt *minirt)
 {
-	// mlx_destroy_image(minirt->mlx->mlx_ptr, minirt->mlx->img_ptr);
+	mlx_destroy_image(minirt->mlx->mlx_ptr, minirt->mlx->img_ptr);
 	mlx_loop_end(minirt->mlx->mlx_ptr);
 	mlx_destroy_window(minirt->mlx->mlx_ptr, minirt->mlx->win_ptr);
 	mlx_destroy_display(minirt->mlx->mlx_ptr);
 	free(minirt->mlx->mlx_ptr);
 	free(minirt->mlx);
+	free(minirt->scene->cam->dir);
+	free(minirt->scene->cam->pos);
+	free(minirt->scene->cam);
+	// if (minirt->scene->cylinder)
+	// 	();
+	// if (minirt->scene->lights)
+	// 	free();
+	// if (minirt->scene->plane)
+	// if (minirt->scene->sphere)
 	free(minirt->scene);
 	free(minirt);
 }

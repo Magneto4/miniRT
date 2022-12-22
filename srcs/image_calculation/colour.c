@@ -1,44 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   colour.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 19:04:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2022/12/22 18:59:56 by nseniak          ###   ########.fr       */
+/*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
+/*   Updated: 2022/12/22 19:01:10 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "minirt.h"
 
-typedef struct s_couple
+int	calculate_colour(t_minirt *minirt, t_point *point)
 {
-	int		x;
-	int		y;
-}	t_couple;
-
-typedef struct s_vect
-{
-	double	x;
-	double	y;
-	double	z;
-}	t_vect;
-
-typedef struct s_rgb
-{
-	int		r;
-	int		g;
-	int		b;
-}	t_rgb;
-
-typedef struct s_point
-{
-	t_vect	*pos;
-	t_vect	*normal;
-	t_rgb	*raw_colour;
-	t_rgb	*lit_colour;
-}	t_point;
-
-#endif /* !TYPES_H */
+	point->lit_colour = point->raw_colour;
+	(void)minirt;
+	return (0);
+}

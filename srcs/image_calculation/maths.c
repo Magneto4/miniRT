@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   maths.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 19:04:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2022/12/22 18:59:56 by nseniak          ###   ########.fr       */
+/*   Created: 2022/12/22 22:18:40 by nseniak           #+#    #+#             */
+/*   Updated: 2022/12/22 22:41:45 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "minirt.h"
 
-typedef struct s_couple
+double	norm(t_vect *v)
 {
-	int		x;
-	int		y;
-}	t_couple;
+	return (sqrt(v->x * v->x + v->y * v->y + v->z * v->z));
+}
 
-typedef struct s_vect
+void	normalise(t_vect *v)
 {
-	double	x;
-	double	y;
-	double	z;
-}	t_vect;
+	double	n;
 
-typedef struct s_rgb
+	n = norm(v);
+	v->x = v->x / n;
+	v->y = v->y / n;
+	v->z = v->z / n;
+}
+
+double	distance(t_vect *a, t_vect *b)
 {
-	int		r;
-	int		g;
-	int		b;
-}	t_rgb;
+	double	dis;
 
-typedef struct s_point
-{
-	t_vect	*pos;
-	t_vect	*normal;
-	t_rgb	*raw_colour;
-	t_rgb	*lit_colour;
-}	t_point;
-
-#endif /* !TYPES_H */
+	dis = (a->x - b->x) * (a->x - b->x);
+	dis += (a->y - b->y) * (a->y - b->y);
+	dis += (a->z - b->z) * (a->z - b->z);
+	return(sqrt(dis));
+}
