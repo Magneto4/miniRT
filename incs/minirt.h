@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2022/12/22 22:41:37 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/04 16:26:41 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@
 // 🕵️‍♂️ Define
 # define HEIGHT 500
 # define F_HEIGHT 500.
-# define WIDTH 500
+# define WIDTH 1000
 # define F_WIDTH 500.
-# define PI 3.141592653589793
 
 // 🏳️ Parse
 t_scene	*__parse(char *file);
@@ -42,10 +41,12 @@ t_scene	*__parse(char *file);
 int		put_error(char *str);
 void	put_error_null(char *str);
 bool	put_error_false(char *str);
+void	free_minirt(t_minirt *minirt);
 
 // 📚 Libs
 int		__strlen(char *str);
 int		__strcmp(const char *s1, const char *s2);
+void	__lstclear(t_list **lst, void (*del)(void *));
 
 //window
 int		init_window(t_minirt *minirt);
@@ -59,9 +60,14 @@ int		create_image(t_minirt *minirt);
 t_point	*calculate_intersection(t_minirt *minirt, int x, int y);
 int		calculate_colour(t_minirt *minirt, t_point *point);
 void	normalise(t_vect *v);
-t_point	*closest_sphere(t_minirt *minirt, t_vect *v);
-t_point	*closest_cylinder(t_minirt *minirt, t_vect *v);
-t_point	*closest_plane(t_minirt *minirt, t_vect *v);
-double	distance(t_vect *a, t_vect *b);
+void	closest_sphere(t_minirt *minirt, t_vect v, t_point *closest);
+t_point	*closest_cylinder(t_minirt *minirt, t_vect *v, t_point *point);
+t_point	*closest_plane(t_minirt *minirt, t_vect *v, t_point *point);
+double	distance(t_vect a, t_vect b);
+t_point	*create_point();
+void	free_point(t_point *point);
+double	dot(t_vect a, t_vect b);
+t_vect	sub(t_vect a, t_vect b);
+double	norm(t_vect v);
 
 #endif /* MINIRT_H */

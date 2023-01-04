@@ -6,7 +6,7 @@
 #    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2022/12/22 22:36:39 by nseniak          ###   ########.fr        #
+#    Updated: 2023/01/04 16:25:47 by nseniak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MLX			= minilibx_opengl
 
 LIB			= mlx/libmlx_Linux.a
 FILES		= cmd/main.c
-F_INT		= error.c
+F_INT		= error.c free_minirt.c
 FILES		+= $(addprefix internal/, $(F_INT))
 F_PARS		= parse.c check.c
 FILES		+= $(addprefix parsing/, $(F_PARS))

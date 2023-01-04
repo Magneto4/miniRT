@@ -6,19 +6,19 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2022/12/22 18:59:28 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/04 16:17:00 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	rgb_to_int(t_rgb *rgb)
+int	rgb_to_int(t_rgb rgb)
 {
 	int	colour;
 
-	colour = rgb->r * 256 * 256;
-	colour += rgb->g * 256;
-	colour += rgb->b;
+	colour = rgb.r * 256 * 256;
+	colour += rgb.g * 256;
+	colour += rgb.b;
 	return (colour);
 }
 
@@ -48,6 +48,7 @@ int	generate_pixel(t_minirt *minirt, int x, int y)
 	calculate_colour(minirt, point);
 	img_pixel_put(minirt->mlx->img_ptr, x, y, rgb_to_int(point->lit_colour));
 	// free_point(point);
+	free(point);
 	return (0);
 }
 
