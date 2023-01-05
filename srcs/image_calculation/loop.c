@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/04 16:17:00 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/05 19:54:15 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,31 @@ void	img_pixel_put(void *img_ptr, int x, int y, int color)
 	*(int *) pixel = color;
 }
 
+t_vect orientation_vector(t_minirt *minirt, double x, double y)
+{
+	t_vect	v;
+
+	v.x = (2 * ((x + 0.5) / WIDTH) - 1) * tan(minirt->scene->cam.fov / 2 * M_PI / 180.) * WIDTH / HEIGHT;
+	v.y = (1 - 2 * ((y + 0.5) / HEIGHT)) * tan(minirt->scene->cam.fov / 2 * M_PI / 180.);
+	v.z = -1;
+	normalise(&v);
+	return (v);
+}
+
 int	generate_pixel(t_minirt *minirt, int x, int y)
 {
 	t_point	*point;
+	t_vect		v;
 
-	point = calculate_intersection(minirt, x, y);
+	v = orientation_vector(minirt, (double)x, (double)y);
+	point = calculate_intersection(minirt, v);
 	if (point == NULL)
 	{
 		img_pixel_put(minirt->mlx->img_ptr, x, y, 0xffffff);
 		return (0);
 	}
-	calculate_colour(minirt, point);
+	calculate_colour(minirt, point, v);
 	img_pixel_put(minirt->mlx->img_ptr, x, y, rgb_to_int(point->lit_colour));
-	// free_point(point);
 	free(point);
 	return (0);
 }

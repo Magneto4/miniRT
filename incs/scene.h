@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:12:27 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/05 17:18:26 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/05 19:37:56 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_list
 typedef struct s_scene
 {
 	// t_couple	*res;
-	// t_ambiant	*al;
+	t_ambiant	al;
 	t_camera	cam;
 	t_list		*lights;
 	t_list		*sphere;
