@@ -6,59 +6,34 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:25:18 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/04 16:32:12 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/05 17:29:45 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	del_cyl(void *void_cyl)
+void	__del(void *ptr)
 {
-	t_cylinder	*cyl;
-
-	cyl = (t_cylinder *)void_cyl;
-	free (cyl);
+	free (ptr);
 }
 
-void	del_lights(void *void_light)
-{
-	t_light	*light;
-
-	light = (t_light *)void_light;
-	free (light);
-}
-
-void	del_sphere(void *void_sphere)
-{
-	t_sphere	*sphere;
-
-	sphere = (t_sphere *)void_sphere;
-	free (sphere);
-}
-
-void	del_plane(void *void_plane)
-{
-	t_plane	*plane;
-
-	plane = (t_plane *)void_plane;
-	free (plane);
-}
 
 void	free_minirt(t_minirt *minirt)
 {
 	free(minirt->mlx->mlx_ptr);
 	free(minirt->mlx);
-	free(minirt->scene->cam->dir);
-	free(minirt->scene->cam->pos);
-	free(minirt->scene->cam);
+	__lstclear(&(minirt->scene->cylinder), __del);
 	if (minirt->scene->cylinder)
-		__lstclear(&(minirt->scene->cylinder), del_cyl);
+		free(minirt->scene->cylinder);
+	__lstclear(&(minirt->scene->lights), __del);
 	if (minirt->scene->lights)
-		__lstclear(&(minirt->scene->lights), del_lights);
+		free(minirt->scene->lights);
+	__lstclear(&(minirt->scene->plane), __del);
 	if (minirt->scene->plane)
-		__lstclear(&(minirt->scene->plane), del_plane);
+		free(minirt->scene->plane);
+	__lstclear(&(minirt->scene->sphere), __del);
 	if (minirt->scene->sphere)
-		__lstclear(&(minirt->scene->sphere), del_sphere);
+		free(minirt->scene->sphere);
 	free(minirt->scene);
 	free(minirt);
 }

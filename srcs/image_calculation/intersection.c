@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:15 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/04 16:09:51 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/05 17:20:04 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_vect orientation_vector(t_minirt *minirt, double x, double y)
 {
 	t_vect	v;
 
-	v.x = (2 * ((x + 0.5) / F_WIDTH) - 1) * tan(minirt->scene->cam->fov / 2 * M_PI / 180) * F_WIDTH / F_HEIGHT;
-	v.y = 1 - 2 * ((y + 0.5) / F_HEIGHT) * tan(minirt->scene->cam->fov / 2 * M_PI / 180);
+	v.x = (2 * ((x + 0.5) / F_WIDTH) - 1) * tan(minirt->scene->cam.fov / 2 * M_PI / 180) * F_WIDTH / F_HEIGHT;
+	v.y = 1 - 2 * ((y + 0.5) / F_HEIGHT) * tan(minirt->scene->cam.fov / 2 * M_PI / 180);
 	v.z = -1;
 	normalise(&v);
 	return (v);

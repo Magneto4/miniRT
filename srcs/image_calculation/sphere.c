@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:35:55 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/04 16:15:48 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/05 17:20:30 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	sphere_inter(t_vect v, t_minirt *minirt, t_sphere *sphere, t_point *closest
 	float	t2;
 	t_vect	tmp;
 
-	tmp = sub(*(minirt->scene->cam->pos), *(sphere->pos));
+	tmp = sub(minirt->scene->cam.pos, sphere->pos);
 	b = dot(v, tmp);
 	b *= 2.;
 	c = dot(tmp, tmp) - sphere->radius * sphere->radius;
@@ -44,24 +44,24 @@ void	sphere_inter(t_vect v, t_minirt *minirt, t_sphere *sphere, t_point *closest
 		return ;
 	if (t1 < 0)
 		t1 = t2;
-	tmp.x = minirt->scene->cam->pos->x + t1 * v.x;
-	tmp.y = minirt->scene->cam->pos->y + t1 * v.y;
-	tmp.z = minirt->scene->cam->pos->z + t1 * v.z;
+	tmp.x = minirt->scene->cam.pos.x + t1 * v.x;
+	tmp.y = minirt->scene->cam.pos.y + t1 * v.y;
+	tmp.z = minirt->scene->cam.pos.z + t1 * v.z;
 	if (closest->init == 0)
 	{
 		closest->pos = tmp;
-		closest->raw_colour.r = sphere->rgb->r;
-		closest->raw_colour.g = sphere->rgb->g;
-		closest->raw_colour.b = sphere->rgb->b;
+		closest->raw_colour.r = sphere->rgb.r;
+		closest->raw_colour.g = sphere->rgb.g;
+		closest->raw_colour.b = sphere->rgb.b;
 		closest->init = 1;
 		return ;
 	}
-	if (distance(tmp, *(minirt->scene->cam->pos)) > distance(closest->pos, *(minirt->scene->cam->pos)))
+	if (distance(tmp, minirt->scene->cam.pos) > distance(closest->pos, minirt->scene->cam.pos))
 		return ;
 	closest->pos = tmp;
-	closest->raw_colour.r = sphere->rgb->r;
-	closest->raw_colour.g = sphere->rgb->g;
-	closest->raw_colour.b = sphere->rgb->b;
+	closest->raw_colour.r = sphere->rgb.r;
+	closest->raw_colour.g = sphere->rgb.g;
+	closest->raw_colour.b = sphere->rgb.b;
 	closest->init = 1;
 	return ;
 }
