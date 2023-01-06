@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:51:06 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/06 01:07:33 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/06 18:24:52 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,44 @@ t_scene	*create_scene()
 	sphere->pos.x = 0;
 	sphere->pos.y = 0;
 	sphere->pos.z = -10;
-	sphere->radius = 4;
+	sphere->radius = 5;
 	sphere->rgb.b = 250;
-	sphere->rgb.r = 150;
-	sphere->rgb.g = 150;
+	sphere->rgb.r = 0;
+	sphere->rgb.g = 0;
 	lst_sphere = malloc(sizeof(*(lst_sphere)));
 	lst_sphere->value = (void *)sphere;
-	// lst_sphere->next = NULL;
 	lst_sphere->next = malloc(sizeof(*(lst_sphere)));
 	lst_sphere->next->next = NULL;
 	sphere = malloc(sizeof(*sphere));
-	sphere->pos.x = 0;
+	sphere->pos.x = 4;
 	sphere->pos.y = 0;
-	sphere->pos.z = 10;
+	sphere->pos.z = -10;
 	sphere->radius = 4;
-	sphere->rgb.b = 50;
-	sphere->rgb.r = 50;
-	sphere->rgb.g = 100;
+	sphere->rgb.b = 150;
+	sphere->rgb.r = 150;
+	sphere->rgb.g = 150;
 	lst_sphere->next->value = sphere;
 	lst_sphere->next->next = NULL;
 	scene->sphere = lst_sphere;
-	scene->plane = NULL;
+
+	scene->plane = malloc(sizeof(*(scene->plane)));
+	t_plane *plane;
+	plane = malloc(sizeof(*plane));
+	plane->dir.x = 1;
+	plane->dir.y = 1;
+	plane->dir.z = 0;
+	normalise(&(plane->dir));
+	plane->pos.x = -5;
+	plane->pos.y = -2;
+	plane->pos.z = 0;
+	plane->rgb.r = 100;
+	plane->rgb.g = 200;
+	plane->rgb.b = 100;
+	scene->plane->next = NULL;
+	scene->plane->value = (void *)plane;
 	scene->cylinder = NULL;
 	//adding lights
-	scene->al.ratio = 1;
+	scene->al.ratio = 0.2;
 	scene->al.rgb.r = 255;
 	scene->al.rgb.g = 255;
 	scene->al.rgb.b = 255;
@@ -56,28 +70,28 @@ t_scene	*create_scene()
 	t_light	*light;
 	light = malloc(sizeof(*light));
 	light->pos.x = 5;
-	light->pos.y = 0;
-	light->pos.z = 0;
-	light->ratio = 1;
+	light->pos.y = 10;
+	light->pos.z = -1;
+	light->ratio = 0.5;
 	light->rgb.r = 255;
-	light->rgb.g = 255;
-	light->rgb.b = 255;
+	light->rgb.g = 100;
+	light->rgb.b = 100;
 	scene->lights->value = (void *)light;
 	light = malloc(sizeof(*light));
-	light->pos.x = 5;
-	light->pos.y = 0;
-	light->pos.z = 0;
-	light->ratio = 1;
-	light->rgb.r = 255;
-	light->rgb.g = 255;
+	light->pos.x = -5;
+	light->pos.y = 10;
+	light->pos.z = -1;
+	light->ratio = 0.5;
+	light->rgb.r = 100;
+	light->rgb.g = 100;
 	light->rgb.b = 255;
 	scene->lights->next = malloc(sizeof(*(scene->lights)));
 	scene->lights->next->value = light;
 	scene->lights->next->next = NULL;
 	//adding camra
-	scene->cam.dir.x = 0.5;
+	scene->cam.dir.x = 0;
 	scene->cam.dir.y = 0;
-	scene->cam.dir.z = 1;
+	scene->cam.dir.z = -1;
 	scene->cam.fov = 70;
 	scene->cam.pos.x = 0;
 	scene->cam.pos.y = 0;
@@ -126,7 +140,7 @@ int	main(int ac, char **av)
 		return (put_error("malloc failure"), 1);
 	// minirt->scene = __parse(av[1]);
 	minirt->scene = create_scene();
-	normalise_lights(minirt);
+	// normalise_lights(minirt);
 	normalise_orientation(minirt);
 	if (!(minirt->scene))
 		return (free(minirt), put_error("malloc failure"), EXIT_SUCCESS);
