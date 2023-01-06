@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:18:40 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/05 19:07:15 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/06 00:41:40 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,14 @@ t_vect	add(t_vect a, t_vect b)
 	c.y = a.y + b.y;
 	c.z = a.z + b.z;
 	return (c);
+}
+
+t_vect	mat_mult(double mat[3][3], t_vect v)
+{
+	t_vect	res;
+
+	res.x = v.x * mat[0][0] + v.y * mat[0][1] + v.z * mat[0][2];
+	res.y = v.x * mat[1][0] + v.y * mat[1][1] + v.z * mat[1][2];
+	res.z = v.x * mat[2][0] + v.y * mat[2][1] + v.z * mat[2][2];
+	return (res);
 }
