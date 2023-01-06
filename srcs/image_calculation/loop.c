@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/05 19:54:15 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/06 01:04:57 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ int	rgb_to_int(t_rgb rgb)
 {
 	int	colour;
 
+	if (rgb.r > 255)
+		rgb.r = 255;
+	if (rgb.g > 255)
+		rgb.g = 255;
+	if (rgb.b > 255)
+		rgb.b = 255;
 	colour = rgb.r * 256 * 256;
 	colour += rgb.g * 256;
 	colour += rgb.b;
@@ -35,6 +41,60 @@ void	img_pixel_put(void *img_ptr, int x, int y, int color)
 	*(int *) pixel = color;
 }
 
+t_vect	x_rot(t_vect v, float a)
+{
+	t_vect	res;
+	double	mat[3][3];
+
+	mat[0][0] = 1;
+	mat[0][1] = 0;
+	mat[0][2] = 0;
+	mat[1][0] = 0;
+	mat[1][1] = cos(a);
+	mat[1][2] = -sin(a);
+	mat[2][0] = 0;
+	mat[2][1] = sin(a);
+	mat[2][2] = cos(a);
+	res = mat_mult(mat, v);
+	return (res);
+}
+
+t_vect	y_rot(t_vect v, float a)
+{
+	t_vect	res;
+	double	mat[3][3];
+
+	mat[0][0] = cos(a);
+	mat[0][1] = 0;
+	mat[0][2] = sin(a);
+	mat[1][0] = 0;
+	mat[1][1] = 1;
+	mat[1][2] = 0;
+	mat[2][0] = - sin(a);
+	mat[2][1] = 0;
+	mat[2][2] = cos(a);
+	res = mat_mult(mat, v);
+	return (res);
+}
+
+t_vect	z_rot(t_vect v, float a)
+{
+	t_vect	res;
+	double	mat[3][3];
+
+	mat[0][0] = cos(a);
+	mat[0][1] = - sin(a);
+	mat[0][2] = 0;
+	mat[1][0] = sin(a);
+	mat[1][1] = cos(a);
+	mat[1][2] = 0;
+	mat[2][0] = 0;
+	mat[2][1] = 0;
+	mat[2][2] = 1;
+	res = mat_mult(mat, v);
+	return (res);
+}
+
 t_vect orientation_vector(t_minirt *minirt, double x, double y)
 {
 	t_vect	v;
@@ -43,6 +103,11 @@ t_vect orientation_vector(t_minirt *minirt, double x, double y)
 	v.y = (1 - 2 * ((y + 0.5) / HEIGHT)) * tan(minirt->scene->cam.fov / 2 * M_PI / 180.);
 	v.z = -1;
 	normalise(&v);
+	if (minirt->scene->cam.dir.x != 0.)
+	{
+		v = z_rot(v, atan(minirt->scene->cam.dir.y / minirt->scene->cam.dir.x));
+	}
+	v = y_rot(v, acos(minirt->scene->cam.dir.z) - M_PI);
 	return (v);
 }
 

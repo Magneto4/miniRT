@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/05 19:54:09 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/06 00:20:05 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void	free_point(t_point *point);
 double	dot(t_vect a, t_vect b);
 t_vect	sub(t_vect a, t_vect b);
 double	norm(t_vect v);
+t_vect	mat_mult(double mat[3][3], t_vect v);
 
 #endif /* MINIRT_H */
