@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/06 00:20:05 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/08 16:57:17 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 // 🕵️‍♂️ Define
 # define HEIGHT 500
 # define WIDTH 1000
+# define WHITE_SPACE " \t"
 
 // 🏳️ Parse
 t_scene	*__parse(char *file);
@@ -40,11 +41,15 @@ int		put_error(char *str);
 void	put_error_null(char *str);
 bool	put_error_false(char *str);
 void	free_minirt(t_minirt *minirt);
+void	free_scene(t_scene *scene);
+int		__wordcount(char **line);
 
 // 📚 Libs
 int		__strlen(char *str);
 int		__strcmp(const char *s1, const char *s2);
 void	__lstclear(t_list **lst, void (*del)(void *));
+void	__lstadd_front(t_list **lst, t_list *new);
+t_list	*__lstnew(void *content);
 
 //window
 int		init_window(t_minirt *minirt);
