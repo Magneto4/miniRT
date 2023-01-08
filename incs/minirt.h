@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/08 16:57:17 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/08 17:49:03 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ int		__strcmp(const char *s1, const char *s2);
 void	__lstclear(t_list **lst, void (*del)(void *));
 void	__lstadd_front(t_list **lst, t_list *new);
 t_list	*__lstnew(void *content);
+
+int		__atoi(char *str);
+double	__atod(char *str);
+char	**split_set(char *s, char *charset);
 
 //window
 int		init_window(t_minirt *minirt);
