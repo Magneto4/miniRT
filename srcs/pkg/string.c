@@ -6,11 +6,22 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:22:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2022/12/21 18:50:14 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/08 16:48:53 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+
+int	__wordcount(char **line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+		i++;
+	return (i);
+}
 
 int	__strlen(char *str)
 {
