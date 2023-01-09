@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 16:08:08 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:18:17 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@
 # define HEIGHT 800
 # define WIDTH 1500
 # define WHITE_SPACE " \t"
+
+# ifndef BONUS
+#  define BONUS 0
+# endif
 
 // 🏳️ Parse
 t_scene	*__parse(char *file);
