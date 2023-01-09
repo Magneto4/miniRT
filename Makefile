@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
+#    By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/01/04 16:25:47 by nseniak          ###   ########.fr        #
+#    Updated: 2023/01/09 15:01:30 by ngiroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,13 @@ MLX			= minilibx_opengl
 
 LIB			= mlx/libmlx_Linux.a
 FILES		= cmd/main.c
+F_GNL		= get_next_line.c get_next_line_utils.c
+FILES		+= $(addprefix gnl/, $(F_GNL))
 F_INT		= error.c free_minirt.c
 FILES		+= $(addprefix internal/, $(F_INT))
-F_PARS		= parse.c check.c
+F_PARS		= parse.c check.c set_elem.c set_types.c
 FILES		+= $(addprefix parsing/, $(F_PARS))
-F_PKG		= list.c string.c
+F_PKG		= list.c string.c string_conv.c split.c
 FILES		+= $(addprefix pkg/, $(F_PKG))
 F_WIN		= create_window.c hooks.c
 FILES		+= $(addprefix window_handling/, $(F_WIN))

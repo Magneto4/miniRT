@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 13:02:57 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/09 14:49:56 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdbool.h>
 # include <fcntl.h>
 
+# include "get_next_line.h"
 # include "scene.h"
 # include "types.h"
 # include "elem.h"
@@ -33,6 +34,17 @@
 
 // 🏳️ Parse
 t_scene	*__parse(char *file);
+
+void	set_couple(char **data, t_couple *couple);
+void	set_vector(char **data, t_vect *vector);
+void	set_rgb(char **data, t_rgb *rgb);
+
+void	set_ambiant(char **data, t_scene *scene);
+void	set_camera(char **data, t_scene *scene);
+void	set_light(char **data, t_scene *scene);
+void	set_sphere(char **data, t_scene *scene);
+void	set_plane(char **data, t_scene *scene);
+void	set_cylinder(char **data, t_scene *scene);
 
 // 🏔️ MiniRT
 
