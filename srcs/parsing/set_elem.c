@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:04:04 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 16:04:45 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/09 17:04:34 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	set_sphere(char **data, t_scene *scene)
 	if (sphere == NULL)
 		return ;
 	set_vector(data + 1, &sphere->pos);
-	sphere->radius = __atod(data[3]);
+	sphere->radius = __atod(data[3]) / 2;
 	set_rgb(data + 3, &sphere->rgb);
 	__lstadd_front(&scene->sphere, __lstnew(sphere));
 }
