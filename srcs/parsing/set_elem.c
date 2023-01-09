@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:04:04 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 17:04:34 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/09 17:08:24 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	set_sphere(char **data, t_scene *scene)
 	if (sphere == NULL)
 		return ;
 	set_vector(data + 1, &sphere->pos);
-	sphere->radius = __atod(data[3]) / 2;
+	sphere->radius = __atod(data[2]) / 2;
 	set_rgb(data + 3, &sphere->rgb);
 	__lstadd_front(&scene->sphere, __lstnew(sphere));
 }
@@ -76,7 +76,7 @@ void	set_cylinder(char **data, t_scene *scene)
 		return ;
 	set_vector(data + 1, &cylinder->pos);
 	set_vector(data + 2, &cylinder->dir);
-	cylinder->radius = __atod(data[3]);
+	cylinder->radius = __atod(data[3]) / 2;
 	cylinder->height = __atod(data[4]);
 	set_rgb(data + 5, &cylinder->rgb);
 	__lstadd_front(&scene->cylinder, __lstnew(cylinder));
