@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:35:55 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/05 19:10:18 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/06 19:41:25 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,23 @@
 
 void	sphere_inter(t_vect v, t_minirt *minirt, t_sphere *sphere, t_point *closest)
 {
-	float	b;
-	float	c;
-	float	discriminant;
-	float	t1;
-	float	t2;
+	double	t[2];
 	t_vect	tmp;
+	t_vect	quad;
 
 	tmp = sub(minirt->scene->cam.pos, sphere->pos);
-	b = dot(v, tmp);
-	b *= 2.;
-	c = dot(tmp, tmp) - sphere->radius * sphere->radius;
-	discriminant = b * b - 4. * c;
-	if (discriminant < 0)
+	quad.x = 1;
+	quad.y = dot(v, tmp) * 2;
+	quad.z = dot(tmp, tmp) - sphere->radius * sphere->radius;
+	if (solve_quadratic(quad, t, t + 1) == 0)
 		return ;
-	t1 = (-b - sqrt(discriminant)) / 2.;
-	t2 = (-b + sqrt(discriminant)) / 2.;
-	if (t2 < 0)
+	if (t[1] < 0)
 		return ;
-	if (t1 < 0)
-		t1 = t2;
-	tmp.x = minirt->scene->cam.pos.x + t1 * v.x;
-	tmp.y = minirt->scene->cam.pos.y + t1 * v.y;
-	tmp.z = minirt->scene->cam.pos.z + t1 * v.z;
+	if (t[0] < 0)
+		t[0] = t[1];
+	tmp.x = minirt->scene->cam.pos.x + t[0] * v.x;
+	tmp.y = minirt->scene->cam.pos.y + t[0] * v.y;
+	tmp.z = minirt->scene->cam.pos.z + t[0] * v.z;
 	if (closest->init && distance(tmp, minirt->scene->cam.pos) > distance(closest->pos, minirt->scene->cam.pos))
 		return ;
 	closest->pos = tmp;

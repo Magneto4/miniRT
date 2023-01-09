@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/06 01:04:57 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/06 18:45:08 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,7 @@ t_vect orientation_vector(t_minirt *minirt, double x, double y)
 	v.z = -1;
 	normalise(&v);
 	if (minirt->scene->cam.dir.x != 0.)
-	{
 		v = z_rot(v, atan(minirt->scene->cam.dir.y / minirt->scene->cam.dir.x));
-	}
 	v = y_rot(v, acos(minirt->scene->cam.dir.z) - M_PI);
 	return (v);
 }
