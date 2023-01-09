@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:20:01 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/09 14:36:12 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:49:58 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	__lstadd_front(t_list **lst, t_list *new)
 {
-	if (lst)
-	{
-		if (*lst)
-			new->next = *lst;
-		*lst = new;
-	}
+	t_list	*tmp;
+
+	tmp = *lst;
+	*lst = new;
+	new->next = tmp;
 }
 
 t_list	*__lstnew(void *content)

@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 16:25:13 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:50:17 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ void	*init_scene(t_scene *scene)
 {
 	// scene->al = NULL;
 	// scene->cam = NULL;
-	scene->lights = __lstnew(NULL);
-	scene->sphere = __lstnew(NULL);
-	scene->plane = __lstnew(NULL);
-	scene->cylinder = __lstnew(NULL);
+	scene->lights = NULL;
+	scene->sphere = NULL;
+	scene->plane = NULL;
+	scene->cylinder = NULL;
 	return (scene);
 }
 
