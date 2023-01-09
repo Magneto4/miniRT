@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:25:18 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/08 15:20:12 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:10:22 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,17 @@ void	free_minirt(t_minirt *minirt)
 		free(minirt->scene->sphere);
 	free(minirt->scene);
 	free(minirt);
+}
+
+void	free_tab(char **tab)
+{
+	char	**tmp;
+
+	tmp = tab;
+	while (*tmp)
+	{
+		free(*tmp);
+		tmp++;
+	}
+	free(tab);
 }
