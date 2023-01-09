@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_minirt.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:25:18 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/05 17:29:45 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/08 15:20:12 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,23 @@ void	__del(void *ptr)
 	free (ptr);
 }
 
+void	free_scene(t_scene *scene)
+{
+	__lstclear(&(scene->cylinder), __del);
+	if (scene->cylinder)
+		free(scene->cylinder);
+	__lstclear(&(scene->lights), __del);
+	if (scene->lights)
+		free(scene->lights);
+	__lstclear(&(scene->plane), __del);
+	if (scene->plane)
+		free(scene->plane);
+	__lstclear(&(scene->sphere), __del);
+	if (scene->sphere)
+		free(scene->sphere);
+	// free(scene);
+	scene = NULL;
+}
 
 void	free_minirt(t_minirt *minirt)
 {

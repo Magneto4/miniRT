@@ -6,21 +6,11 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:57:05 by ngiroux           #+#    #+#             */
-/*   Updated: 2022/12/21 18:49:02 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/08 14:51:42 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-int __wordcount(char **line)
-{
-	int i;
-
-	i = 0;
-	while (line[i])
-		i++;
-	return (i);
-}
 
 bool	__check_vector(char **vec)
 {
