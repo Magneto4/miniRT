@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:04:04 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 15:36:47 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:04:45 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	set_light(char **data, t_scene *scene)
 		return ;
 	set_vector(data + 1, &light->pos);
 	light->ratio = __atod(data[2]);
-	if (data[3] != NULL)
+	if (data[3] != NULL && BONUS == 1)
 		set_rgb(data + 3, &light->rgb);
 	else
 		light->rgb = (t_rgb){255, 255, 255};

@@ -6,15 +6,11 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:11:40 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 15:37:23 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:46:45 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-	// if (couple[0] == NULL || couple[1] == NULL)
-	// 	return ;
-	// add check and protection to stop parsing, maybe change return type
 
 void	set_couple(char **data, t_couple *couple)
 {

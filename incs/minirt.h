@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 15:10:55 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:04:39 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@
 # define HEIGHT 500
 # define WIDTH 1000
 # define WHITE_SPACE " \t"
+
+# ifndef BONUS
+#  define BONUS 0
+# endif
 
 // 🏳️ Parse
 t_scene	*__parse(char *file);
