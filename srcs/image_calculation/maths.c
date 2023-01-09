@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:18:40 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/06 19:35:24 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:02:14 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,16 @@ t_vect	sub(t_vect a, t_vect b)
 	c.y = a.y - b.y;
 	c.z = a.z - b.z;
 	return (c);
+}
+
+t_vect	mult(t_vect v, double a)
+{
+	t_vect w;
+
+	w.x = v.x * a;
+	w.y = v.y * a;
+	w.z = v.z * a;
+	return (w);
 }
 
 t_vect	add(t_vect a, t_vect b)
