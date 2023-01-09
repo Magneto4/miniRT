@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:51:06 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/06 18:24:52 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/06 19:46:42 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,51 @@
 t_scene	*create_scene()
 {
 	t_scene	*scene;
-	t_sphere	*sphere;
-	t_list		*lst_sphere;
+	// t_sphere	*sphere;
+	// t_list		*lst_sphere;
 
 	scene = malloc (sizeof(*scene));
 	//adding shapes
-	scene->cylinder = NULL;
-	sphere = malloc(sizeof(*sphere));
-	sphere->pos.x = 0;
-	sphere->pos.y = 0;
-	sphere->pos.z = -10;
-	sphere->radius = 5;
-	sphere->rgb.b = 250;
-	sphere->rgb.r = 0;
-	sphere->rgb.g = 0;
-	lst_sphere = malloc(sizeof(*(lst_sphere)));
-	lst_sphere->value = (void *)sphere;
-	lst_sphere->next = malloc(sizeof(*(lst_sphere)));
-	lst_sphere->next->next = NULL;
-	sphere = malloc(sizeof(*sphere));
-	sphere->pos.x = 4;
-	sphere->pos.y = 0;
-	sphere->pos.z = -10;
-	sphere->radius = 4;
-	sphere->rgb.b = 150;
-	sphere->rgb.r = 150;
-	sphere->rgb.g = 150;
-	lst_sphere->next->value = sphere;
-	lst_sphere->next->next = NULL;
-	scene->sphere = lst_sphere;
+	scene->cylinder = malloc(sizeof(*(scene->cylinder)));
+	t_cylinder	*cyl;
+	cyl = malloc(sizeof(*cyl));
+	cyl->dir.x = 1;
+	cyl->dir.y = 0;
+	cyl->dir.z = 0;
+	cyl->height = 10;
+	cyl->pos.x = 0;
+	cyl->pos.y = 0;
+	cyl->pos.z = -10;
+	cyl->radius = 3;
+	cyl->rgb.r = 0;
+	cyl->rgb.g = 0;
+	cyl->rgb.b = 255;
+	scene->cylinder->value = (void *)cyl;
+	scene->cylinder->next = NULL;
+	scene->sphere = NULL;
+	// sphere = malloc(sizeof(*sphere));
+	// sphere->pos.x = 0;
+	// sphere->pos.y = 0;
+	// sphere->pos.z = -10;
+	// sphere->radius = 5;
+	// sphere->rgb.b = 250;
+	// sphere->rgb.r = 0;
+	// sphere->rgb.g = 0;
+	// lst_sphere = malloc(sizeof(*(lst_sphere)));
+	// lst_sphere->value = (void *)sphere;
+	// lst_sphere->next = malloc(sizeof(*(lst_sphere)));
+	// lst_sphere->next->next = NULL;
+	// sphere = malloc(sizeof(*sphere));
+	// sphere->pos.x = 4;
+	// sphere->pos.y = 0;
+	// sphere->pos.z = -10;
+	// sphere->radius = 4;
+	// sphere->rgb.b = 150;
+	// sphere->rgb.r = 150;
+	// sphere->rgb.g = 150;
+	// lst_sphere->next->value = sphere;
+	// lst_sphere->next->next = NULL;
+	// scene->sphere = lst_sphere;
 
 	scene->plane = malloc(sizeof(*(scene->plane)));
 	t_plane *plane;
@@ -61,6 +77,7 @@ t_scene	*create_scene()
 	scene->plane->next = NULL;
 	scene->plane->value = (void *)plane;
 	scene->cylinder = NULL;
+	
 	//adding lights
 	scene->al.ratio = 0.2;
 	scene->al.rgb.r = 255;
@@ -88,6 +105,7 @@ t_scene	*create_scene()
 	scene->lights->next = malloc(sizeof(*(scene->lights)));
 	scene->lights->next->value = light;
 	scene->lights->next->next = NULL;
+	
 	//adding camra
 	scene->cam.dir.x = 0;
 	scene->cam.dir.y = 0;
