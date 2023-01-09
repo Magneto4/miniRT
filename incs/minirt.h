@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 15:03:14 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:10:55 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	put_error_null(char *str);
 bool	put_error_false(char *str);
 void	free_minirt(t_minirt *minirt);
 void	free_scene(t_scene *scene);
+void	free_tab(char **tab);
 int		__wordcount(char **line);
 
 // 📚 Libs
