@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:20:01 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/08 15:28:27 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/09 14:36:12 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	__lstdelone(t_list *lst, void (*del)(void *))
 
 void	__lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list *ptr;
+	t_list	*ptr;
 
 	if (lst == NULL)
 		return ;
