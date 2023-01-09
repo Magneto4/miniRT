@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 13:02:57 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:02:03 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,7 @@ double	norm(t_vect v);
 t_vect	mat_mult(double mat[3][3], t_vect v);
 int	solve_quadratic(t_vect v, double *x1, double *x2);
 t_vect	cross(t_vect v, t_vect w);
+t_vect	add(t_vect a, t_vect b);
+t_vect	mult(t_vect v, double a);
 
 #endif /* MINIRT_H */

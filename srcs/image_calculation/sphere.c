@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:35:55 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/06 19:41:25 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:00:09 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ void	sphere_inter(t_vect v, t_minirt *minirt, t_sphere *sphere, t_point *closest
 		return ;
 	if (t[0] < 0)
 		t[0] = t[1];
-	tmp.x = minirt->scene->cam.pos.x + t[0] * v.x;
-	tmp.y = minirt->scene->cam.pos.y + t[0] * v.y;
-	tmp.z = minirt->scene->cam.pos.z + t[0] * v.z;
+	tmp = add(minirt->scene->cam.pos, mult(v, t[0]));
 	if (closest->init && distance(tmp, minirt->scene->cam.pos) > distance(closest->pos, minirt->scene->cam.pos))
 		return ;
 	closest->pos = tmp;
