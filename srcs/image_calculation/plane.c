@@ -6,28 +6,28 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:23 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/09 15:00:50 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:16:40 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	plane_inter(t_vect v, t_minirt *minirt, t_plane *plane, t_point *closest)
+void	plane_inter(t_vect v, t_vect src, t_plane *plane, t_point *closest)
 {
 	t_vect	tmp;
 	float	a;
 	float	b;
 	float	t;
 
-	a = dot(plane->dir, sub(minirt->scene->cam.pos, plane->pos));
+	a = dot(plane->dir, sub(src, plane->pos));
 	b = dot(plane->dir, v);
 	if (b == 0)
 		return ;
 	t = - a / b;
-	if (t < 0)
+	if (t < 1)
 		return ;
-	tmp = add(minirt->scene->cam.pos, mult(v, t));
-	if (closest->init && distance(tmp, minirt->scene->cam.pos) > distance(closest->pos, minirt->scene->cam.pos))
+	tmp = add(src, mult(v, t));
+	if (closest->init && distance(tmp, src) > distance(closest->pos, src))
 		return ;
 	closest->pos = tmp;
 	closest->raw_colour = plane->rgb;
@@ -36,14 +36,14 @@ void	plane_inter(t_vect v, t_minirt *minirt, t_plane *plane, t_point *closest)
 	return ;
 }
 
-void	closest_plane(t_minirt *minirt, t_vect v, t_point *closest)
+void	closest_plane(t_minirt *minirt, t_vect v, t_point *closest, t_vect src)
 {
 	t_list	*planes;
 
 	planes = minirt->scene->plane;
 	while (planes)
 	{
-		plane_inter(v, minirt, (t_plane *)(planes->value), closest);
+		plane_inter(v, src, (t_plane *)(planes->value), closest);
 		planes = planes->next;
 	}
 }
