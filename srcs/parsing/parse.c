@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 16:50:17 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/09 18:10:59 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,8 @@
 void	set_elem(char *line, t_scene *scene)
 {
 	char	**data;
-	// char	**tmp;
 
 	data = split_set(line, WHITE_SPACE);
-	// tmp = data;
-	// while (*tmp)
-	// {
-	// 	printf("data: %s\n", *tmp);
-	// 	tmp++;
-	// }
 	if (!data)
 		return (put_error_null("Error mallocing data"));
 	if (!__strcmp(data[0], "A"))
@@ -61,10 +54,10 @@ void	set_scene(char *file, t_scene *scene)
 	close(fd);
 }
 
-void	*init_scene(t_scene *scene)
-{
 	// scene->al = NULL;
 	// scene->cam = NULL;
+void	*init_scene(t_scene *scene)
+{
 	scene->lights = NULL;
 	scene->sphere = NULL;
 	scene->plane = NULL;

@@ -6,11 +6,13 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:04:04 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 17:08:24 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/10 14:16:25 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+// normalise and check null dir vector
 
 void	set_ambiant(char **data, t_scene *scene)
 {
@@ -22,6 +24,7 @@ void	set_camera(char **data, t_scene *scene)
 {
 	set_vector(data + 1, &scene->cam.pos);
 	set_vector(data + 2, &scene->cam.dir);
+	normalise(&scene->cam.dir);
 	scene->cam.fov = __atod(data[3]);
 }
 
@@ -51,6 +54,11 @@ void	set_sphere(char **data, t_scene *scene)
 	set_vector(data + 1, &sphere->pos);
 	sphere->radius = __atod(data[2]) / 2;
 	set_rgb(data + 3, &sphere->rgb);
+	if (sphere->radius <= 0)
+	{
+		__lstdelone(__lstnew(sphere), free);
+		return ;
+	}
 	__lstadd_front(&scene->sphere, __lstnew(sphere));
 }
 
@@ -63,6 +71,7 @@ void	set_plane(char **data, t_scene *scene)
 		return ;
 	set_vector(data + 1, &plane->pos);
 	set_vector(data + 2, &plane->dir);
+	normalise(&plane->dir);
 	set_rgb(data + 3, &plane->rgb);
 	__lstadd_front(&scene->plane, __lstnew(plane));
 }
@@ -76,6 +85,7 @@ void	set_cylinder(char **data, t_scene *scene)
 		return ;
 	set_vector(data + 1, &cylinder->pos);
 	set_vector(data + 2, &cylinder->dir);
+	normalise(&cylinder->dir);
 	cylinder->radius = __atod(data[3]) / 2;
 	cylinder->height = __atod(data[4]);
 	set_rgb(data + 5, &cylinder->rgb);
