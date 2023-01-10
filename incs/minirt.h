@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 16:18:17 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/10 14:19:08 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,13 @@ void	free_minirt(t_minirt *minirt);
 void	free_scene(t_scene *scene);
 void	free_tab(char **tab);
 int		__wordcount(char **line);
+int		ft_wordcount(char *str, char *sep);
 
 // 📚 Libs
 int		__strlen(char *str);
 int		__strcmp(const char *s1, const char *s2);
 void	__lstclear(t_list **lst, void (*del)(void *));
+void	__lstdelone(t_list *lst, void (*del)(void *));
 void	__lstadd_front(t_list **lst, t_list *new);
 t_list	*__lstnew(void *content);
 

@@ -6,21 +6,11 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 17:02:47 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/08 17:46:12 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/09 18:08:49 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "minirt.h"
-#include <stdio.h>
-
-double	__pow(double nb, double power)
-{
-	if (power < 0)
-		return (0);
-	if (power == 0)
-		return (1);
-	return (nb * __pow(nb, power - 1));
-}
+#include "minirt.h"
 
 int	__atoi(char *str)
 {
@@ -89,6 +79,6 @@ double	__atod(char *str)
 	while (*(str + dec) && *(str + dec) >= '0' && *(str + dec) <= '9')
 		dec++;
 	if (dec)
-		res += __atol(str) / __pow(10, dec);
+		res += __atol(str) / pow(10, dec);
 	return (res * sign);
 }
