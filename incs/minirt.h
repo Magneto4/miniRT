@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/11 19:27:57 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/12 12:12:50 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define HEIGHT 800
 # define WIDTH 1500
 
-# define WHITE_SPACE " \t"
+# define WHITE_SPACE " \t\n"
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
 
