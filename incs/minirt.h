@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/12 22:55:11 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/12 23:04:34 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@
 // 🏳️ Parse
 t_scene	*__parse(char *file);
 
-void	set_couple(char **data, t_couple *couple);
-void	set_vector(char **data, t_vect *vector);
-void	set_rgb(char **data, t_rgb *rgb);
+bool	set_couple(char **data, t_couple *couple);
+bool	set_vector(char **data, t_vect *vector);
+bool	set_rgb(char **data, t_rgb *rgb);
 
 void	set_ambiant(char **data, t_scene *scene);
 void	set_camera(char **data, t_scene *scene);
@@ -55,6 +55,8 @@ void	set_cylinder(char **data, t_scene *scene);
 
 bool	check_double(char *str);
 bool	check_int(char *str);
+
+bool	check_ambiant(char **data);
 
 // 🏔️ MiniRT
 
