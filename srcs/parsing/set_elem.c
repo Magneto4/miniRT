@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:04:04 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/12 18:02:33 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/12 18:15:22 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void	set_ambiant(char **data, t_scene *scene)
 {
-	// if (check_ambiant(data + 1) == false)
-	// 	return ;
+	if (check_ambiant(data + 1) == false)
+		return ;
 	scene->al.ratio = __atod(data[1]);
 	if (set_rgb(data + 2, &scene->al.rgb) == false)
 		return ;
