@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/12 17:29:56 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/12 17:45:46 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	set_cylinder(char **data, t_scene *scene);
 
 bool	check_double(char *str);
 bool	check_int(char *str);
+
+bool	check_ambiant(char **data);
 
 // 🏔️ MiniRT
 
