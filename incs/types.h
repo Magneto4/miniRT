@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:04:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/04 16:11:42 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/12 14:57:35 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,15 @@ typedef struct s_point
 	t_rgb	raw_colour;
 	t_rgb	lit_colour;
 	int		init;
+	void	*shape;
 }	t_point;
+
+typedef	struct s_ray
+{
+	t_vect	src;
+	t_vect	dir;
+}	t_ray;
+
 
 typedef double t_mat[3][3];
 
