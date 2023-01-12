@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/10 14:19:08 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/11 16:38:58 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include "../mlx/mlx.h"
 
 // 🕵️‍♂️ Define
-# define HEIGHT 800
+# define HEIGHT 900
 # define WIDTH 1500
 # define WHITE_SPACE " \t"
 

@@ -6,16 +6,11 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/09 16:14:26 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/11 16:42:49 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-double	intensity(double colour, double ratio)
-{
-	return(colour / 255 * ratio);
-}
 
 int	calculate_colour(t_minirt *minirt, t_point *point, t_vect v)
 {

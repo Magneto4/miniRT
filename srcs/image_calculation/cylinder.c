@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:15 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/09 16:16:33 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/11 16:35:09 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 t_vect	normal(t_vect p, t_cylinder *cyl)
 {
-	t_vect	n;
-	t_vect	v;
-	double	t;
-	double	angle;
+	t_vect	tmp;
+	t_vect	normal;
 
-	angle = asin(cyl->radius / norm(sub(p, cyl->pos)));
-	t = cyl->radius / tan(angle);
-	v = add(cyl->pos, mult(cyl->dir, t));
-	n = sub(p, v);
-	normalise(&n);
-	return (n);
+	tmp = sub(p, cyl->pos);
+	normal = sub(tmp, mult(cyl->dir, dot(cyl->dir, tmp)));
+	normalise(&normal);
+	return (normal);
 }
 
 void	print_vect(t_vect v)
@@ -38,14 +34,11 @@ void	cylinder_inter(t_vect v, t_vect src, t_cylinder *cyl, t_point *closest)
 	t_vect	va;
 	t_vect	quad;
 	t_vect	tmp;
-	t_vect	extrem[2];
+	t_vect	top;
 	double	t[2];
 
-	extrem[0] = sub(cyl->pos, mult(cyl->dir, cyl->height / 2));
-	extrem[1] = add(cyl->pos, mult(cyl->dir, cyl->height / 2));
-	// print_vect(extrem[0]);
-	// print_vect(extrem[1]);
-	r = cross(cyl->dir, sub(src, extrem[1]));
+	top = add(cyl->pos, mult(cyl->dir, cyl->height));
+	r = cross(cyl->dir, sub(src, top));
 	r = cross(r, cyl->dir);
 	va = cross(cyl->dir, v);
 	va = cross(va, cyl->dir);
@@ -56,13 +49,13 @@ void	cylinder_inter(t_vect v, t_vect src, t_cylinder *cyl, t_point *closest)
 		return ;
 	if (t[1] < 1)
 		return ;
-	if (t[0] < 1)
+	if (t[0] <  1)
 		t[0] = t[1];
 	tmp = add(src, mult(v, t[0]));
-	// if (dot(sub(tmp, extrem[0]), cyl->dir) < 0)
-	// 	return ;
-	// if (dot(sub(tmp, extrem[1]), cyl->dir) > 0)
-	// 	return ;
+	if (dot(sub(tmp, cyl->pos), cyl->dir) <= 0)
+		return ;
+	if (dot(sub(tmp, top), cyl->dir) >= 0)
+		return ;
 	if (closest->init && distance(tmp, src) > distance(closest->pos, src))
 		return ;
 	closest->pos = tmp;
