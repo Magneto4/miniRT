@@ -4,7 +4,7 @@ FILES = check.c check_types.c parse.c main.c ../pkg/string.c ../internal/error.c
 		../gnl/get_next_line.c ../gnl/get_next_line_utils.c
 
 all:
-	cc $(FILES) -Wall -Wextra -Werror -o parse -I../../incs/
+	cc $(FILES) -Wall -Wextra -Werror -o parse -I../../incs/ -lm
 
 fclean: clean
 	rm -f parse
