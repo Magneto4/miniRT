@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 16:49:02 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/08 16:55:38 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/11 19:27:57 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_wordlen(char *str, char *sep)
 	return (i);
 }
 
-int	ft_wordcount(char *str, char *sep)
+int	wordcount_set(char *str, char *sep)
 {
 	int	i;
 	int	count;
@@ -83,7 +83,7 @@ char	**split_set(char *str, char *charset)
 
 	if (!str)
 		return (NULL);
-	res = malloc(sizeof(char *) * (ft_wordcount(str, charset) + 1));
+	res = malloc(sizeof(char *) * (wordcount_set(str, charset) + 1));
 	if (!res)
 		return (NULL);
 	i = 0;

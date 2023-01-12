@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:11:40 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 15:46:45 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/11 19:32:32 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	set_couple(char **data, t_couple *couple)
 {
 	char	**split;
 
+	if (wordcount_set(data[0], ",") != 2)
+		return ;
 	split = split_set(data[0], ",");
 	if (split == NULL)
 		return ;
@@ -28,6 +30,8 @@ void	set_vector(char **data, t_vect *vector)
 {
 	char	**split;
 
+	if (wordcount_set(data[0], ",") != 3)
+		return ;
 	split = split_set(data[0], ",");
 	if (split == NULL)
 		return ;
@@ -40,10 +44,25 @@ void	set_vector(char **data, t_vect *vector)
 void	set_rgb(char **data, t_rgb *rgb)
 {
 	char	**split;
+	double	tmp;
+	int		i;
 
+	if (wordcount_set(data[0], ",") != 3)
+		return ;
 	split = split_set(data[0], ",");
 	if (split == NULL)
 		return ;
+	i = -1;
+	while (split[++i])
+	{
+		if (check_int(split[i]) == false)
+			return ;
+		tmp = __atod(split[i]);
+		if (tmp > MAX_INT || tmp < MIN_INT)
+			return ;
+		if (tmp > 255 || tmp < 0)
+			return ;
+	}
 	rgb->r = __atoi(split[0]);
 	rgb->g = __atoi(split[1]);
 	rgb->b = __atoi(split[2]);
