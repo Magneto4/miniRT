@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/12 23:06:03 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/12 23:51:36 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define MIN_INT -2147483648
 
 # ifndef BONUS
-#  define BONUS 1
+#  define BONUS 0
 # endif
 
 // 🏳️ Parse
