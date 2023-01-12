@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/12 23:04:34 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/12 23:06:03 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,12 @@ void	clean_end(t_minirt *minirt);
 
 //image
 int		create_image(t_minirt *minirt);
-t_point	*calculate_intersection(t_minirt *minirt, t_ray ray);
+t_point	*calculate_intersection(t_minirt *minirt, t_ray ray, void *exclude);
 int		calculate_colour(t_minirt *minirt, t_point *point, t_vect v);
 void	normalise(t_vect *v);
-void	closest_sphere(t_minirt *minirt, t_ray ray, t_point *closest);
-void	closest_cylinder(t_minirt *minirt, t_ray ray, t_point *closest);
-void	closest_plane(t_minirt *minirt, t_ray ray, t_point *closest);
+void	closest_sphere(t_minirt *minirt, t_ray ray, t_point *closest, void *exclude);
+void	closest_cylinder(t_minirt *minirt, t_ray ray, t_point *closest, void *exclude);
+void	closest_plane(t_minirt *minirt, t_ray ray, t_point *closest, void *exclude);
 double	distance(t_vect a, t_vect b);
 t_point	*create_point();
 void	free_point(t_point *point);
