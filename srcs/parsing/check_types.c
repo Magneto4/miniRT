@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:23:25 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/11 19:19:40 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/12 17:31:57 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,3 @@ bool	check_int(char *str)
 	}
 	return (true);
 }
-
-// bool	check_vect(char *str)
-// {
-
-// }
-

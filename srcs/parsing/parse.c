@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 18:10:59 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/12 17:21:53 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	set_scene(char *file, t_scene *scene)
 	close(fd);
 }
 
-	// scene->al = NULL;
-	// scene->cam = NULL;
 void	*init_scene(t_scene *scene)
 {
+	scene->al.ratio = -1;
+	scene->cam.fov = -1;
 	scene->lights = NULL;
 	scene->sphere = NULL;
 	scene->plane = NULL;

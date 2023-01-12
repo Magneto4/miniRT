@@ -6,7 +6,7 @@
 #    By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/01/12 11:14:10 by ngiroux          ###   ########.fr        #
+#    Updated: 2023/01/12 17:33:37 by ngiroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ F_GNL		= get_next_line.c get_next_line_utils.c
 FILES		+= $(addprefix gnl/, $(F_GNL))
 F_INT		= error.c free_minirt.c
 FILES		+= $(addprefix internal/, $(F_INT))
-F_PARS		= parse.c check.c check_types.c set_elem.c set_types.c
+F_PARS		= parse.c check_elem.c check_types.c set_elem.c set_types.c
 FILES		+= $(addprefix parsing/, $(F_PARS))
 F_PKG		= list.c string.c string_conv.c split.c
 FILES		+= $(addprefix pkg/, $(F_PKG))
