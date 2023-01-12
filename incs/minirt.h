@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/12 15:16:31 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/12 22:55:11 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define MIN_INT -2147483648
 
 # ifndef BONUS
-#  define BONUS 0
+#  define BONUS 1
 # endif
 
 // 🏳️ Parse
@@ -89,12 +89,12 @@ void	clean_end(t_minirt *minirt);
 
 //image
 int		create_image(t_minirt *minirt);
-t_point	*calculate_intersection(t_minirt *minirt, t_ray ray, void *exclude);
+t_point	*calculate_intersection(t_minirt *minirt, t_ray ray);
 int		calculate_colour(t_minirt *minirt, t_point *point, t_vect v);
 void	normalise(t_vect *v);
-void	closest_sphere(t_minirt *minirt, t_ray ray, t_point *closest, void *exclude);
-void	closest_cylinder(t_minirt *minirt, t_ray ray, t_point *closest, void *exclude);
-void	closest_plane(t_minirt *minirt, t_ray ray, t_point *closest, void *exclude);
+void	closest_sphere(t_minirt *minirt, t_ray ray, t_point *closest);
+void	closest_cylinder(t_minirt *minirt, t_ray ray, t_point *closest);
+void	closest_plane(t_minirt *minirt, t_ray ray, t_point *closest);
 double	distance(t_vect a, t_vect b);
 t_point	*create_point();
 void	free_point(t_point *point);

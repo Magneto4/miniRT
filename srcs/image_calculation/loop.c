@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/12 16:07:38 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/12 23:01:39 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	generate_pixel(t_minirt *minirt, int x, int y)
 	v = orientation_vector(minirt, (double)x, (double)y);
 	ray.dir = v;
 	ray.src = minirt->scene->cam.pos;
-	point = calculate_intersection(minirt, ray, NULL);
+	point = calculate_intersection(minirt, ray);
 	if (point->init == 0)
 		colour = 0x000000;
 	else

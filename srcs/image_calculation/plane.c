@@ -6,11 +6,22 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:23 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/12 15:12:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/12 23:01:51 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+t_vect	plane_normal(t_plane *plane, t_vect src, t_vect inter)
+{
+	t_vect	n;
+	
+	if (dot(sub(src, inter), plane->dir) < 0)
+		n = mult(plane->dir, -1);
+	else
+		n = plane->dir;
+	return (n);
+}
 
 void	plane_inter(t_vect v, t_vect src, t_plane *plane, t_point *closest)
 {
@@ -31,21 +42,20 @@ void	plane_inter(t_vect v, t_vect src, t_plane *plane, t_point *closest)
 		return ;
 	closest->pos = tmp;
 	closest->raw_colour = plane->rgb;
-	closest->normal = plane->dir;
-	closest->shape = (void *)plane;
+	closest->normal = plane_normal(plane, src, tmp);
+	closest->shape = plane;
 	closest->init = 1;
 	return ;
 }
 
-void	closest_plane(t_minirt *minirt, t_ray ray, t_point *closest, void *exclude)
+void	closest_plane(t_minirt *minirt, t_ray ray, t_point *closest)
 {
 	t_list	*planes;
 
 	planes = minirt->scene->plane;
 	while (planes)
 	{
-		if (exclude != planes->value)
-			plane_inter(ray.dir, ray.src, (t_plane *)(planes->value), closest);
+		plane_inter(ray.dir, ray.src, (t_plane *)(planes->value), closest);
 		planes = planes->next;
 	}
 }

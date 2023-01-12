@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/12 16:07:54 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/12 23:02:58 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ int	calculate_colour(t_minirt *minirt, t_point *point, t_vect v)
 	while (lights)
 	{
 		light = (t_light *)(lights->value);
-		ray.dir = sub(light->pos, point->pos);
+		ray.dir = sub(point->pos, light->pos);
 		normalise(&(ray.dir));
-		ray.src = point->pos;
-		inter = calculate_intersection(minirt, ray, point->shape);
-		if (dot(point->normal, ray.dir) > 0 || inter->init == 0)
+		ray.src = light->pos;
+		inter = calculate_intersection(minirt, ray);
+		ray.dir = mult(ray.dir, -1);
+		if (dot(point->normal, ray.dir) > 0 && (inter->init == 0 || inter->shape == point->shape))
 		{
 			point->lit_colour.r += light->rgb.r * light->ratio * point->raw_colour.r * dot(point->normal, ray.dir);
 			point->lit_colour.g += light->rgb.g * light->ratio * point->raw_colour.g * dot(point->normal, ray.dir);
@@ -47,3 +48,7 @@ int	calculate_colour(t_minirt *minirt, t_point *point, t_vect v)
 	(void)v;
 	return (0);
 }
+
+
+//gerer interieur
+//reparer ombres

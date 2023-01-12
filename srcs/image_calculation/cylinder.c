@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:15 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/12 15:07:21 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/12 22:58:20 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ t_vect	normal(t_vect p, t_cylinder *cyl)
 	normal = sub(tmp, mult(cyl->dir, dot(cyl->dir, tmp)));
 	normalise(&normal);
 	return (normal);
-}
-
-void	print_vect(t_vect v)
-{
-	printf("(%f, %f, %f)\n", v.x, v.y, v.z);
 }
 
 void	cylinder_inter(t_vect v, t_vect src, t_cylinder *cyl, t_point *closest)
@@ -61,20 +56,19 @@ void	cylinder_inter(t_vect v, t_vect src, t_cylinder *cyl, t_point *closest)
 	closest->pos = tmp;
 	closest->raw_colour = cyl->rgb;
 	closest->normal = normal(tmp, cyl);
-	closest->shape = (void *)cyl;
+	closest->shape = cyl;
 	closest->init = 1;
 	return ;
 }
 
-void	closest_cylinder(t_minirt *minirt, t_ray ray, t_point *closest, void *exclude)
+void	closest_cylinder(t_minirt *minirt, t_ray ray, t_point *closest)
 {
 	t_list	*cylinders;
 
 	cylinders = minirt->scene->cylinder;
 	while (cylinders)
 	{
-		if (exclude != cylinders->value)
-			cylinder_inter(ray.dir, ray.src, (t_cylinder *)(cylinders->value), closest);
+		cylinder_inter(ray.dir, ray.src, (t_cylinder *)(cylinders->value), closest);
 		cylinders = cylinders->next;
 	}
 }
