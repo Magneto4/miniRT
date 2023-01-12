@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/11 16:38:58 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/12 14:33:59 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@
 // 🕵️‍♂️ Define
 # define HEIGHT 900
 # define WIDTH 1500
-# define WHITE_SPACE " \t"
+
+# define WHITE_SPACE " \t\n"
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
 
 # ifndef BONUS
 #  define BONUS 0
@@ -50,6 +53,9 @@ void	set_sphere(char **data, t_scene *scene);
 void	set_plane(char **data, t_scene *scene);
 void	set_cylinder(char **data, t_scene *scene);
 
+bool	check_double(char *str);
+bool	check_int(char *str);
+
 // 🏔️ MiniRT
 
 // 🧰 Utils
@@ -60,7 +66,7 @@ void	free_minirt(t_minirt *minirt);
 void	free_scene(t_scene *scene);
 void	free_tab(char **tab);
 int		__wordcount(char **line);
-int		ft_wordcount(char *str, char *sep);
+int		wordcount_set(char *str, char *sep);
 
 // 📚 Libs
 int		__strlen(char *str);
