@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:15 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/11 16:35:09 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/12 15:07:21 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	cylinder_inter(t_vect v, t_vect src, t_cylinder *cyl, t_point *closest)
 	quad.z = dot(r, r) - cyl->radius * cyl->radius;
 	if (solve_quadratic(quad, t, t + 1) == 0)
 		return ;
-	if (t[1] < 1)
+	if (t[1] < 0)
 		return ;
-	if (t[0] <  1)
+	if (t[0] < 0)
 		t[0] = t[1];
 	tmp = add(src, mult(v, t[0]));
 	if (dot(sub(tmp, cyl->pos), cyl->dir) <= 0)
@@ -61,18 +61,20 @@ void	cylinder_inter(t_vect v, t_vect src, t_cylinder *cyl, t_point *closest)
 	closest->pos = tmp;
 	closest->raw_colour = cyl->rgb;
 	closest->normal = normal(tmp, cyl);
+	closest->shape = (void *)cyl;
 	closest->init = 1;
 	return ;
 }
 
-void	closest_cylinder(t_minirt *minirt, t_vect v, t_point *closest, t_vect src)
+void	closest_cylinder(t_minirt *minirt, t_ray ray, t_point *closest, void *exclude)
 {
 	t_list	*cylinders;
 
 	cylinders = minirt->scene->cylinder;
 	while (cylinders)
 	{
-		cylinder_inter(v, src, (t_cylinder *)(cylinders->value), closest);
+		if (exclude != cylinders->value)
+			cylinder_inter(ray.dir, ray.src, (t_cylinder *)(cylinders->value), closest);
 		cylinders = cylinders->next;
 	}
 }

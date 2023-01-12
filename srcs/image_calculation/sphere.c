@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:35:55 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/11 16:35:14 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/12 15:07:42 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	sphere_inter(t_vect v, t_vect src, t_sphere *sphere, t_point *closest)
 	quad.z = dot(tmp, tmp) - sphere->radius * sphere->radius;
 	if (solve_quadratic(quad, t, t + 1) == 0)
 		return ;
-	if (t[1] < 1)
+	if (t[1] < 0)
 		return ;
-	if (t[0] < 1)
+	if (t[0] < 0)
 		t[0] = t[1];
 	tmp = add(src, mult(v, t[0]));
 	if (closest->init && distance(tmp, src) > distance(closest->pos, src))
@@ -35,18 +35,20 @@ void	sphere_inter(t_vect v, t_vect src, t_sphere *sphere, t_point *closest)
 	closest->raw_colour = sphere->rgb;
 	closest->init = 1;
 	closest->normal = sub(closest->pos, sphere->pos);
+	closest->shape = (void *)sphere;
 	normalise(&(closest->normal));
 	return ;
 }
 
-void	closest_sphere(t_minirt *minirt, t_vect v, t_point *closest, t_vect src)
+void	closest_sphere(t_minirt *minirt, t_ray ray, t_point *closest, void *exclude)
 {
 	t_list	*spheres;
 
 	spheres = minirt->scene->sphere;
 	while (spheres)
 	{
-		sphere_inter(v, src, (t_sphere *)(spheres->value), closest);
+		if (exclude != spheres->value)
+			sphere_inter(ray.dir, ray.src, (t_sphere *)(spheres->value), closest);
 		spheres = spheres->next;
 	}
 }
