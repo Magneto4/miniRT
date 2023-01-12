@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:11:40 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/11 19:32:32 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/12 12:13:50 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ void	set_rgb(char **data, t_rgb *rgb)
 	while (split[++i])
 	{
 		if (check_int(split[i]) == false)
-			return ;
+			return (free_tab(split));
 		tmp = __atod(split[i]);
 		if (tmp > MAX_INT || tmp < MIN_INT)
-			return ;
+			return (free_tab(split));
 		if (tmp > 255 || tmp < 0)
-			return ;
+			return (free_tab(split));
 	}
 	rgb->r = __atoi(split[0]);
 	rgb->g = __atoi(split[1]);
