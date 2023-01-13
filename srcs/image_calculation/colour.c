@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/13 19:13:23 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/13 19:57:45 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_inside_sphere(t_minirt *minirt, t_light *light,t_sphere *sphere)
 	if (distance(minirt->scene->cam.pos, sphere->pos) < sphere->radius)
 	{
 		if (distance(sphere->pos, light->pos) > sphere->radius)
-			return (1);
+			return (1); 
 	}
 	return (0);
 }

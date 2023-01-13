@@ -6,18 +6,18 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:35:55 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/13 19:16:43 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/13 19:59:02 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vect	normal_sphere(t_sphere *sphere, t_vect inter)
+t_vect	normal_sphere(t_sphere *sphere, t_vect inter, t_vect src)
 {
 	t_vect	n;
 
 	n = sub(inter, sphere->pos);
-	if (distance(sphere->pos, inter) <= sphere->radius + EPSILON)
+	if (distance(src, sphere->pos) < sphere->radius)
 		n = mult(n, -1);
 	normalise(&n);
 	return (n);
@@ -45,7 +45,7 @@ void	sphere_inter(t_vect v, t_vect src, t_sphere *sphere, t_point *closest)
 	closest->pos = add(src, mult(v, t[0]));
 	closest->raw_colour = sphere->rgb;
 	closest->init = SP;
-	closest->normal = normal_sphere(sphere, closest->pos);
+	closest->normal = normal_sphere(sphere, closest->pos, src);
 	closest->shape = sphere;
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:15 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/13 19:17:00 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/13 19:51:23 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	cylinder_inter(t_ray ray, t_cylinder *cyl, t_point *closest)
 	va = cross(cyl->dir, ray.dir);
 	va = cross(va, cyl->dir);
 	tmp.x = dot(va, va);
-	tmp.y = 2 * dot(r, va);
+	tmp.y = 2. * dot(r, va);
 	tmp.z = dot(r, r) - cyl->radius * cyl->radius;
 	if (solve_quadratic(tmp, t, t + 1) == 0)
 		return ;
