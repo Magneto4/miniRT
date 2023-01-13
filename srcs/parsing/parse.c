@@ -6,21 +6,23 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/12 17:21:53 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/13 19:40:59 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	set_elem(char *line, t_scene *scene)
+bool	set_elem(char *line, t_scene *scene)
 {
 	char	**data;
+	bool	err;
 
 	data = split_set(line, WHITE_SPACE);
+	err = true;
 	if (!data)
-		return (put_error_null("Error mallocing data"));
+		return (put_error_false("Error mallocing data"));
 	if (!__strcmp(data[0], "A"))
-		set_ambiant(data, scene);
+		err = set_ambiant(data, scene);
 	else if (!__strcmp(data[0], "C"))
 		set_camera(data, scene);
 	else if (!__strcmp(data[0], "L"))
@@ -32,8 +34,11 @@ void	set_elem(char *line, t_scene *scene)
 	else if (!__strcmp(data[0], "cy"))
 		set_cylinder(data, scene);
 	else
-		return (free_tab(data), put_error_null("Error unknown identifier"));
+		return (free_tab(data), put_error_false("Error unknown identifier"));
 	free_tab(data);
+	if (err == false)
+		return (free_scene(scene), put_error_false("Error parsing file"));
+	return (true);
 }
 
 void	set_scene(char *file, t_scene *scene)
@@ -47,7 +52,8 @@ void	set_scene(char *file, t_scene *scene)
 	line = get_next_line(fd);
 	while (line)
 	{
-		set_elem(line, scene);
+		if (set_elem(line, scene) == false)
+			return (free_gnl(fd, line), put_error_null("Error parsing file"));
 		free(line);
 		line = get_next_line(fd);
 	}

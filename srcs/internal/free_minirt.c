@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:25:18 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/09 15:10:22 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/13 19:40:49 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,10 @@ void	free_tab(char **tab)
 		tmp++;
 	}
 	free(tab);
+}
+
+void	free_gnl(int fd, char *line)
+{
+	free(line);
+	close(fd);
 }

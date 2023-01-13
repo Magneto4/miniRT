@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:04:04 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/12 18:15:22 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/13 19:41:43 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 // normalise and check null dir vector
 
-void	set_ambiant(char **data, t_scene *scene)
+// crash with xx,xx, vectors ...
+
+bool	set_ambiant(char **data, t_scene *scene)
 {
 	if (check_ambiant(data + 1) == false)
-		return ;
+		return (false);
 	scene->al.ratio = __atod(data[1]);
-	if (set_rgb(data + 2, &scene->al.rgb) == false)
-		return ;
+	set_rgb(data + 2, &scene->al.rgb);
+	return (true);
 }
 
 void	set_camera(char **data, t_scene *scene)
 {
+	if (check_camera(data + 1) == false)
+		return ;
 	set_vector(data + 1, &scene->cam.pos);
 	set_vector(data + 2, &scene->cam.dir);
 	normalise(&scene->cam.dir);
