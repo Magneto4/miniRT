@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 19:29:48 by magneto           #+#    #+#             */
-/*   Updated: 2023/01/09 13:19:15 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/13 19:40:03 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32	
+#  define BUFFER_SIZE 32
 # endif
 
 # include <stdlib.h>
