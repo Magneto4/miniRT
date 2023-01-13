@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/12 23:52:22 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/13 18:31:48 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ int	create_image(t_minirt *minirt)
 		y = 0;
 		while (y < HEIGHT)
 		{
+			// printf("x = %i, y = %i\n", x, y);
 			if (generate_pixel(minirt, x, y))
 				return (1);
 			y ++;

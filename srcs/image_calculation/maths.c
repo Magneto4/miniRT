@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:18:40 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/09 15:42:52 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/13 17:33:28 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ t_vect	mat_mult(double mat[3][3], t_vect v)
 int	solve_quadratic(t_vect v, double *x1, double *x2)
 {
 	double	d;
+	double	y1;
+	double	y2;
 
 	d = v.y * v.y - 4 * v.x * v.z;
 	if (d < 0)
@@ -95,8 +97,18 @@ int	solve_quadratic(t_vect v, double *x1, double *x2)
 		*x2 = *x1;
 		return (1);
 	}
-	*x1 = (- v.y - sqrt(d)) / 2 * v.x;
-	*x2 = (- v.y + sqrt(d)) / 2 * v.x;
+	y1 = (- v.y - sqrt(d)) / 2 * v.x;
+	y2 = (- v.y + sqrt(d)) / 2 * v.x;
+	if (y1 < y2)
+	{
+		*x1 = y1;
+		*x2 = y2;
+	}
+	else
+	{
+		*x1 = y2;
+		*x2 = y1;
+	}
 	return (2);
 }
 

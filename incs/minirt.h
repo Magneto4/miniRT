@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/12 23:53:24 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/13 19:16:31 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,13 @@
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
 
+# define SP 1
+# define CY 2
+# define PL 3
+# define EPSILON 0.0001
+
 # ifndef BONUS
-#  define BONUS 0
+#  define BONUS 1
 # endif
 
 // 🏳️ Parse
@@ -108,5 +113,7 @@ int	solve_quadratic(t_vect v, double *x1, double *x2);
 t_vect	cross(t_vect v, t_vect w);
 t_vect	add(t_vect a, t_vect b);
 t_vect	mult(t_vect v, double a);
+void	plane_inter(t_ray ray, t_plane *plane, t_point *closest);
+t_vect	plane_normal(t_plane *plane, t_vect src, t_vect inter);
 
 #endif /* MINIRT_H */

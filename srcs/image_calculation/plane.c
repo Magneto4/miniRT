@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:23 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/12 23:52:40 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/13 19:16:49 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,27 @@ t_vect	plane_normal(t_plane *plane, t_vect src, t_vect inter)
 	return (n);
 }
 
-void	plane_inter(t_vect v, t_vect src, t_plane *plane, t_point *closest)
+void	plane_inter(t_ray ray, t_plane *plane, t_point *closest)
 {
-	t_vect	tmp;
 	float	a;
 	float	b;
 	float	t;
 
-	a = dot(plane->dir, sub(src, plane->pos));
-	b = dot(plane->dir, v);
+	a = dot(plane->dir, sub(ray.src, plane->pos));
+	b = dot(plane->dir, ray.dir);
 	if (b == 0)
 		return ;
 	t = - a / b;
-	if (t < 0)
+	if (t < EPSILON)
 		return ;
-	tmp = add(src, mult(v, t));
-	if (closest->init && distance(tmp, src) > distance(closest->pos, src))
+	if (closest->init && t > closest->t)
 		return ;
-	closest->pos = tmp;
+	closest->t = t;
+	closest->pos = add(ray.src, mult(ray.dir, t));
 	closest->raw_colour = plane->rgb;
-	closest->normal = plane_normal(plane, src, tmp);
+	closest->normal = plane_normal(plane, ray.src, closest->pos);
 	closest->shape = plane;
-	closest->init = 1;
+	closest->init = PL;
 	return ;
 }
 
@@ -55,7 +54,7 @@ void	closest_plane(t_minirt *minirt, t_ray ray, t_point *closest)
 	planes = minirt->scene->plane;
 	while (planes)
 	{
-		plane_inter(ray.dir, ray.src, (t_plane *)(planes->value), closest);
+		plane_inter(ray, (t_plane *)(planes->value), closest);
 		planes = planes->next;
 	}
 }
