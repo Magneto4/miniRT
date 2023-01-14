@@ -6,8 +6,10 @@
 #    By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 17:59:58 by ngiroux           #+#    #+#              #
-#    Updated: 2023/01/13 18:00:19 by ngiroux          ###   ########.fr        #
+#    Updated: 2023/01/14 19:46:25 by ngiroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-F_PARS		= parse.c check_elem.c check_types.c set_elem.c set_types.c
+F_PARS		= check_elem.c check_elem2.c check_types.c \
+			parse.c utils.c \
+			set_elem.c set_elem2.c set_types.c

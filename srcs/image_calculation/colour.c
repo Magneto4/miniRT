@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   colour.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/13 19:57:45 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/14 19:48:45 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	check_inside_sphere(t_minirt *minirt, t_light *light,t_sphere *sphere)
+int	check_inside_sphere(t_minirt *minirt, t_light *light, t_sphere *sphere)
 {
 	if (distance(minirt->scene->cam.pos, sphere->pos) < sphere->radius)
 	{
@@ -24,7 +24,7 @@ int	check_inside_sphere(t_minirt *minirt, t_light *light,t_sphere *sphere)
 
 int	lit(t_light *light, t_point *point, t_minirt *minirt)
 {
-	t_point *inter;
+	t_point	*inter;
 	t_ray	ray;
 
 	ray.dir = sub(point->pos, light->pos);

@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 19:14:41 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 19:44:59 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,6 @@ void	*init_scene(t_scene *scene)
 	scene->plane = NULL;
 	scene->cylinder = NULL;
 	return (scene);
-}
-
-bool	check_file(char *file)
-{
-	int	fd;
-
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return (put_error_false("opening file"));
-	close(fd);
-	return (true);
 }
 
 t_scene	*__parse(char *file)

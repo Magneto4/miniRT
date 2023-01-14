@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/13 18:31:48 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/14 19:50:15 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_vect	y_rot(t_vect v, float a)
 	mat[1][0] = 0;
 	mat[1][1] = 1;
 	mat[1][2] = 0;
-	mat[2][0] = - sin(a);
+	mat[2][0] = -sin(a);
 	mat[2][1] = 0;
 	mat[2][2] = cos(a);
 	res = mat_mult(mat, v);
@@ -83,7 +83,7 @@ t_vect	z_rot(t_vect v, float a)
 	double	mat[3][3];
 
 	mat[0][0] = cos(a);
-	mat[0][1] = - sin(a);
+	mat[0][1] = -sin(a);
 	mat[0][2] = 0;
 	mat[1][0] = sin(a);
 	mat[1][1] = cos(a);
@@ -95,7 +95,7 @@ t_vect	z_rot(t_vect v, float a)
 	return (res);
 }
 
-t_vect orientation_vector(t_minirt *minirt, double x, double y)
+t_vect	orientation_vector(t_minirt *minirt, double x, double y)
 {
 	t_vect	v;
 
@@ -112,9 +112,9 @@ t_vect orientation_vector(t_minirt *minirt, double x, double y)
 int	generate_pixel(t_minirt *minirt, int x, int y)
 {
 	t_point	*point;
-	t_vect		v;
-	t_ray		ray;
-	int			colour;
+	t_vect	v;
+	t_ray	ray;
+	int		colour;
 
 	v = orientation_vector(minirt, (double)x, (double)y);
 	ray.dir = v;

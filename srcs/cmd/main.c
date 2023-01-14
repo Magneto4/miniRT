@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:51:06 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 19:12:17 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 19:47:42 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@
 // 	plane->rgb.b = 100;
 // 	scene->plane->next = NULL;
 // 	scene->plane->value = (void *)plane;
-	
 // 	//adding lights
 // 	scene->al.ratio = 0.3;
 // 	scene->al.rgb.r = 255;
@@ -105,7 +104,6 @@
 // 	scene->lights->next = malloc(sizeof(*(scene->lights)));
 // 	scene->lights->next->value = light;
 // 	scene->lights->next->next = NULL;
-	
 // 	//adding camra
 // 	scene->cam.dir.x = 0;
 // 	scene->cam.dir.y = 0;

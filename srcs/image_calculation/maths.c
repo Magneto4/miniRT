@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maths.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:18:40 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/13 17:33:28 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/14 19:51:26 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ double	distance(t_vect a, t_vect b)
 	dis = (a.x - b.x) * (a.x - b.x);
 	dis += (a.y - b.y) * (a.y - b.y);
 	dis += (a.z - b.z) * (a.z - b.z);
-	return(sqrt(dis));
+	return (sqrt(dis));
 }
 
 double	dot(t_vect a, t_vect b)
@@ -54,7 +54,7 @@ t_vect	sub(t_vect a, t_vect b)
 
 t_vect	mult(t_vect v, double a)
 {
-	t_vect w;
+	t_vect	w;
 
 	w.x = v.x * a;
 	w.y = v.y * a;
@@ -93,12 +93,12 @@ int	solve_quadratic(t_vect v, double *x1, double *x2)
 		return (0);
 	if (d == 0)
 	{
-		*x1 = - v.y / 2 * v.x;
+		*x1 = -v.y / 2 * v.x;
 		*x2 = *x1;
 		return (1);
 	}
-	y1 = (- v.y - sqrt(d)) / 2 * v.x;
-	y2 = (- v.y + sqrt(d)) / 2 * v.x;
+	y1 = (-v.y - sqrt(d)) / 2 * v.x;
+	y2 = (-v.y + sqrt(d)) / 2 * v.x;
 	if (y1 < y2)
 	{
 		*x1 = y1;

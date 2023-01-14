@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:23:25 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 18:50:53 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 19:37:42 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ bool	check_vector_norm(char *str)
 			ret = false;
 		i++;
 	}
-	if (ret == true && __atod(data[0]) == 0 && __atod(data[1]) == 0 && __atod(data[2]) == 0)
+	if (ret == true && null_vector(data) == false)
 		ret = false;
 	free_tab(data);
 	if (ret == false)

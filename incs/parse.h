@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:21:39 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 18:17:45 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 19:44:53 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 // 🏳️ Parse
 t_scene	*__parse(char *file);
+bool	check_file(char *file);
 
 bool	set_couple(char **data, t_couple *couple);
 bool	set_vector(char **data, t_vect *vector);
@@ -36,6 +37,7 @@ bool	check_double(char *str);
 bool	check_vector(char *str);
 bool	check_vector_norm(char *str);
 bool	check_rgb(char *str);
+bool	null_vector(char **data);
 
 bool	check_ambiant(char **data);
 bool	check_camera(char **data);

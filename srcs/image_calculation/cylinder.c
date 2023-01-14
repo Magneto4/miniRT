@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:15 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/13 19:51:23 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/14 19:48:07 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	cylinder_inter(t_ray ray, t_cylinder *cyl, t_point *closest)
 	{
 		if (!in_cyl(t[0], cyl, ray))
 		{
-			if(!in_cyl(t[1], cyl, ray))
-				return;
+			if (!in_cyl(t[1], cyl, ray))
+				return ;
 			else
 				t[0] = t[1];
 		}
