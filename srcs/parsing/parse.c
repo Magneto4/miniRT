@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 17:55:10 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:24:25 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ bool	check_line(char **data, t_scene *scene)
 	if (!__strcmp(data[0], "A"))
 		ret = set_ambiant(data, scene);
 	else if (!__strcmp(data[0], "C"))
-		set_camera(data, scene);
+		ret = set_camera(data, scene);
 	else if (!__strcmp(data[0], "L"))
-		set_light(data, scene);
+		ret = set_light(data, scene);
 	else if (!__strcmp(data[0], "sp"))
-		set_sphere(data, scene);
+		ret = set_sphere(data, scene);
 	else if (!__strcmp(data[0], "pl"))
-		set_plane(data, scene);
+		ret = set_plane(data, scene);
 	else if (!__strcmp(data[0], "cy"))
-		set_cylinder(data, scene);
+		ret = set_cylinder(data, scene);
 	else
 		return (put_error_false("Error unknown identifier"));
 	return (ret);
