@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 18:36:44 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/04 16:26:25 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/14 19:13:19 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	key(int keycode, void *void_minirt)
 	if (keycode == 65307)
 	{
 		clean_end(minirt);
-		exit (0);
+		exit (EXIT_SUCCESS);
 	}
 	return (0);
 }
@@ -45,5 +45,5 @@ int	close_hook(void *void_minirt)
 
 	minirt = (t_minirt *)void_minirt;
 	clean_end(minirt);
-	exit (0);
+	exit (EXIT_SUCCESS);
 }

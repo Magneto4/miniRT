@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 18:55:03 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 19:14:41 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	set_elem(char *line, t_scene *scene)
 	err = check_line(data, scene);
 	free_tab(data);
 	if (err == false)
-		return (free_scene(scene), put_error_false("parsing file"));
+		return (free_scene(scene), put_error_false("parsing element"));
 	return (true);
 }
 
@@ -105,7 +105,7 @@ t_scene	*__parse(char *file)
 	if (!scene)
 		return (put_error_null("mallocing scene"), NULL);
 	if (!check_file(file))
-		return (put_error_null("in file"), NULL);
+		return (NULL);
 	scene = init_scene(scene);
 	if (set_scene(file, scene) == false)
 		return (put_error_null("setting scene"), free(scene), NULL);
