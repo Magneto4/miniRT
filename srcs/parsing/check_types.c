@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:23:25 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/13 19:16:49 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 17:28:54 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ bool	check_double(char *str)
 {
 	bool	dot;
 
+	if (!str)
+		return (false);
 	dot = false;
 	if (*str == '-' || *str == '+')
 		str++;
@@ -47,6 +49,8 @@ bool	check_double(char *str)
 
 bool	check_int(char *str)
 {
+	if (!str)
+		return (false);
 	if (*str == '-' || *str == '+')
 		str++;
 	while (*str)
@@ -62,17 +66,42 @@ bool	check_vector(char *str)
 {
 	char	**data;
 	bool	ret;
+	int		i;
 
 	ret = true;
 	data = split_set(str, ",");
 	if (__wordcount(data) != 3)
 		ret = false;
-	if (check_double(data[0]) == false)
+	i = 0;
+	while (i < 3 && ret == true)
+	{
+		if (check_double(data[i]) == false)
+			ret = false;
+		i++;
+	}
+	free_tab(data);
+	return (ret);
+}
+
+bool	check_vector_norm(char *str)
+{
+	char	**data;
+	bool	ret;
+	int		i;
+
+	ret = true;
+	data = split_set(str, ",");
+	if (__wordcount(data) != 3)
 		ret = false;
-	if (check_double(data[1]) == false)
-		ret = false;
-	if (check_double(data[2]) == false)
-		ret = false;
+	i = 0;
+	while (i < 3 && ret == true)
+	{
+		if (check_double(data[i]) == false)
+			ret = false;
+		if (ret == false || __atod(data[i]) < -1 || __atod(data[i]) > 1)
+			ret = false;
+		i++;
+	}
 	free_tab(data);
 	return (ret);
 }
@@ -81,23 +110,21 @@ bool	check_rgb(char *str)
 {
 	char	**data;
 	bool	ret;
+	int		i;
 
 	ret = true;
 	data = split_set(str, ",");
 	if (__wordcount(data) != 3)
 		ret = false;
-	if (check_int(data[0]) == false)
-		ret = false;
-	if (check_int(data[1]) == false)
-		ret = false;
-	if (check_int(data[2]) == false)
-		ret = false;
-	if (__atoi(data[0]) < 0 || __atoi(data[0]) > 255)
-		ret = false;
-	if (__atoi(data[1]) < 0 || __atoi(data[1]) > 255)
-		ret = false;
-	if (__atoi(data[2]) < 0 || __atoi(data[2]) > 255)
-		ret = false;
+	i = 0;
+	while (i < 3 && ret == true)
+	{
+		if (check_int(data[i]) == false)
+			ret = false;
+		if (ret == false || __atoi(data[i]) < 0 || __atoi(data[i]) > 255)
+			ret = false;
+		i++;
+	}
 	free_tab(data);
 	return (ret);
 }

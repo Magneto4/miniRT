@@ -6,23 +6,32 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/13 19:40:59 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 17:55:10 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool	set_elem(char *line, t_scene *scene)
+bool	check_err_line(char **data, t_scene *scene)
 {
-	char	**data;
-	bool	err;
+	if (!__strcmp(data[0], "A") && scene->al.ratio != -1)
+		return (put_error_false("Error ambiant light already set"));
+	else if (!__strcmp(data[0], "C") && scene->cam.fov != -1)
+		return (put_error_false("Error camera already set"));
+	return (true);
+}
 
-	data = split_set(line, WHITE_SPACE);
-	err = true;
-	if (!data)
-		return (put_error_false("Error mallocing data"));
+bool	check_line(char **data, t_scene *scene)
+{
+	bool	ret;
+
+	ret = true;
+	if (!data[0])
+		return (true);
+	if (check_err_line(data, scene) == false)
+		return (false);
 	if (!__strcmp(data[0], "A"))
-		err = set_ambiant(data, scene);
+		ret = set_ambiant(data, scene);
 	else if (!__strcmp(data[0], "C"))
 		set_camera(data, scene);
 	else if (!__strcmp(data[0], "L"))
@@ -34,7 +43,19 @@ bool	set_elem(char *line, t_scene *scene)
 	else if (!__strcmp(data[0], "cy"))
 		set_cylinder(data, scene);
 	else
-		return (free_tab(data), put_error_false("Error unknown identifier"));
+		return (put_error_false("Error unknown identifier"));
+	return (ret);
+}
+
+bool	set_elem(char *line, t_scene *scene)
+{
+	char	**data;
+	bool	err;
+
+	data = split_set(line, WHITE_SPACE);
+	if (!data)
+		return (put_error_false("Error mallocing data"));
+	err = check_line(data, scene);
 	free_tab(data);
 	if (err == false)
 		return (free_scene(scene), put_error_false("Error parsing file"));

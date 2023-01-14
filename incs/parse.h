@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:21:39 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/13 19:41:10 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 17:34:45 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	set_cylinder(char **data, t_scene *scene);
 bool	check_double(char *str);
 bool	check_int(char *str);
 bool	check_vector(char *str);
+bool	check_vector_norm(char *str);
 bool	check_rgb(char *str);
 
 bool	check_ambiant(char **data);

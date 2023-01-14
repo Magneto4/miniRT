@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/13 19:19:26 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/14 17:15:37 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@
 // 🕵️‍♂️ Define
 # define HEIGHT 900
 # define WIDTH 1500
-
-# define WHITE_SPACE " \t\n"
-# define MAX_INT 2147483647
-# define MIN_INT -2147483648
 
 # define SP 1
 # define CY 2

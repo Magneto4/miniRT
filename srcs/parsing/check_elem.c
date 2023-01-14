@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:57:05 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/13 19:17:22 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 17:26:34 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool	check_camera(char **data)
 		return (false);
 	if (check_vector(data[0]) == false)
 		return (false);
-	if (check_vector(data[1]) == false)
+	if (check_vector_norm(data[1]) == false)
 		return (false);
 	if (check_double(data[2]) == false)
 		return (false);
