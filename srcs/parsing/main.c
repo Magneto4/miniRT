@@ -13,7 +13,7 @@ static void	print_vect(t_vect vect)
 static void	print_ambiant(t_ambiant al)
 {
 	if (al.ratio < 0)
-		return (put_error_null("Error ambiant light"));
+		return (put_error_null("ambiant light"));
 	printf("Ambiant light:\n");
 	print_rgb(al.rgb);
 	printf("ratio: %f\n", al.ratio);
@@ -23,7 +23,7 @@ static void	print_ambiant(t_ambiant al)
 static void	print_camera(t_camera cam)
 {
 	if (cam.fov < 0)
-		return (put_error_null("Error camera"));
+		return (put_error_null("camera"));
 	printf("Camera:\n");
 	print_vect(cam.pos);
 	print_vect(cam.dir);
@@ -34,7 +34,7 @@ static void	print_camera(t_camera cam)
 static void	print_light(t_light *light)
 {
 	if (!light)
-		return (put_error_null("Error light"));
+		return (put_error_null("light"));
 	printf("Light:\n");
 	print_vect(light->pos);
 	print_rgb(light->rgb);
@@ -45,7 +45,7 @@ static void	print_light(t_light *light)
 static void	print_sphere(t_sphere *sphere)
 {
 	if (!sphere)
-		return (put_error_null("Error sphere"));
+		return (put_error_null("sphere"));
 	printf("Sphere:\n");
 	print_vect(sphere->pos);
 	printf("radius: %f\n", sphere->radius);
@@ -56,7 +56,7 @@ static void	print_sphere(t_sphere *sphere)
 static void	print_plane(t_plane *plane)
 {
 	if (!plane)
-		return (put_error_null("Error plane"));
+		return (put_error_null("plane"));
 	printf("Plane:\n");
 	print_vect(plane->pos);
 	print_vect(plane->dir);
@@ -67,7 +67,7 @@ static void	print_plane(t_plane *plane)
 static void	print_cylinder(t_cylinder *cylinder)
 {
 	if (!cylinder)
-		return (put_error_null("Error cylinder"));
+		return (put_error_null("cylinder"));
 	printf("Cylinder:\n");
 	print_vect(cylinder->pos);
 	print_vect(cylinder->dir);

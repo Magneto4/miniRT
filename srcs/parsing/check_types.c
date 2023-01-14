@@ -6,23 +6,11 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:23:25 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 17:28:54 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:50:53 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-/*
-	input => char ** split from whitespaces
-	1) check number args
-	2) check each arg
-
-	2.1) check number of sub arg (split coma)
-	2.2) check numeric value
-	2.3) check if in range
-
-	2.4) special check => if null vector or <= 0 for radius
-*/
 
 bool	check_double(char *str)
 {
@@ -40,7 +28,7 @@ bool	check_double(char *str)
 			if (*str == '.' && dot == false)
 				dot = true;
 			else
-				return (false);
+				return (put_error_false("invalid double"));
 		}
 		str++;
 	}
@@ -56,7 +44,7 @@ bool	check_int(char *str)
 	while (*str)
 	{
 		if (*str < '0' || *str > '9')
-			return (false);
+			return (put_error_false("invalid int"));
 		str++;
 	}
 	return (true);
@@ -68,11 +56,11 @@ bool	check_vector(char *str)
 	bool	ret;
 	int		i;
 
-	ret = true;
 	data = split_set(str, ",");
 	if (__wordcount(data) != 3)
-		ret = false;
+		return (free_tab(data), put_error_false("invalid vector"));
 	i = 0;
+	ret = true;
 	while (i < 3 && ret == true)
 	{
 		if (check_double(data[i]) == false)
@@ -80,6 +68,8 @@ bool	check_vector(char *str)
 		i++;
 	}
 	free_tab(data);
+	if (ret == false)
+		return (put_error_false("invalid vector"));
 	return (ret);
 }
 
@@ -89,11 +79,11 @@ bool	check_vector_norm(char *str)
 	bool	ret;
 	int		i;
 
-	ret = true;
 	data = split_set(str, ",");
 	if (__wordcount(data) != 3)
-		ret = false;
+		return (free_tab(data), put_error_false("invalid vector"));
 	i = 0;
+	ret = true;
 	while (i < 3 && ret == true)
 	{
 		if (check_double(data[i]) == false)
@@ -102,7 +92,11 @@ bool	check_vector_norm(char *str)
 			ret = false;
 		i++;
 	}
+	if (ret == true && __atod(data[0]) == 0 && __atod(data[1]) == 0 && __atod(data[2]) == 0)
+		ret = false;
 	free_tab(data);
+	if (ret == false)
+		return (put_error_false("invalid vector"));
 	return (ret);
 }
 
@@ -112,11 +106,11 @@ bool	check_rgb(char *str)
 	bool	ret;
 	int		i;
 
-	ret = true;
 	data = split_set(str, ",");
 	if (__wordcount(data) != 3)
-		ret = false;
+		return (free_tab(data), put_error_false("invalid rgb"));
 	i = 0;
+	ret = true;
 	while (i < 3 && ret == true)
 	{
 		if (check_int(data[i]) == false)
@@ -126,5 +120,7 @@ bool	check_rgb(char *str)
 		i++;
 	}
 	free_tab(data);
+	if (ret == false)
+		return (put_error_false("invalid rgb"));
 	return (ret);
 }

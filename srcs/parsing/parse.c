@@ -6,20 +6,11 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 18:24:25 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:50:18 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-bool	check_err_line(char **data, t_scene *scene)
-{
-	if (!__strcmp(data[0], "A") && scene->al.ratio != -1)
-		return (put_error_false("Error ambiant light already set"));
-	else if (!__strcmp(data[0], "C") && scene->cam.fov != -1)
-		return (put_error_false("Error camera already set"));
-	return (true);
-}
 
 bool	check_line(char **data, t_scene *scene)
 {
@@ -28,8 +19,10 @@ bool	check_line(char **data, t_scene *scene)
 	ret = true;
 	if (!data[0])
 		return (true);
-	if (check_err_line(data, scene) == false)
-		return (false);
+	if (!__strcmp(data[0], "A") && scene->al.ratio != -1)
+		return (put_error_false("ambiant light already set"));
+	else if (!__strcmp(data[0], "C") && scene->cam.fov != -1)
+		return (put_error_false("camera already set"));
 	if (!__strcmp(data[0], "A"))
 		ret = set_ambiant(data, scene);
 	else if (!__strcmp(data[0], "C"))
@@ -43,7 +36,7 @@ bool	check_line(char **data, t_scene *scene)
 	else if (!__strcmp(data[0], "cy"))
 		ret = set_cylinder(data, scene);
 	else
-		return (put_error_false("Error unknown identifier"));
+		return (put_error_false("unknown identifier"));
 	return (ret);
 }
 
@@ -54,11 +47,11 @@ bool	set_elem(char *line, t_scene *scene)
 
 	data = split_set(line, WHITE_SPACE);
 	if (!data)
-		return (put_error_false("Error mallocing data"));
+		return (put_error_false("mallocing data"));
 	err = check_line(data, scene);
 	free_tab(data);
 	if (err == false)
-		return (free_scene(scene), put_error_false("Error parsing file"));
+		return (free_scene(scene), put_error_false("parsing file"));
 	return (true);
 }
 
@@ -69,12 +62,12 @@ void	set_scene(char *file, t_scene *scene)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (put_error_null("Error opening file"));
+		return (put_error_null("opening file"));
 	line = get_next_line(fd);
 	while (line)
 	{
 		if (set_elem(line, scene) == false)
-			return (free_gnl(fd, line), put_error_null("Error parsing file"));
+			return (free_gnl(fd, line));
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -98,7 +91,7 @@ bool	check_file(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (put_error_false("Error opening file"));
+		return (put_error_false("opening file"));
 	close(fd);
 	return (true);
 }
@@ -109,9 +102,9 @@ t_scene	*__parse(char *file)
 
 	scene = malloc(sizeof(t_scene));
 	if (!scene)
-		return (put_error_null("Error mallocing scene"), NULL);
+		return (put_error_null("mallocing scene"), NULL);
 	if (!check_file(file))
-		return (put_error_null("Error in file"), NULL);
+		return (put_error_null("in file"), NULL);
 	scene = init_scene(scene);
 	set_scene(file, scene);
 	if (!scene)

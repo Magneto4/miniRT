@@ -6,15 +6,11 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:04:04 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 18:24:08 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:30:37 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-// normalise and check null dir vector
-
-// crash with xx,xx, vectors ...
 
 bool	set_ambiant(char **data, t_scene *scene)
 {
