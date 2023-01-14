@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:51:06 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/09 16:21:10 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:57:17 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ int	main(int ac, char **av)
 	// normalise_lights(minirt);
 	normalise_orientation(minirt);
 	if (!(minirt->scene))
-		return (free(minirt), put_error("malloc failure"), EXIT_SUCCESS);
+		return (free(minirt), put_error("parse error"), EXIT_SUCCESS);
 	if (init_window(minirt))
 		return (put_error("malloc failure"), EXIT_SUCCESS);
 	if (create_image(minirt))

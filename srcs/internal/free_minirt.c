@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:25:18 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/13 19:40:49 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:59:01 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	free_scene(t_scene *scene)
 	__lstclear(&(scene->sphere), __del);
 	if (scene->sphere)
 		free(scene->sphere);
-	// free(scene);
 	scene = NULL;
 }
 

@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 18:50:18 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/14 18:55:03 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,24 @@ bool	set_elem(char *line, t_scene *scene)
 	return (true);
 }
 
-void	set_scene(char *file, t_scene *scene)
+bool	set_scene(char *file, t_scene *scene)
 {
 	int		fd;
 	char	*line;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (put_error_null("opening file"));
+		return (put_error_false("opening file"));
 	line = get_next_line(fd);
 	while (line)
 	{
 		if (set_elem(line, scene) == false)
-			return (free_gnl(fd, line));
+			return (free_gnl(fd, line), false);
 		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
+	return (true);
 }
 
 void	*init_scene(t_scene *scene)
@@ -106,8 +107,7 @@ t_scene	*__parse(char *file)
 	if (!check_file(file))
 		return (put_error_null("in file"), NULL);
 	scene = init_scene(scene);
-	set_scene(file, scene);
-	if (!scene)
-		return (free(scene), NULL);
+	if (set_scene(file, scene) == false)
+		return (put_error_null("setting scene"), free(scene), NULL);
 	return (scene);
 }
