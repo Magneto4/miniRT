@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 19:44:59 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/15 12:59:45 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ bool	set_scene(char *file, t_scene *scene)
 		line = get_next_line(fd);
 	}
 	close(fd);
+	if (scene->al.ratio == -1 || scene->cam.fov == -1)
+		return (put_error_false("missing ambiant light or camera"), false);
 	return (true);
 }
 
