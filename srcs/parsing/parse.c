@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/15 12:59:45 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/16 16:13:49 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ bool	check_line(char **data, t_scene *scene)
 
 	ret = true;
 	if (!data[0])
+		return (true);
+	if (!__strcmp(data[0], "#"))
 		return (true);
 	if (!__strcmp(data[0], "A") && scene->al.ratio != -1)
 		return (put_error_false("ambiant light already set"));
