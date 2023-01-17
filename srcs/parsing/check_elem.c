@@ -6,11 +6,33 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:57:05 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 19:43:25 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/16 16:20:23 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+bool	check_elem(char **data, t_scene *scene)
+{
+	bool	ret;
+
+	ret = true;
+	if (!__strcmp(data[0], "A"))
+		ret = set_ambiant(data, scene);
+	else if (!__strcmp(data[0], "C"))
+		ret = set_camera(data, scene);
+	else if (!__strcmp(data[0], "L"))
+		ret = set_light(data, scene);
+	else if (!__strcmp(data[0], "sp"))
+		ret = set_sphere(data, scene);
+	else if (!__strcmp(data[0], "pl"))
+		ret = set_plane(data, scene);
+	else if (!__strcmp(data[0], "cy"))
+		ret = set_cylinder(data, scene);
+	else
+		return (put_error_false("unknown identifier"));
+	return (ret);
+}
 
 bool	check_ambiant(char **data)
 {

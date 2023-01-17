@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/16 16:13:49 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/16 16:30:34 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,41 +19,31 @@ bool	check_line(char **data, t_scene *scene)
 	ret = true;
 	if (!data[0])
 		return (true);
-	if (!__strcmp(data[0], "#"))
-		return (true);
 	if (!__strcmp(data[0], "A") && scene->al.ratio != -1)
 		return (put_error_false("ambiant light already set"));
 	else if (!__strcmp(data[0], "C") && scene->cam.fov != -1)
 		return (put_error_false("camera already set"));
-	if (!__strcmp(data[0], "A"))
-		ret = set_ambiant(data, scene);
-	else if (!__strcmp(data[0], "C"))
-		ret = set_camera(data, scene);
-	else if (!__strcmp(data[0], "L"))
-		ret = set_light(data, scene);
-	else if (!__strcmp(data[0], "sp"))
-		ret = set_sphere(data, scene);
-	else if (!__strcmp(data[0], "pl"))
-		ret = set_plane(data, scene);
-	else if (!__strcmp(data[0], "cy"))
-		ret = set_cylinder(data, scene);
-	else
-		return (put_error_false("unknown identifier"));
 	return (ret);
 }
 
 bool	set_elem(char *line, t_scene *scene)
 {
 	char	**data;
-	bool	err;
 
 	data = split_set(line, WHITE_SPACE);
 	if (!data)
 		return (put_error_false("mallocing data"));
-	err = check_line(data, scene);
+	if (!data[0])
+		return (free_tab(data), true);
+	if (data[0][0] == '#')
+		return (free_tab(data), true);
+	if (check_line(data, scene) == false || check_elem(data, scene) == false)
+	{
+		free_tab(data);
+		free_scene(scene);
+		return (put_error_false("parsing line"));
+	}
 	free_tab(data);
-	if (err == false)
-		return (free_scene(scene), put_error_false("parsing element"));
 	return (true);
 }
 
