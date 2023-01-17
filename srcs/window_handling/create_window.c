@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 18:45:12 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/09 15:21:54 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/17 20:20:48 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	init_window(t_minirt *minirt)
 	}
 	mlx_ptr = mlx_init();
 	mlx->mlx_ptr = mlx_ptr;
-	win_ptr = mlx_new_window(mlx_ptr, WIDTH, HEIGHT, "miniRT");
+	win_ptr = mlx_new_window(mlx_ptr, W, H, "miniRT");
 	mlx->win_ptr = win_ptr;
 	minirt->mlx = mlx;
 	return (0);

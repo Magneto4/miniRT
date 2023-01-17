@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/17 20:01:04 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/17 20:19:44 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # include "parse.h"
 
 // 🕵️‍♂️ Define
-# define HEIGHT 900.
-# define WIDTH 1500.
+# define H 900.
+# define W 1500.
 
 # define SP 1
 # define CY 2

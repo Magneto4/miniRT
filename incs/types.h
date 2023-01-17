@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:04:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/16 15:45:23 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/17 23:35:24 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_point
 {
 	t_vect	pos;
 	t_vect	normal;
-	t_rgb	raw_colour;
-	t_rgb	lit_colour;
+	t_rgb	rgb;
+	t_rgb	lit_rgb;
 	int		init;
 	void	*shape;
 	double	t;

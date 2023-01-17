@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:35:55 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/16 15:48:24 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/17 23:34:45 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	sphere_inter(t_vect v, t_vect src, t_sphere *sphere, t_point *closest)
 		return ;
 	closest->t = t[0];
 	closest->pos = add(src, mult(v, t[0]));
-	closest->raw_colour = sphere->rgb;
+	closest->rgb = sphere->rgb;
 	closest->init = SP;
 	closest->normal = normal_sphere(sphere, closest->pos, src);
 	closest->shape = sphere;

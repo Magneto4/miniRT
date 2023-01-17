@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+         #
+#    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/01/13 18:01:22 by ngiroux          ###   ########.fr        #
+#    Updated: 2023/01/17 23:40:17 by nseniak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,10 @@ F_PKG		= list.c string.c string_conv.c split.c
 FILES		+= $(addprefix pkg/, $(F_PKG))
 F_WIN		= create_window.c hooks.c
 FILES		+= $(addprefix window_handling/, $(F_WIN))
-F_IM		= loop.c colour.c intersection.c maths.c sphere.c cylinder.c plane.c
+F_IM		= loop.c colour.c intersection.c sphere.c cylinder.c plane.c
 FILES		+= $(addprefix image_calculation/, $(F_IM))
+F_MA		= vectors.c vectors2.c quadratics.c
+FILES		+= $(addprefix maths/, $(F_MA))
 
 # Paths
 SRCS_PATH	= srcs/

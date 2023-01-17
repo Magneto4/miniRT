@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/17 19:55:36 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/17 23:41:32 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,10 @@ int	check_inside_sphere(t_minirt *minirt, t_light *light, t_sphere *sphere)
 	if (distance(minirt->scene->cam.pos, sphere->pos) < sphere->radius)
 	{
 		if (distance(sphere->pos, light->pos) > sphere->radius)
-			return (1); 
+			return (1);
 	}
 	return (0);
 }
-
-// int	check_inside_cylinder(t_minirt *minirt, t_light *light, t_cylinder *cylinder)
-// {
-// 	(void)minirt;
-// 	(void)light;
-// 	(void)cylinder;
-// 	return (0);
-// }
 
 int	lit(t_light *light, t_point *point, t_minirt *minirt)
 {
@@ -50,25 +42,15 @@ int	lit(t_light *light, t_point *point, t_minirt *minirt)
 		if (check_inside_sphere(minirt, light, (t_sphere *)point->shape))
 			return (0);
 	}
-	// if (point->init == CY)
-	// {
-	// 	if (check_inside_cylinder(minirt, light, (t_cylinder *)point->shape))
-	// 		return (0);
-	// }
 	return (1);
 }
 
-int	calculate_colour(t_minirt *minirt, t_point *point, t_vect v)
+void	add_ambiant(t_minirt *minirt, t_point *point)
 {
-	t_ambiant	al;
-	t_list		*lights;
-	t_light		*light;
-	t_ray		ray;
+	t_list	*lights;
+	t_light	*light;
+	t_ray	ray;
 
-	al = minirt->scene->al;
-	point->lit_colour.r = al.rgb.r * al.ratio * point->raw_colour.r;
-	point->lit_colour.g = al.rgb.g * al.ratio * point->raw_colour.g;
-	point->lit_colour.b = al.rgb.b * al.ratio * point->raw_colour.b;
 	lights = minirt->scene->lights;
 	while (lights)
 	{
@@ -78,15 +60,29 @@ int	calculate_colour(t_minirt *minirt, t_point *point, t_vect v)
 		ray.src = light->pos;
 		if (dot(point->normal, ray.dir) > 0 && lit(light, point, minirt))
 		{
-			point->lit_colour.r += light->rgb.r * light->ratio * point->raw_colour.r * dot(point->normal, ray.dir);
-			point->lit_colour.g += light->rgb.g * light->ratio * point->raw_colour.g * dot(point->normal, ray.dir);
-			point->lit_colour.b += light->rgb.b * light->ratio * point->raw_colour.b * dot(point->normal, ray.dir);
+			point->lit_rgb.r += light->rgb.r * light->ratio * \
+			point->rgb.r * dot(point->normal, ray.dir);
+			point->lit_rgb.g += light->rgb.g * light->ratio * \
+			point->rgb.g * dot(point->normal, ray.dir);
+			point->lit_rgb.b += light->rgb.b * light->ratio * \
+			point->rgb.b * dot(point->normal, ray.dir);
 		}
 		lights = lights->next;
 	}
-	point->lit_colour.r /= 255;
-	point->lit_colour.g /= 255;
-	point->lit_colour.b /= 255;
+}
+
+int	calculate_colour(t_minirt *minirt, t_point *point, t_vect v)
+{
+	t_ambiant	al;
+
+	al = minirt->scene->al;
+	point->lit_rgb.r = al.rgb.r * al.ratio * point->rgb.r;
+	point->lit_rgb.g = al.rgb.g * al.ratio * point->rgb.g;
+	point->lit_rgb.b = al.rgb.b * al.ratio * point->rgb.b;
+	add_ambiant(minirt, point);
+	point->lit_rgb.r /= 255;
+	point->lit_rgb.g /= 255;
+	point->lit_rgb.b /= 255;
 	(void)v;
 	return (0);
 }

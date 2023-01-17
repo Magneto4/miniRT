@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:15 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/17 20:05:50 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/17 23:34:45 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,29 @@ int	in_cyl(t_cylinder *cyl, t_vect pos)
 	return (1);
 }
 
+int	best_t(double *t, t_ray ray, t_cylinder *cyl)
+{
+	if (t[1] < EPSILON)
+		return (1);
+	if (t[0] < EPSILON)
+	{
+		t[0] = t[1];
+		if (!in_cyl(cyl, add(ray.src, mult(ray.dir, t[0]))))
+			return (1);
+	}
+	else
+	{
+		if (!in_cyl(cyl, add(ray.src, mult(ray.dir, t[0]))))
+		{
+			if (!in_cyl(cyl, add(ray.src, mult(ray.dir, t[1]))))
+				return (1);
+			else
+				t[0] = t[1];
+		}
+	}
+	return (0);
+}
+
 void	cylinder_inter(t_ray ray, t_cylinder *cyl, t_point *closest)
 {
 	t_vect	r;
@@ -41,40 +64,20 @@ void	cylinder_inter(t_ray ray, t_cylinder *cyl, t_point *closest)
 	t_vect	tmp;
 	double	t[2];
 
-	r = cross(cyl->dir, sub(ray.src, cyl->pos));
-	r = cross(r, cyl->dir);
-	va = cross(cyl->dir, ray.dir);
-	va = cross(va, cyl->dir);
+	r = cross(cross(cyl->dir, sub(ray.src, cyl->pos)), cyl->dir);
+	va = cross(cross(cyl->dir, ray.dir), cyl->dir);
 	tmp.x = dot(va, va);
 	tmp.y = 2. * dot(va, r);
 	tmp.z = dot(r, r) - cyl->radius * cyl->radius;
 	if (solve_quadratic(tmp, t, t + 1) == 0)
 		return ;
-	if (t[1] < EPSILON)
+	if (best_t(t, ray, cyl))
 		return ;
-	if (t[0] < EPSILON)
-	{
-		t[0] = t[1];
-		if (!in_cyl(cyl, add(ray.src, mult(ray.dir, t[0]))))
-			return ;
-		if (closest->init && t[0] >= closest->t)
-			return ;
-	}
-	else
-	{
-		if (!in_cyl(cyl, add(ray.src, mult(ray.dir, t[0]))))
-		{
-			if (!in_cyl(cyl, add(ray.src, mult(ray.dir, t[1]))))
-				return ;
-			else
-				t[0] = t[1];
-		}
-		if (closest->init && t[0] >= closest->t)
-			return ;
-	}
+	if (closest->init && t[0] >= closest->t)
+		return ;
 	closest->t = t[0];
 	closest->pos = add(ray.src, mult(ray.dir, t[0]));
-	closest->raw_colour = cyl->rgb;
+	closest->rgb = cyl->rgb;
 	closest->normal = normal(closest->pos, cyl, ray.src);
 	closest->shape = cyl;
 	closest->init = CY;
@@ -129,7 +132,7 @@ void	caps_inter(t_ray ray, t_cylinder *cyl, t_point *closest)
 			closest->pos = point1.pos;
 			closest->normal = point1.normal;
 			closest->init = CY;
-			closest->raw_colour = cyl->rgb;
+			closest->rgb = cyl->rgb;
 			closest->shape = cyl;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/16 17:51:19 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/17 23:35:24 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,17 +95,17 @@ t_vect	z_rot(t_vect v, double a)
 	return (res);
 }
 
-t_vect	orientation_vector(t_minirt *minirt, double x, double y)
+t_vect	orientation_vector(t_camera cam, double x, double y)
 {
 	t_vect	v;
 
-	v.x = (2 * ((x + 0.5) / WIDTH) - 1) * tan(minirt->scene->cam.fov / 2 * M_PI / 180.) * WIDTH / HEIGHT;
-	v.y = (1 - 2 * ((y + 0.5) / HEIGHT)) * tan(minirt->scene->cam.fov / 2 * M_PI / 180.);
+	v.x = (2 * ((x + 0.5) / W) - 1) * tan(cam.fov / 2 * M_PI / 180.) * W / H;
+	v.y = (1 - 2 * ((y + 0.5) / H)) * tan(cam.fov / 2 * M_PI / 180.);
 	v.z = -1;
 	normalise(&v);
-	if (minirt->scene->cam.dir.x != 0.)
-		v = z_rot(v, atan(minirt->scene->cam.dir.y / minirt->scene->cam.dir.x));
-	v = y_rot(v, acos(minirt->scene->cam.dir.z) - M_PI);
+	if (cam.dir.x != 0.)
+		v = z_rot(v, atan(cam.dir.y / cam.dir.x));
+	v = y_rot(v, acos(cam.dir.z) - M_PI);
 	return (v);
 }
 
@@ -116,7 +116,7 @@ int	generate_pixel(t_minirt *minirt, int x, int y)
 	t_ray	ray;
 	int		colour;
 
-	v = orientation_vector(minirt, (double)x, (double)y);
+	v = orientation_vector(minirt->scene->cam, (double)x, (double)y);
 	ray.dir = v;
 	ray.src = minirt->scene->cam.pos;
 	point = calculate_intersection(minirt, ray);
@@ -125,7 +125,7 @@ int	generate_pixel(t_minirt *minirt, int x, int y)
 	else
 	{
 		calculate_colour(minirt, point, v);
-		colour = rgb_to_int(point->lit_colour);
+		colour = rgb_to_int(point->lit_rgb);
 	}
 	img_pixel_put(minirt->mlx->img_ptr, x, y, colour);
 	free(point);
@@ -137,23 +137,23 @@ int	create_image(t_minirt *minirt)
 	int		x;
 	int		y;
 	void	*img_ptr;
+	t_mlx	*mlx;
 
-	img_ptr = mlx_new_image(minirt->mlx->mlx_ptr, WIDTH, HEIGHT);
-	minirt->mlx->img_ptr = img_ptr;
+	mlx = minirt->mlx;
+	img_ptr = mlx_new_image(mlx->mlx_ptr, W, H);
+	mlx->img_ptr = img_ptr;
 	x = 0;
-	while (x < WIDTH)
+	while (x < W)
 	{
 		y = 0;
-		while (y < HEIGHT)
+		while (y < H)
 		{
-			// printf("x = %i, y = %i\n", x, y);
 			if (generate_pixel(minirt, x, y))
 				return (1);
 			y ++;
 		}
 		x ++;
 	}
-	(void)minirt;
-	mlx_put_image_to_window(minirt->mlx->mlx_ptr, minirt->mlx->win_ptr, img_ptr, 0, 0);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img_ptr, 0, 0);
 	return (0);
 }
