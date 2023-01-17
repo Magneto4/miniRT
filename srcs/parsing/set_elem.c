@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:04:04 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 19:39:41 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/17 11:52:21 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ bool	set_light(char **data, t_scene *scene)
 {
 	t_light	*light;
 
+	if (scene->lights != NULL && BONUS == 0)
+		return (put_error_false("light already set"));
 	if (check_light(data + 1) == false)
 		return (false);
 	light = malloc(sizeof(t_light));
