@@ -6,19 +6,21 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:15 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/17 00:46:22 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/17 20:05:50 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vect	normal(t_vect p, t_cylinder *cyl)
+t_vect	normal(t_vect p, t_cylinder *cyl, t_vect src)
 {
 	t_vect	tmp;
 	t_vect	normal;
 
 	tmp = sub(p, cyl->pos);
 	normal = sub(tmp, mult(cyl->dir, dot(cyl->dir, tmp)));
+	if (norm(cross(sub(src, cyl->pos), cyl->dir)) <= cyl->radius)
+		normal = mult(normal, -1);
 	normalise(&normal);
 	return (normal);
 }
@@ -73,7 +75,7 @@ void	cylinder_inter(t_ray ray, t_cylinder *cyl, t_point *closest)
 	closest->t = t[0];
 	closest->pos = add(ray.src, mult(ray.dir, t[0]));
 	closest->raw_colour = cyl->rgb;
-	closest->normal = normal(closest->pos, cyl);
+	closest->normal = normal(closest->pos, cyl, ray.src);
 	closest->shape = cyl;
 	closest->init = CY;
 	return ;

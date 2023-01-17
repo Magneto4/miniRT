@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/17 00:54:31 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/17 19:55:36 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	check_inside_sphere(t_minirt *minirt, t_light *light, t_sphere *sphere)
 
 // int	check_inside_cylinder(t_minirt *minirt, t_light *light, t_cylinder *cylinder)
 // {
-	
+// 	(void)minirt;
+// 	(void)light;
+// 	(void)cylinder;
+// 	return (0);
 // }
 
 int	lit(t_light *light, t_point *point, t_minirt *minirt)
@@ -49,7 +52,7 @@ int	lit(t_light *light, t_point *point, t_minirt *minirt)
 	}
 	// if (point->init == CY)
 	// {
-	// 	if (check_inside_cylinder(minirt, light, (t_sphere *)point->shape))
+	// 	if (check_inside_cylinder(minirt, light, (t_cylinder *)point->shape))
 	// 		return (0);
 	// }
 	return (1);
