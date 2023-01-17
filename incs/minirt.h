@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 17:15:37 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/17 00:46:57 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # include "parse.h"
 
 // 🕵️‍♂️ Define
-# define HEIGHT 900
-# define WIDTH 1500
+# define HEIGHT 900.
+# define WIDTH 1500.
 
 # define SP 1
 # define CY 2
@@ -94,5 +94,6 @@ t_vect	add(t_vect a, t_vect b);
 t_vect	mult(t_vect v, double a);
 void	plane_inter(t_ray ray, t_plane *plane, t_point *closest);
 t_vect	plane_normal(t_plane *plane, t_vect src, t_vect inter);
+int		in_cyl(t_cylinder *cyl, t_vect pos);
 
 #endif /* MINIRT_H */

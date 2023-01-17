@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:52:21 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/05 17:07:59 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/16 17:39:26 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_cylinder
 {
 	t_vect	pos;
 	t_vect	dir;
+	t_vect	top;
 	double	radius;
 	double	height;
 	t_rgb	rgb;

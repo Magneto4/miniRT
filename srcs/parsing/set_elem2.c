@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_elem2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 19:38:59 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/14 19:39:31 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/16 17:40:55 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ bool	set_cylinder(char **data, t_scene *scene)
 	cylinder->height = __atod(data[4]);
 	if (cylinder->radius <= 0 || cylinder->height <= 0)
 		return (free(cylinder), true);
+	cylinder->top = add(cylinder->pos, mult(cylinder->dir, cylinder->height));
 	set_rgb(data + 5, &cylinder->rgb);
 	__lstadd_front(&scene->cylinder, __lstnew(cylinder));
 	return (true);

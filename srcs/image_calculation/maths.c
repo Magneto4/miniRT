@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maths.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:18:40 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/14 19:51:26 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/16 23:27:28 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,17 @@ int	solve_quadratic(t_vect v, double *x1, double *x2)
 	double	y1;
 	double	y2;
 
-	d = v.y * v.y - 4 * v.x * v.z;
+	d = v.y * v.y - 4. * v.x * v.z;
 	if (d < 0)
 		return (0);
 	if (d == 0)
 	{
-		*x1 = -v.y / 2 * v.x;
+		*x1 = -v.y / 2. / v.x;
 		*x2 = *x1;
 		return (1);
 	}
-	y1 = (-v.y - sqrt(d)) / 2 * v.x;
-	y2 = (-v.y + sqrt(d)) / 2 * v.x;
+	y1 = (-v.y - sqrt(d)) / 2. / v.x;
+	y2 = (-v.y + sqrt(d)) / 2. / v.x;
 	if (y1 < y2)
 	{
 		*x1 = y1;

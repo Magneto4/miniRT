@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/14 19:50:15 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/16 17:51:19 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	img_pixel_put(void *img_ptr, int x, int y, int color)
 	*(int *) pixel = color;
 }
 
-t_vect	x_rot(t_vect v, float a)
+t_vect	x_rot(t_vect v, double a)
 {
 	t_vect	res;
 	double	mat[3][3];
@@ -59,7 +59,7 @@ t_vect	x_rot(t_vect v, float a)
 	return (res);
 }
 
-t_vect	y_rot(t_vect v, float a)
+t_vect	y_rot(t_vect v, double a)
 {
 	t_vect	res;
 	double	mat[3][3];
@@ -77,7 +77,7 @@ t_vect	y_rot(t_vect v, float a)
 	return (res);
 }
 
-t_vect	z_rot(t_vect v, float a)
+t_vect	z_rot(t_vect v, double a)
 {
 	t_vect	res;
 	double	mat[3][3];

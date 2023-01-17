@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:23 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/14 19:50:40 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/16 15:46:19 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ t_vect	plane_normal(t_plane *plane, t_vect src, t_vect inter)
 
 void	plane_inter(t_ray ray, t_plane *plane, t_point *closest)
 {
-	float	a;
-	float	b;
-	float	t;
+	double	a;
+	double	b;
+	double	t;
 
 	a = dot(plane->dir, sub(ray.src, plane->pos));
 	b = dot(plane->dir, ray.dir);
