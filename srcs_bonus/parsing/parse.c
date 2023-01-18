@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/16 16:30:34 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/18 17:10:53 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	*init_scene(t_scene *scene)
 	scene->sphere = NULL;
 	scene->plane = NULL;
 	scene->cylinder = NULL;
+	scene->cone = NULL;
 	return (scene);
 }
 

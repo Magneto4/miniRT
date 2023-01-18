@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 12:57:05 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/16 16:20:23 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/18 17:07:25 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ bool	check_elem(char **data, t_scene *scene)
 		ret = set_plane(data, scene);
 	else if (!__strcmp(data[0], "cy"))
 		ret = set_cylinder(data, scene);
+	else if (!__strcmp(data[0], "co"))
+		ret = set_cone(data, scene);
 	else
 		return (put_error_false("unknown identifier"));
 	return (ret);
