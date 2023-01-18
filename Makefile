@@ -6,7 +6,7 @@
 #    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/01/18 12:58:01 by nseniak          ###   ########.fr        #
+#    Updated: 2023/01/18 18:04:13 by nseniak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ F_PKG		= list.c string.c string_conv.c split.c
 FILES		+= $(addprefix pkg/, $(F_PKG))
 F_WIN		= create_window.c hooks.c
 FILES		+= $(addprefix window_handling/, $(F_WIN))
-F_IM		= loop.c colour.c intersection.c sphere.c cylinder.c plane.c
+F_IM		= loop.c colour.c intersection.c sphere.c cylinder.c plane.c shadows.c
 FILES		+= $(addprefix image_calculation/, $(F_IM))
 F_MA		= vectors.c vectors2.c quadratics.c
 FILES		+= $(addprefix maths/, $(F_MA))
@@ -58,7 +58,7 @@ F_PKG_BONUS	= list.c string.c string_conv.c split.c
 FILES_BONUS	+= $(addprefix pkg/, $(F_PKG))
 F_WIN_BONUS	= create_window.c hooks.c
 FILES_BONUS	+= $(addprefix window_handling/, $(F_WIN))
-F_IM_BONUS	= loop.c colour.c intersection.c sphere.c cylinder.c plane.c
+F_IM_BONUS	= loop.c colour.c intersection.c sphere.c cylinder.c plane.c shadows.c
 FILES_BONUS	+= $(addprefix image_calculation/, $(F_IM))
 F_MA_BONUS	= vectors.c vectors2.c quadratics.c
 FILES_BONUS	+= $(addprefix maths/, $(F_MA))

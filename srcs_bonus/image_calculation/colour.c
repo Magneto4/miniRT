@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/18 15:01:03 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/18 18:11:44 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,13 @@ int	check_inside_sphere(t_minirt *minirt, t_light *light, t_sphere *sphere)
 
 int	lit(t_light *light, t_point *point, t_minirt *minirt)
 {
-	t_point	*inter;
 	t_ray	ray;
 
 	ray.dir = sub(point->pos, light->pos);
 	normalise(&(ray.dir));
 	ray.src = light->pos;
-	inter = calculate_intersection(minirt, ray);
-	if (inter->init && inter->shape != point->shape)
-	{
-		free(inter);
+	if (shaded(minirt, ray, point->shape))
 		return (0);
-	}
-	free(inter);
 	if (point->init == SP)
 	{
 		if (check_inside_sphere(minirt, light, (t_sphere *)point->shape))
