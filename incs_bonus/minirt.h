@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/18 12:54:06 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/18 12:55:02 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define EPSILON 0.0001
 
 # ifndef BONUS
-#  define BONUS 0
+#  define BONUS 1
 # endif
 
 // 🏔️ MiniRT

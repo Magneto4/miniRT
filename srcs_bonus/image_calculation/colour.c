@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/18 12:47:57 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/18 12:57:29 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,18 @@ void	add_diffuse(t_point *point, t_ray ray, t_light *light)
 	point->rgb.b * dot(point->normal, ray.dir);
 }
 
+void	add_specular(t_point *point, t_ray ray, t_light *light, t_vect v)
+{
+	t_vect	r;
+
+	r = mult(point->normal, -2 * dot(ray.dir, point->normal));
+	r = add (ray.dir, r);
+	normalise(&r);
+	if (dot(r, v) > 0)
+		return ;
+	(void)light;
+}
+
 void	parse_lights(t_minirt *minirt, t_point *point, t_vect v)
 {
 	t_list	*lights;
@@ -71,7 +83,11 @@ void	parse_lights(t_minirt *minirt, t_point *point, t_vect v)
 		normalise(&(ray.dir));
 		ray.src = light->pos;
 		if (lit(light, point, minirt))
+		{
 			add_diffuse(point, ray, light);
+			if (BONUS == 1)
+				add_specular(point, ray, light, v);
+		}
 		lights = lights->next;
 	}
 	(void)v;
