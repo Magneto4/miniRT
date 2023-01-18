@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:15 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/17 23:34:45 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/18 13:22:07 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	cylinder_inter(t_ray ray, t_cylinder *cyl, t_point *closest)
 	closest->normal = normal(closest->pos, cyl, ray.src);
 	closest->shape = cyl;
 	closest->init = CY;
+	closest->n = cyl->n;
 	return ;
 }
 
@@ -134,6 +135,7 @@ void	caps_inter(t_ray ray, t_cylinder *cyl, t_point *closest)
 			closest->init = CY;
 			closest->rgb = cyl->rgb;
 			closest->shape = cyl;
+			closest->n = cyl->n;
 		}
 	}
 }

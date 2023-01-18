@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:23 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/17 23:34:45 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/18 13:23:04 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	plane_inter(t_ray ray, t_plane *plane, t_point *closest)
 	closest->normal = plane_normal(plane, ray.src, closest->pos);
 	closest->shape = plane;
 	closest->init = PL;
+	closest->n = plane->n;
 	return ;
 }
 
