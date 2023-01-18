@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:52:21 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/18 13:09:15 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/18 15:21:34 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_sphere
 	double	radius;
 	t_rgb	rgb;
 	double	n;
+	int		checkered;
 }	t_sphere;
 
 typedef struct s_plane
@@ -49,6 +50,7 @@ typedef struct s_plane
 	t_vect	dir;
 	t_rgb	rgb;
 	double	n;
+	int		checkered;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -60,6 +62,7 @@ typedef struct s_cylinder
 	double	height;
 	t_rgb	rgb;
 	double	n;
+	int		checkered;
 }	t_cylinder;
 
 #endif /* !ELEM_H */
