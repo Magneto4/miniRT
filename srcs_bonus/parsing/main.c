@@ -77,6 +77,19 @@ static void	print_cylinder(t_cylinder *cylinder)
 	write(1, "\n", 1);
 }
 
+static void	print_cone(t_cone *cone)
+{
+	if (!cone)
+		return (put_error_null("cone"));
+	printf("Cone:\n");
+	print_vect(cone->pos);
+	print_vect(cone->dir);
+	printf("radius: %f\n", cone->radius);
+	printf("height: %f\n", cone->height);
+	print_rgb(cone->rgb);
+	write(1, "\n", 1);
+}
+
 static void	print_scene(t_scene *scene)
 {
 	t_list	*tmp;
@@ -105,6 +118,12 @@ static void	print_scene(t_scene *scene)
 	while (tmp)
 	{
 		print_cylinder((t_cylinder *)(tmp->value));
+		tmp = tmp->next;
+	}
+	tmp = scene->cone;
+	while (tmp)
+	{
+		print_cone((t_cone *)(tmp->value));
 		tmp = tmp->next;
 	}
 }

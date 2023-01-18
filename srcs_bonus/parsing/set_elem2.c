@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_elem2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 19:38:59 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/16 17:40:55 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/18 17:12:35 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,27 @@ bool	set_cylinder(char **data, t_scene *scene)
 	cylinder->top = add(cylinder->pos, mult(cylinder->dir, cylinder->height));
 	set_rgb(data + 5, &cylinder->rgb);
 	__lstadd_front(&scene->cylinder, __lstnew(cylinder));
+	return (true);
+}
+
+bool 	set_cone(char **data, t_scene *scene)
+{
+	t_cone	*cone;
+
+	if (check_cylinder(data + 1) == false)
+		return (false);
+	cone = malloc(sizeof(t_cone));
+	if (cone == NULL)
+		return (false);
+	set_vector(data + 1, &cone->pos);
+	set_vector(data + 2, &cone->dir);
+	normalise(&cone->dir);
+	cone->radius = __atod(data[3]) / 2;
+	cone->height = __atod(data[4]);
+	if (cone->radius <= 0 || cone->height <= 0)
+		return (free(cone), true);
+	cone->top = add(cone->pos, mult(cone->dir, cone->height));
+	set_rgb(data + 5, &cone->rgb);
+	__lstadd_front(&scene->cone, __lstnew(cone));
 	return (true);
 }
