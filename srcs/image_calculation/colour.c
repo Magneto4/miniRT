@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/17 23:41:32 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/18 12:02:04 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	add_ambiant(t_minirt *minirt, t_point *point)
 			point->lit_rgb.g += light->rgb.g * light->ratio * \
 			point->rgb.g * dot(point->normal, ray.dir);
 			point->lit_rgb.b += light->rgb.b * light->ratio * \
-			point->rgb.b * dot(point->normal, ray.dir);
+			 point->rgb.b * dot(point->normal, ray.dir);
 		}
 		lights = lights->next;
 	}
