@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
+#    By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/01/18 12:58:01 by nseniak          ###   ########.fr        #
+#    Updated: 2023/01/18 17:04:53 by ngiroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ FILES_BONUS	+= $(addprefix gnl/, $(F_GNL))
 F_INT_BONUS	= error.c free_minirt.c
 FILES_BONUS	+= $(addprefix internal/, $(F_INT))
 
-FILES_BONUS	+= $(addprefix parsing/, $(F_PARS))
+FILES_BONUS	+= $(addprefix parsing/, $(F_PARS_BONUS))
 F_PKG_BONUS	= list.c string.c string_conv.c split.c
 FILES_BONUS	+= $(addprefix pkg/, $(F_PKG))
 F_WIN_BONUS	= create_window.c hooks.c
