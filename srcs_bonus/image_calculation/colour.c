@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/18 12:57:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/18 13:10:51 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,29 @@ int	lit(t_light *light, t_point *point, t_minirt *minirt)
 
 void	add_diffuse(t_point *point, t_ray ray, t_light *light)
 {
-	if (dot(point->normal, ray.dir) < 0)
+	double	x;
+
+	x = dot(point->normal, ray.dir);
+	if (x < 0)
 		return ;
 	point->lit_rgb.r += light->rgb.r * light->ratio * \
-	point->rgb.r * dot(point->normal, ray.dir);
+	point->rgb.r * x;
 	point->lit_rgb.g += light->rgb.g * light->ratio * \
-	point->rgb.g * dot(point->normal, ray.dir);
+	point->rgb.g * x;
 	point->lit_rgb.b += light->rgb.b * light->ratio * \
-	point->rgb.b * dot(point->normal, ray.dir);
+	point->rgb.b * x;
 }
 
 void	add_specular(t_point *point, t_ray ray, t_light *light, t_vect v)
 {
 	t_vect	r;
+	double	x;
 
 	r = mult(point->normal, -2 * dot(ray.dir, point->normal));
 	r = add (ray.dir, r);
+	x = -1 * dot(r, v);
 	normalise(&r);
-	if (dot(r, v) > 0)
+	if (x < 0)
 		return ;
 	(void)light;
 }
