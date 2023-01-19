@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:40:23 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/19 14:15:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/19 16:51:45 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,14 @@ t_vect	cross(t_vect v, t_vect w)
 	u.y = v.z * w.x - v.x * w.z;
 	u.z = v.x * w.y - v.y * w.x;
 	return (u);
+}
+
+t_vect	init_vector(double x, double y, double z)
+{
+	t_vect	v;
+	
+	v.x = x;
+	v.y = y;
+	v.z = z;
+	return (v);
 }

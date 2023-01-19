@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:58:33 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/19 15:05:59 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/19 15:43:00 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	cone_inter(t_ray ray, t_cone *cone, t_point *closest)
 	closest->init = CO;
 	closest->normal = normal_cone(closest->pos, cone);
 	closest->shape = cone;
+	closest->checkered = cone->checkered;
 	return ;
 }
 
@@ -112,6 +113,7 @@ void	cap_inter(t_ray ray, t_cone *cone, t_point *closest)
 	closest->init = CO;
 	closest->normal = point.normal;
 	closest->shape = cone;
+	closest->checkered = cone->checkered;
 }
 
 

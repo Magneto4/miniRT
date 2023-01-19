@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:35:55 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/19 14:15:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/19 15:43:15 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	sphere_inter(t_vect v, t_vect src, t_sphere *sphere, t_point *closest)
 	closest->normal = normal_sphere(sphere, closest->pos, src);
 	closest->shape = sphere;
 	closest->n = sphere->n;
+	closest->checkered = sphere->checkered;
 	return ;
 }
 

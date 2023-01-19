@@ -6,7 +6,7 @@
 #    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/01/19 14:31:06 by nseniak          ###   ########.fr        #
+#    Updated: 2023/01/19 15:57:39 by nseniak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,9 +60,9 @@ F_PKG_BONUS	= list.c string.c string_conv.c split.c
 FILES_BONUS	+= $(addprefix pkg/, $(F_PKG_BONUS))
 F_WIN_BONUS	= create_window.c hooks.c
 FILES_BONUS	+= $(addprefix window_handling/, $(F_WIN_BONUS))
-F_IM_BONUS	= loop.c colour.c sphere.c cylinder.c plane.c cone.c shadows.c intersection.c
+F_IM_BONUS	= loop.c colour.c sphere.c cylinder.c plane.c cone.c shadows.c intersection.c texturing.c
 FILES_BONUS	+= $(addprefix image_calculation/, $(F_IM_BONUS))
-F_MA_BONUS	= vectors.c vectors2.c quadratics.c
+F_MA_BONUS	= vectors.c vectors2.c quadratics.c colour_operations.c
 FILES_BONUS	+= $(addprefix maths/, $(F_MA_BONUS))
 
 # Paths

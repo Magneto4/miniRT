@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/19 14:15:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/19 16:42:30 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,9 @@ int	calculate_colour(t_minirt *minirt, t_point *point, t_vect v)
 {
 	t_ambiant	al;
 
+	texturing(point);
+	// if (point->init == SP)
+	// 	printf("%i %i %i\n", point->rgb.r, point->rgb.g, point->rgb.b);
 	al = minirt->scene->al;
 	point->lit_rgb.r = al.rgb.r * al.ratio * point->rgb.r;
 	point->lit_rgb.g = al.rgb.g * al.ratio * point->rgb.g;

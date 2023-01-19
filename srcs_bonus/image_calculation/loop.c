@@ -6,27 +6,11 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/19 14:15:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/19 16:02:44 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-int	rgb_to_int(t_rgb rgb)
-{
-	int	colour;
-
-	if (rgb.r > 255)
-		rgb.r = 255;
-	if (rgb.g > 255)
-		rgb.g = 255;
-	if (rgb.b > 255)
-		rgb.b = 255;
-	colour = rgb.r * 256 * 256;
-	colour += rgb.g * 256;
-	colour += rgb.b;
-	return (colour);
-}
 
 void	img_pixel_put(void *img_ptr, int x, int y, int color)
 {

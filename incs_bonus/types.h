@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:04:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/18 15:21:05 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/19 15:44:11 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ typedef struct s_vect
 	double	y;
 	double	z;
 }	t_vect;
+
+typedef struct s_vect2
+{
+	double	u;
+	double	v;
+}	t_vect2;
 
 typedef struct s_rgb
 {

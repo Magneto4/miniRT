@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/19 14:13:58 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/19 17:24:56 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@
 
 # define SP 1
 # define CY 2
-# define PL 3
-# define CO 4
+# define CY_C 3
+# define PL 4
+# define CO 5
 # define EPSILON 0.0001
 
 # ifndef BONUS
@@ -78,23 +79,29 @@ void	clean_end(t_minirt *minirt);
 int		create_image(t_minirt *minirt);
 t_point	*calculate_intersection(t_minirt *minirt, t_ray ray);
 int		calculate_colour(t_minirt *minirt, t_point *point, t_vect v);
-void	normalise(t_vect *v);
 void	closest_sphere(t_minirt *minirt, t_ray ray, t_point *closest);
 void	closest_cylinder(t_minirt *minirt, t_ray ray, t_point *closest);
 void	closest_plane(t_minirt *minirt, t_ray ray, t_point *closest);
 void	closest_cone(t_minirt *minirt, t_ray ray, t_point *closest);
+void	plane_inter(t_ray ray, t_plane *plane, t_point *closest);
+t_vect	plane_normal(t_plane *plane, t_vect src, t_vect inter);
+int		in_cyl(t_cylinder *cyl, t_vect pos);
+int		shaded(t_minirt *minirt, t_ray ray, void *shape);
+void	texturing(t_point *point);
+
+//maths
+t_rgb	int_to_rgb(int colour);
+int		rgb_to_int(t_rgb rgb);
 double	distance(t_vect a, t_vect b);
 double	dot(t_vect a, t_vect b);
 t_vect	sub(t_vect a, t_vect b);
 double	norm(t_vect v);
 t_vect	mat_mult(double mat[3][3], t_vect v);
-int	solve_quadratic(t_vect v, double *x1, double *x2);
+int		solve_quadratic(t_vect v, double *x1, double *x2);
 t_vect	cross(t_vect v, t_vect w);
 t_vect	add(t_vect a, t_vect b);
 t_vect	mult(t_vect v, double a);
-void	plane_inter(t_ray ray, t_plane *plane, t_point *closest);
-t_vect	plane_normal(t_plane *plane, t_vect src, t_vect inter);
-int		in_cyl(t_cylinder *cyl, t_vect pos);
-int		shaded(t_minirt *minirt, t_ray ray, void *shape);
+void	normalise(t_vect *v);
+t_vect	init_vector(double x, double y, double z);
 
 #endif /* MINIRT_H */
