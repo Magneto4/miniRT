@@ -6,7 +6,7 @@
 #    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/01/18 18:45:39 by nseniak          ###   ########.fr        #
+#    Updated: 2023/01/19 14:31:06 by nseniak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,24 +44,26 @@ OBJS_PATH	= objs/
 # Objects
 OBJS		= $(addprefix $(OBJS_PATH), $(FILES:.c=.o))
 
+INCS		= $(addprefix -I, $(INCS_PATH))
+
 #BONUS
 
 # Names 
 FILES_BONUS	= cmd/main.c
 F_GNL_BONUS	= get_next_line.c get_next_line_utils.c
-FILES_BONUS	+= $(addprefix gnl/, $(F_GNL))
+FILES_BONUS	+= $(addprefix gnl/, $(F_GNL_BONUS))
 F_INT_BONUS	= error.c free_minirt.c
-FILES_BONUS	+= $(addprefix internal/, $(F_INT))
+FILES_BONUS	+= $(addprefix internal/, $(F_INT_BONUS))
 
 FILES_BONUS	+= $(addprefix parsing/, $(F_PARS_BONUS))
 F_PKG_BONUS	= list.c string.c string_conv.c split.c
-FILES_BONUS	+= $(addprefix pkg/, $(F_PKG))
+FILES_BONUS	+= $(addprefix pkg/, $(F_PKG_BONUS))
 F_WIN_BONUS	= create_window.c hooks.c
-FILES_BONUS	+= $(addprefix window_handling/, $(F_WIN))
-F_IM_BONUS	= loop.c colour.c intersection.c sphere.c cylinder.c plane.c shadows.c
-FILES_BONUS	+= $(addprefix image_calculation/, $(F_IM))
+FILES_BONUS	+= $(addprefix window_handling/, $(F_WIN_BONUS))
+F_IM_BONUS	= loop.c colour.c sphere.c cylinder.c plane.c cone.c shadows.c intersection.c
+FILES_BONUS	+= $(addprefix image_calculation/, $(F_IM_BONUS))
 F_MA_BONUS	= vectors.c vectors2.c quadratics.c
-FILES_BONUS	+= $(addprefix maths/, $(F_MA))
+FILES_BONUS	+= $(addprefix maths/, $(F_MA_BONUS))
 
 # Paths
 SRCS_PATH_BONUS	= srcs_bonus/
@@ -69,7 +71,7 @@ INCS_PATH_BONUS	= incs_bonus/ mlx/
 OBJS_PATH_BONUS	= objs_bonus/
 
 # Objects
-OBJS_BONUS	= $(addprefix $(OBJS_PATH_BONUS), $(FILES:.c=.o))
+OBJS_BONUS	= $(addprefix $(OBJS_PATH_BONUS), $(FILES_BONUS:.c=.o))
 
 INCS_BONUS	= $(addprefix -I, $(INCS_PATH_BONUS))
 
@@ -82,7 +84,6 @@ $(OBJS_PATH_BONUS)%.o: $(SRCS_PATH_BONUS)%.c
 # Flags + compilation
 CFLAGS		= -Wall -Wextra -Werror -O0 -g3
 CC			= cc
-INCS		= $(addprefix -I, $(INCS_PATH))
 LIB_INC		= -lm -Lmlx -lmlx_Linux -lmlx -lXext -lX11
 
 # Create obj and dir

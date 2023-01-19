@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/18 18:04:34 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/19 14:13:58 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define SP 1
 # define CY 2
 # define PL 3
+# define CO 4
 # define EPSILON 0.0001
 
 # ifndef BONUS
@@ -81,9 +82,8 @@ void	normalise(t_vect *v);
 void	closest_sphere(t_minirt *minirt, t_ray ray, t_point *closest);
 void	closest_cylinder(t_minirt *minirt, t_ray ray, t_point *closest);
 void	closest_plane(t_minirt *minirt, t_ray ray, t_point *closest);
+void	closest_cone(t_minirt *minirt, t_ray ray, t_point *closest);
 double	distance(t_vect a, t_vect b);
-t_point	*create_point();
-void	free_point(t_point *point);
 double	dot(t_vect a, t_vect b);
 t_vect	sub(t_vect a, t_vect b);
 double	norm(t_vect v);

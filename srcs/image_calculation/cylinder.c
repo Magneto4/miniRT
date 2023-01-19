@@ -6,13 +6,13 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:15 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/18 13:22:00 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/19 11:59:55 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vect	normal(t_vect p, t_cylinder *cyl, t_vect src)
+t_vect	normal_cylinder(t_vect p, t_cylinder *cyl, t_vect src)
 {
 	t_vect	tmp;
 	t_vect	normal;
@@ -78,7 +78,7 @@ void	cylinder_inter(t_ray ray, t_cylinder *cyl, t_point *closest)
 	closest->t = t[0];
 	closest->pos = add(ray.src, mult(ray.dir, t[0]));
 	closest->rgb = cyl->rgb;
-	closest->normal = normal(closest->pos, cyl, ray.src);
+	closest->normal = normal_cylinder(closest->pos, cyl, ray.src);
 	closest->shape = cyl;
 	closest->init = CY;
 	return ;

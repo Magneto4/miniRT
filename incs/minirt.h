@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/18 18:04:27 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/19 14:08:36 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,6 @@ void	closest_sphere(t_minirt *minirt, t_ray ray, t_point *closest);
 void	closest_cylinder(t_minirt *minirt, t_ray ray, t_point *closest);
 void	closest_plane(t_minirt *minirt, t_ray ray, t_point *closest);
 double	distance(t_vect a, t_vect b);
-t_point	*create_point();
-void	free_point(t_point *point);
 double	dot(t_vect a, t_vect b);
 t_vect	sub(t_vect a, t_vect b);
 double	norm(t_vect v);

@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:15 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/13 14:16:43 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/19 14:15:29 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ t_point	*calculate_intersection(t_minirt *minirt, t_ray ray)
 	closest_sphere(minirt, ray, closest);
 	closest_cylinder(minirt, ray, closest);
 	closest_plane(minirt, ray, closest);
+	closest_cone(minirt, ray, closest);
 	return (closest);
 }
