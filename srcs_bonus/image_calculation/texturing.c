@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:39:19 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/19 18:08:33 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/20 16:24:40 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,42 @@ t_vect2	plane_coord(t_point *point)
 
 	uax = init_vector(point->normal.y, point->normal.z, -1 * point->normal.x);
 	vax = cross(uax, point->normal);
-	coord.u = fmod(dot(point->pos, uax), 1.);
+	coord.u = fmod(dot(point->pos, uax) / 2, 1.);
 	if (coord.u < 0)
 		coord.u += 1;
-	coord.v = fmod(dot(point->pos, vax), 1.);
+	coord.v = fmod(dot(point->pos, vax) / 2, 1.);
 	if (coord.v < 0)
 		coord.v += 1;
-	return(coord);
+	return (coord);
 }
 
 t_vect2	cylinder_coord(t_point *point, t_cylinder *cyl)
 {
 	t_vect2	coord;
+	double	angle;
+	t_vect	v;
+	t_vect	pos;
 
-	if (point->init == CY_C)
-		return (plane_coord(point));
-	coord.u = atan2(point->pos.y, point->pos.x) / 2 / M_PI;
-	coord.v = point->pos.z / cyl->height;
-	(void)cyl;
-	return(coord);
+	if (point->init == CY)
+	{
+		angle = acos(dot(cyl->def, point->normal));
+		v = sub(point->pos, cyl->pos);
+		coord.v = sqrt(dot(v, v) - cyl->radius * cyl->radius) / cyl->height;
+	}
+	else
+	{
+		if (point->init == CY_B)
+			pos = cyl->pos;
+		if (point->init == CY_T)
+			pos = cyl->top;
+		v = sub(point->pos, pos);
+		normalise(&v);
+		angle = acos(dot(cyl->def, v));
+		coord.v = distance(point->pos, pos) / cyl->radius / 2;
+	}
+	coord.u = fmod(angle / (M_PI), 1.);
+	coord.u += 1. * (coord.u < 0);
+	return (coord);
 }
 
 t_vect2	flat_coord(t_point *point)
@@ -63,7 +80,7 @@ t_vect2	flat_coord(t_point *point)
 		coord = sphere_coord(point, (t_sphere *)point->shape);
 	if (point->init == PL)
 		coord = plane_coord(point);
-	if (point->init == CY || point->init == CY_C)
+	if (point->init == CY || point->init == CY_T || point->init == CY_B)
 		coord = cylinder_coord(point, (t_cylinder *)point->shape);
 	return (coord);
 }
@@ -74,12 +91,12 @@ void	checkering(t_point *point, t_vect2 coord)
 	int	m;
 
 	n = 1;
-	while (n <= 10)
+	while (n <= CHECKER)
 	{
 		m = 1;
-		while (m <= 10)
+		while (m <= CHECKER)
 		{
-			if (coord.u <= n * 0.1 && coord.v <= m * 0.1)
+			if (coord.u <= n / CHECKER && coord.v <= m / CHECKER)
 			{
 				if ((n + m) % 2)
 					point->rgb = int_to_rgb(0x000000);
@@ -97,8 +114,8 @@ void	texturing(t_point *point)
 {
 	t_vect2	coord;
 
-	if (!(point->checkered))
-		return ;
+	// if (!(point->checkered))
+	// 	return ;
 	coord = flat_coord(point);
 	checkering(point, coord);
 }

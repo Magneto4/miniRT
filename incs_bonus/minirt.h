@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/19 17:24:56 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/20 16:12:51 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@
 
 # define SP 1
 # define CY 2
-# define CY_C 3
-# define PL 4
-# define CO 5
+# define CY_B 3
+# define CY_T 4
+# define PL 5
+# define CO 6
 # define EPSILON 0.0001
+# define CHECKER 20.
 
 # ifndef BONUS
 #  define BONUS 1

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elem.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:52:21 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/18 17:09:56 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/20 15:30:08 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_cylinder
 	t_rgb	rgb;
 	double	n;
 	int		checkered;
+	t_vect	def;
 }	t_cylinder;
 
 typedef struct s_cone

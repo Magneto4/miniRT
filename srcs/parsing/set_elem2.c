@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 19:38:59 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/16 17:40:55 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/20 15:32:52 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ bool	set_cylinder(char **data, t_scene *scene)
 		return (free(cylinder), true);
 	cylinder->top = add(cylinder->pos, mult(cylinder->dir, cylinder->height));
 	set_rgb(data + 5, &cylinder->rgb);
-	__lstadd_front(&scene->cylinder, __lstnew(cylinder));
+	__lstadd_front(&scene->cylinder, __lstnew(cylinder));zz
 	return (true);
 }

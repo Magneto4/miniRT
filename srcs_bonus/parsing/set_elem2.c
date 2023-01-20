@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 19:38:59 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/19 14:15:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/20 15:35:33 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,20 @@ bool	set_plane(char **data, t_scene *scene)
 	return (true);
 }
 
+void	set_def(t_cylinder *cylinder)
+{
+	t_vect	d;
+
+	d = cylinder->dir;
+	if (d.x != 0)
+		cylinder->def = init_vector(-(d.y + d.z) / d.x, 1, 1);
+	else if (d.y != 0)
+		cylinder->def = init_vector(1, -(d.x + d.z) / d.y, 1);
+	else if (d.z != 0)
+		cylinder->def = init_vector(1, 1, -(d.x + d.y) / d.z);
+	normalise(&(cylinder->def));
+}
+
 bool	set_cylinder(char **data, t_scene *scene)
 {
 	t_cylinder	*cylinder;
@@ -66,6 +80,7 @@ bool	set_cylinder(char **data, t_scene *scene)
 	cylinder->top = add(cylinder->pos, mult(cylinder->dir, cylinder->height));
 	set_rgb(data + 5, &cylinder->rgb);
 	__lstadd_front(&scene->cylinder, __lstnew(cylinder));
+	set_def(cylinder);
 	return (true);
 }
 

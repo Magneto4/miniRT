@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:38:15 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/19 17:25:06 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/20 16:15:23 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,20 +100,20 @@ t_point	cap(t_ray ray, t_cylinder *cyl, t_vect pos)
 	return (point);
 }
 
-t_point	which_closest(t_point p1, t_point p2)
+int	which_closest(t_point p1, t_point p2)
 {
 	if (!(p1.init) && !(p2.init))
-		return (p1);
+		return (1);
 	if ((p1.init) && !(p2.init))
-		return (p1);
+		return (1);
 	if (!(p1.init) && (p2.init))
-		return (p2);
+		return (2);
 	else
 	{
 		if (p1.t < p2.t)
-			return (p1);
+			return (1);
 		else
-			return (p2);
+			return (2);
 	}
 }
 
@@ -121,10 +121,13 @@ void	caps_inter(t_ray ray, t_cylinder *cyl, t_point *closest)
 {
 	t_point	point1;
 	t_point	point2;
+	int		which;
 
 	point1 = cap(ray, cyl, cyl->pos);
 	point2 = cap(ray, cyl, add(cyl->pos, mult(cyl->dir, cyl->height)));
-	point1 = which_closest(point1, point2);
+	which = which_closest(point1, point2);
+	if (which == 2)
+		point1 = point2;
 	if (point1.init)
 	{
 		if (closest->init == 0 || closest->t > point1.t)
@@ -132,7 +135,10 @@ void	caps_inter(t_ray ray, t_cylinder *cyl, t_point *closest)
 			closest->t = point1.t;
 			closest->pos = point1.pos;
 			closest->normal = point1.normal;
-			closest->init = CY_C;
+			if (which == 1)
+				closest->init = CY_B;
+			if (which == 2)
+				closest->init = CY_T;
 			closest->rgb = cyl->rgb;
 			closest->shape = cyl;
 			closest->n = cyl->n;
