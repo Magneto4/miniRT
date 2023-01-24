@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/24 14:21:06 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/24 16:55:12 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	create_cam_to_world(t_camera cam)
 	world_to_cam[0][1] = up.x;
 	world_to_cam[1][1] = up.y;
 	world_to_cam[2][1] = up.z;
-	world_to_cam[0][2] = - 1 * cam.dir.x;
+	world_to_cam[0][2] = -1 * cam.dir.x;
 	world_to_cam[1][2] = -1 * cam.dir.y;
 	world_to_cam[2][2] = -1 * cam.dir.z;
 	invert(world_to_cam, cam.cam_to_world);
@@ -91,21 +91,20 @@ int	create_image(t_minirt *minirt)
 	mlx = minirt->mlx;
 	img_ptr = mlx_new_image(mlx->mlx_ptr, W, H);
 	mlx->img_ptr = img_ptr;
-	minirt->scene->cam.cam_to_world = malloc(sizeof(*(minirt->scene->cam.cam_to_world)));
+	minirt->scene->cam.cam_to_world = \
+	malloc(sizeof(*(minirt->scene->cam.cam_to_world)));
 	if (!(minirt->scene->cam.cam_to_world))
 		clean_end(minirt);
 	create_cam_to_world(minirt->scene->cam);
-	x = 0;
-	while (x < W)
+	x = -1;
+	while (++x < W)
 	{
-		y = 0;
-		while (y < H)
+		y = -1;
+		while (++y < H)
 		{
 			if (generate_pixel(minirt, x, y))
 				return (1);
-			y ++;
 		}
-		x ++;
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, img_ptr, 0, 0);
 	return (0);

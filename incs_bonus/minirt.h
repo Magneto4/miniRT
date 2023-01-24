@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/24 14:01:55 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/24 19:06:28 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,14 @@ t_vect	plane_normal(t_plane *plane, t_vect src, t_vect inter);
 int		in_cyl(t_cylinder *cyl, t_vect pos);
 int		shaded(t_minirt *minirt, t_ray ray, void *shape);
 void	texturing(t_point *point);
+int		in_cone(t_cone *cone, t_vect pos);
+t_vect	normal_cylinder(t_vect p, t_cylinder *cyl, t_vect src);
+int		best_t(double *t, t_ray ray, t_cylinder *cyl);
+int		in_cyl(t_cylinder *cyl, t_vect pos);
+void	sphere_shade(t_ray ray, t_sphere *sphere, double *t, void **inter);
+void	shade_plane(t_list *planes, t_ray ray, double *t, void **inter);
+t_vect	normal_cylinder(t_vect p, t_cylinder *cyl, t_vect src);
+int		lit(t_light *light, t_point *point, t_minirt *minirt);
 
 //maths
 t_rgb	int_to_rgb(int colour);
@@ -106,6 +114,7 @@ t_vect	mult(t_vect v, double a);
 void	normalise(t_vect *v);
 t_vect	init_vector(double x, double y, double z);
 void	invert(t_mat m, t_mat *inv);
+double	self_dot(t_vect v);
 
 
 #endif /* MINIRT_H */

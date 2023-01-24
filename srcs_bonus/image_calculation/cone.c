@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:58:33 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/19 15:43:00 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/24 16:40:58 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,12 @@ t_vect	normal_cone(t_vect p, t_cone *cone)
 	t_vect	ip;
 
 	ip = sub(cone->top, p);
-	axproj = add(cone->pos, mult(cone->dir, dot(ip, cone->dir) / dot(cone->dir, cone->dir)));
+	axproj = add(cone->pos, mult(cone->dir, dot(ip, cone->dir) \
+	/ dot(cone->dir, cone->dir)));
 	axperp = sub(p, axproj);
 	normal = cross(ip, cross(axperp, ip));
 	normalise(&normal);
 	return (normal);
-}
-
-int	in_cone(t_cone *cone, t_vect pos)
-{
-	(void)cone;
-	(void)pos;
-	if (dot(sub(pos, cone->pos), cone->dir) < 0)
-		return (0);
-	if (dot(sub(pos, cone->top), cone->dir) > 0)
-		return (0);
-	return (1);
 }
 
 int	best_t_cone(double *t, t_ray ray, t_cone *cone)
@@ -61,8 +51,6 @@ int	best_t_cone(double *t, t_ray ray, t_cone *cone)
 	return (0);
 }
 
-
-
 void	cone_inter(t_ray ray, t_cone *cone, t_point *closest)
 {
 	t_vect	quad;
@@ -79,9 +67,7 @@ void	cone_inter(t_ray ray, t_cone *cone, t_point *closest)
 	quad.z = dot(w, w) - (m + 1) * t[1] * t[1];
 	if (solve_quadratic(quad, t, t + 1) == 0)
 		return ;
-	if (best_t_cone(t, ray, cone))
-		return ;
-	if (closest->init && t[0] >= closest->t)
+	if (best_t_cone(t, ray, cone) || (closest->init && t[0] >= closest->t))
 		return ;
 	closest->t = t[0];
 	closest->pos = add(ray.src, mult(ray.dir, t[0]));
@@ -115,7 +101,6 @@ void	cap_inter(t_ray ray, t_cone *cone, t_point *closest)
 	closest->shape = cone;
 	closest->checkered = cone->checkered;
 }
-
 
 void	closest_cone(t_minirt *minirt, t_ray ray, t_point *closest)
 {

@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:40:23 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/20 17:18:47 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/24 19:36:48 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,6 @@ t_vect	add(t_vect a, t_vect b)
 	return (c);
 }
 
-t_vect	mat_mult(double mat[3][3], t_vect v)
-{
-	t_vect	res;
-
-	res.x = v.x * mat[0][0] + v.y * mat[0][1] + v.z * mat[0][2];
-	res.y = v.x * mat[1][0] + v.y * mat[1][1] + v.z * mat[1][2];
-	res.z = v.x * mat[2][0] + v.y * mat[2][1] + v.z * mat[2][2];
-	return (res);
-}
-
 t_vect	cross(t_vect v, t_vect w)
 {
 	t_vect	u;
@@ -55,9 +45,14 @@ t_vect	cross(t_vect v, t_vect w)
 t_vect	init_vector(double x, double y, double z)
 {
 	t_vect	v;
-	
+
 	v.x = x;
 	v.y = y;
 	v.z = z;
 	return (v);
+}
+
+double	self_dot(t_vect v)
+{
+	return (dot(v, v));
 }
