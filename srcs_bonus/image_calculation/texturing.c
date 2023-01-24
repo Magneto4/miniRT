@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:39:19 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/20 16:24:40 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:04:09 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,30 +43,41 @@ t_vect2	plane_coord(t_point *point)
 	return (coord);
 }
 
-t_vect2	cylinder_coord(t_point *point, t_cylinder *cyl)
+t_vect2	cylinder_coord_caps(t_point *point, t_cylinder *cyl)
 {
 	t_vect2	coord;
 	double	angle;
 	t_vect	v;
 	t_vect	pos;
 
-	if (point->init == CY)
-	{
-		angle = acos(dot(cyl->def, point->normal));
-		v = sub(point->pos, cyl->pos);
-		coord.v = sqrt(dot(v, v) - cyl->radius * cyl->radius) / cyl->height;
-	}
-	else
-	{
-		if (point->init == CY_B)
-			pos = cyl->pos;
-		if (point->init == CY_T)
-			pos = cyl->top;
-		v = sub(point->pos, pos);
-		normalise(&v);
-		angle = acos(dot(cyl->def, v));
-		coord.v = distance(point->pos, pos) / cyl->radius / 2;
-	}
+	if (point->init == CY_B)
+		pos = cyl->pos;
+	if (point->init == CY_T)
+		pos = cyl->top;
+	v = sub(point->pos, pos);
+	normalise(&v);
+	angle = acos(dot(cyl->def, v));
+	coord.v = distance(point->pos, pos) / cyl->radius / 2;
+	if (dot(cross(cyl->dir, cyl->def), v) < 0)
+		angle = angle * -1;
+	coord.u = fmod(angle / (M_PI), 1.);
+	coord.u += 1. * (coord.u < 0);
+	return (coord);
+}
+
+t_vect2	cylinder_coord(t_point *point, t_cylinder *cyl)
+{
+	t_vect2	coord;
+	double	angle;
+	t_vect	v;
+
+	if (point->init != CY)
+		return (cylinder_coord_caps(point, cyl));
+	angle = acos(dot(cyl->def, point->normal));
+	v = sub(point->pos, cyl->pos);
+	coord.v = sqrt(dot(v, v) - cyl->radius * cyl->radius) / cyl->height;
+	if (dot(cross(cyl->dir, cyl->def), v) < 0)
+		angle = angle * -1;
 	coord.u = fmod(angle / (M_PI), 1.);
 	coord.u += 1. * (coord.u < 0);
 	return (coord);
@@ -114,8 +125,8 @@ void	texturing(t_point *point)
 {
 	t_vect2	coord;
 
-	// if (!(point->checkered))
-	// 	return ;
+	if (!(point->checkered))
+		return ;
 	coord = flat_coord(point);
 	checkering(point, coord);
 }

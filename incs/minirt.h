@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/19 14:08:36 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/23 13:45:41 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,11 @@ void	plane_inter(t_ray ray, t_plane *plane, t_point *closest);
 t_vect	plane_normal(t_plane *plane, t_vect src, t_vect inter);
 int		in_cyl(t_cylinder *cyl, t_vect pos);
 int		shaded(t_minirt *minirt, t_ray ray, void *shape);
+
+//maths
+t_vect	init_vector(double x, double y, double z);
+void	invert(t_mat mat, t_mat *inv);
+t_vect	mat_mult(t_mat mat, t_vect v);
+
 
 #endif /* MINIRT_H */

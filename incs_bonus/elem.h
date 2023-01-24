@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:52:21 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/20 15:30:08 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/24 14:05:34 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_camera
 	t_vect	pos;
 	t_vect	dir;
 	double	fov;
+	t_mat	*cam_to_world;
 }	t_camera;
 
 typedef struct s_light
