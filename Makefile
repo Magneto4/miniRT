@@ -6,7 +6,7 @@
 #    By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/01/25 18:06:04 by ngiroux          ###   ########.fr        #
+#    Updated: 2023/01/25 18:18:20 by ngiroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ include parse.mk
 
 # Names 
 NAME		= minirt
+NAME_B	= minirt_bonus
 MLX			= minilibx_opengl
 
 LIB			= mlx/libmlx_Linux.a
@@ -99,9 +100,11 @@ ${NAME}:	${OBJS} ${LIB}
 			@$(CC) $(CFLAGS) $(OBJS) $(LIB_INC) -o $(NAME) $(INCS)
 			@echo "${MSG_BUILD}${NAME}${MSG_FINISH}"
 
-bonus:		${OBJS_BONUS} ${LIB}
-			@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIB_INC) -o $(NAME) $(INCS_BONUS)
-			@echo "${MSG_BUILD}${NAME}${MSG_FINISH}"
+bonus:		${NAME_B}
+
+${NAME_B}:	${OBJS_BONUS} ${LIB}
+			@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIB_INC) -o $(NAME_B) $(INCS_BONUS)
+			@echo "${MSG_BUILD}${NAME_B}${MSG_FINISH}"
 
 ${LIB}:
 			@echo "${MSG_LIB}${LIB}"
@@ -123,4 +126,6 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+re_bonus:	fclean bonus
+
+.PHONY:		all clean fclean re bonus re_bonus
