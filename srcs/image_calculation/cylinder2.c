@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:33:34 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/24 16:33:57 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/24 19:47:01 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_vect	normal_cylinder(t_vect p, t_cylinder *cyl, t_vect src)
 
 	tmp = sub(p, cyl->pos);
 	normal = sub(tmp, mult(cyl->dir, dot(cyl->dir, tmp)));
-	if (norm(cross(sub(src, cyl->pos), cyl->dir)) <= cyl->radius)
+	if (self_dot(cross(sub(src, cyl->pos), cyl->dir)) <= cyl->radius * cyl->radius)
 		normal = mult(normal, -1);
 	normalise(&normal);
 	return (normal);

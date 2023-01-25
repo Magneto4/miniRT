@@ -6,36 +6,36 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:51:06 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/19 14:15:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/24 20:12:24 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	normalise_lights(t_minirt *minirt)
-{
-	double	total;
-	t_light	*light;
-	t_list	*tmp;
+// void	normalise_lights(t_minirt *minirt)
+// {
+// 	double	total;
+// 	t_light	*light;
+// 	t_list	*tmp;
 
-	total = minirt->scene->al.ratio;
-	tmp = minirt->scene->lights;
-	while (tmp)
-	{
-		light = (t_light *)(tmp->value);
-		total += light->ratio;
-		tmp = tmp->next;
-	}
-	if (total <= 1)
-		return ;
-	tmp = minirt->scene->lights;
-	while (tmp)
-	{
-		light = (t_light *)(tmp->value);
-		light->ratio /= total;
-		tmp = tmp->next;
-	}
-}
+// 	total = minirt->scene->al.ratio;
+// 	tmp = minirt->scene->lights;
+// 	while (tmp)
+// 	{
+// 		light = (t_light *)(tmp->value);
+// 		total += light->ratio;
+// 		tmp = tmp->next;
+// 	}
+// 	if (total <= 1)
+// 		return ;
+// 	tmp = minirt->scene->lights;
+// 	while (tmp)
+// 	{
+// 		light = (t_light *)(tmp->value);
+// 		light->ratio /= total;
+// 		tmp = tmp->next;
+// 	}
+// }
 
 int	main(int ac, char **av)
 {

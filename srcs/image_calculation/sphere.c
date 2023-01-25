@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:35:55 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/18 13:21:15 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/24 19:49:54 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_vect	normal_sphere(t_sphere *sphere, t_vect inter, t_vect src)
 	n = sub(inter, sphere->pos);
 	if (distance(src, sphere->pos) < sphere->radius)
 		n = mult(n, -1);
-	normalise(&n);
+	n = mult(n, 1 / sphere->radius);
 	return (n);
 }
 

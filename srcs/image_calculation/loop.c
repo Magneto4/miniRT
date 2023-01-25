@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/24 16:36:23 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/24 19:48:44 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_vect	orientation_vect(t_camera cam, double x, double y)
 	v.x = (2 * ((x + 0.5) / W) - 1) * tan(cam.fov / 2 * M_PI / 180.) * W / H;
 	v.y = (1 - 2 * ((y + 0.5) / H)) * tan(cam.fov / 2 * M_PI / 180.);
 	v.z = -1;
-	normalise(&v);
 	v = mat_mult(*(cam.cam_to_world), v);
+	normalise(&v);
 	return (v);
 }
 
