@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:21:39 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/18 17:11:59 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/25 14:05:19 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool	set_light(char **data, t_scene *scene);
 bool	set_sphere(char **data, t_scene *scene);
 bool	set_plane(char **data, t_scene *scene);
 bool	set_cylinder(char **data, t_scene *scene);
-bool 	set_cone(char **data, t_scene *scene);
+bool	set_cone(char **data, t_scene *scene);
 
 bool	check_elem(char **data, t_scene *scene);
 bool	check_int(char *str);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:04:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/18 13:16:53 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/25 14:06:58 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,12 @@ typedef struct s_point
 	double	t;
 }	t_point;
 
-typedef	struct s_ray
+typedef struct s_ray
 {
 	t_vect	src;
 	t_vect	dir;
 }	t_ray;
 
-
-typedef double t_mat[3][3];
+typedef double	t_mat[3][3];
 
 #endif /* !TYPES_H */
