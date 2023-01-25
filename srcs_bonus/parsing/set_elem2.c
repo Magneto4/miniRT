@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_elem2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 19:38:59 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/20 15:35:33 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/25 17:45:29 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ bool	set_sphere(char **data, t_scene *scene)
 	if (sphere->radius <= 0)
 		return (free(sphere), true);
 	set_rgb(data + 3, &sphere->rgb);
+	if (check_bonus(data + 4) == true)
+		set_bonus(data + 4, &sphere->bonus);
+	else
+		init_bonus(&sphere->bonus);
 	__lstadd_front(&scene->sphere, __lstnew(sphere));
 	return (true);
 }
@@ -43,6 +47,10 @@ bool	set_plane(char **data, t_scene *scene)
 	set_vector(data + 2, &plane->dir);
 	normalise(&plane->dir);
 	set_rgb(data + 3, &plane->rgb);
+	if (check_bonus(data + 4) == true)
+		set_bonus(data + 4, &plane->bonus);
+	else
+		init_bonus(&plane->bonus);
 	__lstadd_front(&scene->plane, __lstnew(plane));
 	return (true);
 }
@@ -79,12 +87,16 @@ bool	set_cylinder(char **data, t_scene *scene)
 		return (free(cylinder), true);
 	cylinder->top = add(cylinder->pos, mult(cylinder->dir, cylinder->height));
 	set_rgb(data + 5, &cylinder->rgb);
-	__lstadd_front(&scene->cylinder, __lstnew(cylinder));
+	if (check_bonus(data + 6) == true)
+		set_bonus(data + 6, &cylinder->bonus);
+	else
+		init_bonus(&cylinder->bonus);
 	set_def(cylinder);
+	__lstadd_front(&scene->cylinder, __lstnew(cylinder));
 	return (true);
 }
 
-bool 	set_cone(char **data, t_scene *scene)
+bool	set_cone(char **data, t_scene *scene)
 {
 	t_cone	*cone;
 
@@ -102,6 +114,10 @@ bool 	set_cone(char **data, t_scene *scene)
 		return (free(cone), true);
 	cone->top = add(cone->pos, mult(cone->dir, cone->height));
 	set_rgb(data + 5, &cone->rgb);
+	if (check_bonus(data + 6) == true)
+		set_bonus(data + 6, &cone->bonus);
+	else
+		init_bonus(&cone->bonus);
 	__lstadd_front(&scene->cone, __lstnew(cone));
 	return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:04:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/19 15:44:11 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/25 15:17:35 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,29 @@ typedef struct s_point
 	void	*shape;
 	double	t;
 	double	n;
-	int	checkered;
+	int		checkered;
 }	t_point;
 
-typedef	struct s_ray
+typedef struct s_ray
 {
 	t_vect	src;
 	t_vect	dir;
 }	t_ray;
 
+typedef struct s_xpm
+{
+	int		width;
+	int		height;
+	int		*data;
+}	t_xpm;
 
-typedef double t_mat[3][3];
+typedef struct s_bonus
+{
+	bool	checkered;
+	double	n;
+	t_xpm	*xpm;
+}	t_bonus;
+
+typedef double	t_mat[3][3];
 
 #endif /* !TYPES_H */

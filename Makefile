@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
+#    By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/01/24 19:40:25 by nseniak          ###   ########.fr        #
+#    Updated: 2023/01/25 18:18:20 by ngiroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ include parse.mk
 
 # Names 
 NAME		= minirt
+NAME_B	= minirt_bonus
 MLX			= minilibx_opengl
 
 LIB			= mlx/libmlx_Linux.a
@@ -31,7 +32,7 @@ F_PKG		= list.c string.c string_conv.c split.c
 FILES		+= $(addprefix pkg/, $(F_PKG))
 F_WIN		= create_window.c hooks.c
 FILES		+= $(addprefix window_handling/, $(F_WIN))
-F_IM		= loop.c colour.c intersection.c sphere.c cylinder.c plane.c shadows.c cylinder2.c
+F_IM		= loop.c colour.c intersection.c sphere.c cylinder.c plane.c shadows.c cylinder2.c lit.c
 FILES		+= $(addprefix image_calculation/, $(F_IM))
 F_MA		= vectors.c vectors2.c quadratics.c matrix.c
 FILES		+= $(addprefix maths/, $(F_MA))
@@ -99,9 +100,11 @@ ${NAME}:	${OBJS} ${LIB}
 			@$(CC) $(CFLAGS) $(OBJS) $(LIB_INC) -o $(NAME) $(INCS)
 			@echo "${MSG_BUILD}${NAME}${MSG_FINISH}"
 
-bonus:		${OBJS_BONUS} ${LIB}
-			@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIB_INC) -o $(NAME) $(INCS_BONUS)
-			@echo "${MSG_BUILD}${NAME}${MSG_FINISH}"
+bonus:		${NAME_B}
+
+${NAME_B}:	${OBJS_BONUS} ${LIB}
+			@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIB_INC) -o $(NAME_B) $(INCS_BONUS)
+			@echo "${MSG_BUILD}${NAME_B}${MSG_FINISH}"
 
 ${LIB}:
 			@echo "${MSG_LIB}${LIB}"
@@ -123,4 +126,6 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+re_bonus:	fclean bonus
+
+.PHONY:		all clean fclean re bonus re_bonus

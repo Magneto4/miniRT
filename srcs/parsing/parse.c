@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/16 16:30:34 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/25 14:03:00 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ bool	check_line(char **data, t_scene *scene)
 		return (put_error_false("ambiant light already set"));
 	else if (!__strcmp(data[0], "C") && scene->cam.fov != -1)
 		return (put_error_false("camera already set"));
+	else if (!__strcmp(data[0], "L") && scene->lights != NULL)
+		return (put_error_false("light already set"));
 	return (ret);
 }
 

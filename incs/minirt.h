@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/24 19:36:27 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/25 14:06:05 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,5 @@ t_vect	add(t_vect a, t_vect b);
 void	normalise(t_vect *v);
 t_vect	mult(t_vect v, double a);
 double	self_dot(t_vect v);
-
 
 #endif /* MINIRT_H */

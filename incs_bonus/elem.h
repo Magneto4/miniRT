@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elem.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:52:21 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/24 14:05:34 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/25 15:44:22 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_sphere
 	t_rgb	rgb;
 	double	n;
 	int		checkered;
+	t_bonus	bonus;
 }	t_sphere;
 
 typedef struct s_plane
@@ -52,6 +53,7 @@ typedef struct s_plane
 	t_rgb	rgb;
 	double	n;
 	int		checkered;
+	t_bonus	bonus;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -65,6 +67,7 @@ typedef struct s_cylinder
 	double	n;
 	int		checkered;
 	t_vect	def;
+	t_bonus	bonus;
 }	t_cylinder;
 
 typedef struct s_cone
@@ -77,6 +80,7 @@ typedef struct s_cone
 	t_rgb	rgb;
 	double	n;
 	int		checkered;
+	t_bonus	bonus;
 }	t_cone;
 
 #endif /* !ELEM_H */

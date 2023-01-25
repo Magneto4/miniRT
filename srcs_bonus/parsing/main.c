@@ -10,6 +10,14 @@ static void	print_vect(t_vect vect)
 	printf("vect: %f, %f, %f\n", vect.x, vect.y, vect.z);
 }
 
+static void	print_bonus(t_bonus bonus)
+{
+	printf("checkered: %d\n", bonus.checkered);
+	printf("n: %f\n", bonus.n);
+	printf("xpm: %p\n", bonus.xpm);
+	write(1, "\n", 1);
+}
+
 static void	print_ambiant(t_ambiant al)
 {
 	if (al.ratio < 0)
@@ -50,6 +58,7 @@ static void	print_sphere(t_sphere *sphere)
 	print_vect(sphere->pos);
 	printf("radius: %f\n", sphere->radius);
 	print_rgb(sphere->rgb);
+	print_bonus(sphere->bonus);
 	write(1, "\n", 1);
 }
 
@@ -61,6 +70,7 @@ static void	print_plane(t_plane *plane)
 	print_vect(plane->pos);
 	print_vect(plane->dir);
 	print_rgb(plane->rgb);
+	print_bonus(plane->bonus);
 	write(1, "\n", 1);
 }
 
@@ -74,6 +84,7 @@ static void	print_cylinder(t_cylinder *cylinder)
 	printf("radius: %f\n", cylinder->radius);
 	printf("height: %f\n", cylinder->height);
 	print_rgb(cylinder->rgb);
+	print_bonus(cylinder->bonus);
 	write(1, "\n", 1);
 }
 
@@ -87,6 +98,7 @@ static void	print_cone(t_cone *cone)
 	printf("radius: %f\n", cone->radius);
 	printf("height: %f\n", cone->height);
 	print_rgb(cone->rgb);
+	print_bonus(cone->bonus);
 	write(1, "\n", 1);
 }
 

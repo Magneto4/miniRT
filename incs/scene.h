@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:12:27 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/05 19:37:56 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/25 14:06:15 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SCENE_H
 # define SCENE_H
@@ -25,7 +24,6 @@ typedef struct s_list
 
 typedef struct s_scene
 {
-	// t_couple	*res;
 	t_ambiant	al;
 	t_camera	cam;
 	t_list		*lights;
