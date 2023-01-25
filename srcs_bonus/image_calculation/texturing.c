@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:39:19 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/20 17:04:09 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/25 20:35:14 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	texturing(t_point *point)
 {
 	t_vect2	coord;
 
-	if (!(point->checkered))
+	if (!(point->bonus.checkered))
 		return ;
 	coord = flat_coord(point);
 	checkering(point, coord);

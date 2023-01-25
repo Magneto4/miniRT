@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elem.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:52:21 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 15:44:22 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/25 20:31:43 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,17 @@ typedef struct s_cone
 	int		checkered;
 	t_bonus	bonus;
 }	t_cone;
+
+typedef struct s_point
+{
+	t_vect	pos;
+	t_vect	normal;
+	t_rgb	rgb;
+	t_rgb	lit_rgb;
+	int		init;
+	void	*shape;
+	double	t;
+	t_bonus	bonus;
+}	t_point;
 
 #endif /* !ELEM_H */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:04:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 15:17:35 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/25 20:31:39 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,6 @@ typedef struct s_rgb
 	int		g;
 	int		b;
 }	t_rgb;
-
-typedef struct s_point
-{
-	t_vect	pos;
-	t_vect	normal;
-	t_rgb	rgb;
-	t_rgb	lit_rgb;
-	int		init;
-	void	*shape;
-	double	t;
-	double	n;
-	int		checkered;
-}	t_point;
 
 typedef struct s_ray
 {
