@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:04:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 14:08:16 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/25 15:17:35 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,20 @@ typedef struct s_ray
 	t_vect	src;
 	t_vect	dir;
 }	t_ray;
+
+typedef struct s_xpm
+{
+	int		width;
+	int		height;
+	int		*data;
+}	t_xpm;
+
+typedef struct s_bonus
+{
+	bool	checkered;
+	double	n;
+	t_xpm	*xpm;
+}	t_bonus;
 
 typedef double	t_mat[3][3];
 

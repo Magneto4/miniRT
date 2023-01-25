@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:19:28 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 14:55:56 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/25 15:05:47 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ bool	check_bonus(char **data)
 	int		n;
 
 	n = __wordcount(data);
+	if (n > 3 || n < 1)
+		return (false);
 	checkered = false;
 	intensity = false;
 	xpm = false;

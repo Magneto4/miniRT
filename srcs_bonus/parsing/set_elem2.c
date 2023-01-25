@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 19:38:59 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 14:31:31 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/25 15:44:48 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ bool	set_sphere(char **data, t_scene *scene)
 	if (sphere->radius <= 0)
 		return (free(sphere), true);
 	set_rgb(data + 3, &sphere->rgb);
+	if (check_bonus(data + 4) == true)
+		set_bonus(data + 4, &sphere->bonus);
+	else
+		init_bonus(&sphere->bonus);
 	__lstadd_front(&scene->sphere, __lstnew(sphere));
 	return (true);
 }
@@ -43,6 +47,10 @@ bool	set_plane(char **data, t_scene *scene)
 	set_vector(data + 2, &plane->dir);
 	normalise(&plane->dir);
 	set_rgb(data + 3, &plane->rgb);
+	if (check_bonus(data + 4) == true)
+		set_bonus(data + 4, &plane->bonus);
+	else
+		init_bonus(&plane->bonus);
 	__lstadd_front(&scene->plane, __lstnew(plane));
 	return (true);
 }
@@ -79,8 +87,12 @@ bool	set_cylinder(char **data, t_scene *scene)
 		return (free(cylinder), true);
 	cylinder->top = add(cylinder->pos, mult(cylinder->dir, cylinder->height));
 	set_rgb(data + 5, &cylinder->rgb);
-	__lstadd_front(&scene->cylinder, __lstnew(cylinder));
+	if (check_bonus(data + 6) == true)
+		set_bonus(data + 6, &cylinder->bonus);
+	else
+		init_bonus(&cylinder->bonus);
 	set_def(cylinder);
+	__lstadd_front(&scene->cylinder, __lstnew(cylinder));
 	return (true);
 }
 
@@ -102,6 +114,10 @@ bool	set_cone(char **data, t_scene *scene)
 		return (free(cone), true);
 	cone->top = add(cone->pos, mult(cone->dir, cone->height));
 	set_rgb(data + 5, &cone->rgb);
+	if (check_bonus(data + 5) == true)
+		set_bonus(data + 5, &cone->bonus);
+	else
+		init_bonus(&cone->bonus);
 	__lstadd_front(&scene->cone, __lstnew(cone));
 	return (true);
 }

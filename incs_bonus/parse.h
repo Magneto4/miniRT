@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:21:39 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 14:36:42 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/25 15:18:30 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ bool	null_vector(char **data);
 bool	check_checkered(char *data);
 bool	check_xpm(char *data);
 bool	check_bonus(char **data);
+
+void	init_bonus(t_bonus *bonus);
+void	set_bonus(char **data, t_bonus *bonus);
 
 bool	check_ambiant(char **data);
 bool	check_camera(char **data);
