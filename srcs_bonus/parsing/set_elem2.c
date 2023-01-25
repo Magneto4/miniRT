@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 19:38:59 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 15:44:48 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/25 17:45:29 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ bool	set_cone(char **data, t_scene *scene)
 		return (free(cone), true);
 	cone->top = add(cone->pos, mult(cone->dir, cone->height));
 	set_rgb(data + 5, &cone->rgb);
-	if (check_bonus(data + 5) == true)
-		set_bonus(data + 5, &cone->bonus);
+	if (check_bonus(data + 6) == true)
+		set_bonus(data + 6, &cone->bonus);
 	else
 		init_bonus(&cone->bonus);
 	__lstadd_front(&scene->cone, __lstnew(cone));

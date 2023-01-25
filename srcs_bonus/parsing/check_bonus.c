@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:19:28 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 15:05:47 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/25 17:30:47 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ bool	check_bonus(char **data)
 	{
 		if (check_checkered(data[n]) == true && checkered == false)
 			checkered = true;
-		else if (check_double(data[n]) == true && intensity == false)
-			intensity = true;
 		else if (check_xpm(data[n]) == true && xpm == false)
 			xpm = true;
+		else if (check_double(data[n]) == true && intensity == false)
+			intensity = true;
 		else
 			return (false);
 	}
