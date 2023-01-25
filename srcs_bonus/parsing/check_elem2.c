@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_elem2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 19:43:03 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/19 14:15:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/25 14:36:54 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	check_sphere(char **data)
 {
-	if (__wordcount(data) != 3)
+	if (__wordcount(data) < 3 || __wordcount(data) > 6)
 		return (false);
 	if (check_vector(data[0]) == false)
 		return (false);
@@ -23,6 +23,8 @@ bool	check_sphere(char **data)
 	if (__atod(data[1]) < 0)
 		return (false);
 	if (check_rgb(data[2]) == false)
+		return (false);
+	if (__wordcount(data) > 3 && check_bonus(data + 3) == false)
 		return (false);
 	return (true);
 }

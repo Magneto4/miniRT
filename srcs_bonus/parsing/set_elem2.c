@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_elem2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 19:38:59 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/20 15:35:33 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/25 14:31:31 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ bool	set_cylinder(char **data, t_scene *scene)
 	return (true);
 }
 
-bool 	set_cone(char **data, t_scene *scene)
+bool	set_cone(char **data, t_scene *scene)
 {
 	t_cone	*cone;
 
