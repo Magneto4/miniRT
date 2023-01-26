@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 14:07:39 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/26 17:49:08 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define CO 6
 # define EPSILON 0.0001
 # define CHECKER 10.
+# define REFLECT 10
 
 # ifndef BONUS
 #  define BONUS 1
