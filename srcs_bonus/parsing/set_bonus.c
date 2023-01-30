@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:02:27 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 20:33:36 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/26 17:48:15 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_bonus(t_bonus *bonus)
 {
 	bonus->checkered = false;
-	bonus->n = 1;
+	bonus->n = REFLECT;
 	bonus->xpm = NULL;
 }
 

@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/30 12:15:20 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/30 13:24:29 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define CO 6
 # define EPSILON 0.0001
 # define CHECKER 10.
+# define REFLECT 10
 
 # ifndef BONUS
 #  define BONUS 1
