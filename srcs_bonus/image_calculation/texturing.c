@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:39:19 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/30 12:14:43 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/01/30 13:28:24 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,6 @@ void	texturing(t_point *point)
 		return ;
 	coord = flat_coord(point);
 	checkering(point, coord);
+	// if (point->bonus.xpm)
+	normal_mapping(point, coord);
 }
