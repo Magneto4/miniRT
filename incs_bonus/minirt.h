@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 14:07:39 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/01/30 12:15:20 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	sphere_shade(t_ray ray, t_sphere *sphere, double *t, void **inter);
 void	shade_plane(t_list *planes, t_ray ray, double *t, void **inter);
 t_vect	normal_cylinder(t_vect p, t_cylinder *cyl, t_vect src);
 int		lit(t_light *light, t_point *point, t_minirt *minirt);
+t_vect2	flat_coord(t_point *point);
 
 //maths
 t_rgb	int_to_rgb(int colour);
