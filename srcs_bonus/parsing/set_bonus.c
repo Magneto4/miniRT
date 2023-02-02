@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:02:27 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/01 15:42:34 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/01 15:59:29 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,23 @@ void	create_texture(t_mlx *mlx, t_text *text, char *path)
 	text.img = mlx_get_data_addr(text.ptr, &text.bpp, &text.size_line, &text.endian);
 }
 
-// t_rgb	get_rgb(t_point p)
-// {
-// 	t_rgb	color;
-// 	int		i;
-// 	int		column;
-// 	int		row;
-// 	t_text	text;
+t_vect	get_normal2(t_point p, int x, int y)
+{
+	t_vect	color;
+	int		i;
+	t_text	texture;
 
-// 	i = 0;
-// 	column = 0;
-// 	row = 0;
-// 	if (p.bonus.textured == true)
-// 	{
-// 		// get_text_coord (rt, rt obj, &column, &row)
-// 		text = p.bonus.text;
-// 		i = row * text.size_line + text.bpp / 8 * column;
-// 		color.r = (int)p.bonus.text.img[i] / 255;
-// 		color.g = (int)p.bonus.text.img[i + 1] / 255;
-// 		color.b = (int)p.bonus.text.img[i + 2] / 255;
-// 	}
-// 	else
-// 		color = p.color;
-// 	return (color);
-// }
+	i = 0;
+	if (p.bonus.textured == true)
+	{
+		texture = p.bonus.text;
+		i = x * text.size_line + text.bpp / 8 * y;
+		color.x = (double)texture.img[i] / 255;
+		color.y = (double)texture.img[i + 1] / 255;
+		color.z = (double)texture.img[i + 2] / 255;
+	}
+	return (color);
+}
 
 void	init_bonus(t_bonus *bonus)
 {
