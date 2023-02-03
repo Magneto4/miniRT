@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:25:18 by nseniak           #+#    #+#             */
-/*   Updated: 2023/02/03 18:00:03 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 19:21:13 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	__del(void *ptr)
 	free (ptr);
 }
 
-void	free_scene(t_scene *scene)
+void	free_scene(t_scene *scene, t_mlx *mlx)
 {
 	__lstclear(&(scene->cylinder), __del);
 	if (scene->cylinder)
@@ -34,6 +34,9 @@ void	free_scene(t_scene *scene)
 	__lstclear(&(scene->cone), __del);
 	if (scene->cone)
 		free(scene->cone);
+	mlx_destroy_display(mlx->mlx_ptr);
+	free(mlx->mlx_ptr);
+	free(mlx);
 	scene = NULL;
 }
 

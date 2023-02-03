@@ -6,18 +6,18 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:10:36 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 18:47:11 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 19:09:04 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	free_bonus(t_minirt *minirt)
+void	free_bonus(t_scene *scene, t_mlx *mlx)
 {
-	del_sphere(minirt->scene->sphere, minirt->mlx);
-	del_cylinder(minirt->scene->cylinder, minirt->mlx);
-	del_plane(minirt->scene->plane, minirt->mlx);
-	del_cone(minirt->scene->cone, minirt->mlx);
+	del_sphere(scene->sphere, mlx);
+	del_cylinder(scene->cylinder, mlx);
+	del_plane(scene->plane, mlx);
+	del_cone(scene->cone, mlx);
 }
 
 void	del_sphere(t_list *lst, t_mlx *mlx)

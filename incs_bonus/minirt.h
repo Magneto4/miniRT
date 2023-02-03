@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 18:48:38 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 19:15:10 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int		wordcount_set(char *str, char *sep);
 
 // Free
 void	free_minirt(t_minirt *minirt);
-void	free_bonus(t_minirt *minirt);
-void	free_scene(t_scene *scene);
+void	free_bonus(t_scene *scene, t_mlx *mlx);
+void	free_scene(t_scene *scene, t_mlx *mlx);
 void	del_sphere(t_list *lst, t_mlx *mlx);
 void	del_plane(t_list *lst, t_mlx *mlx);
 void	del_cone(t_list *lst, t_mlx *mlx);
@@ -79,7 +79,8 @@ double	__atod(char *str);
 char	**split_set(char *s, char *charset);
 
 //window
-int		init_window(t_minirt *minirt);
+int		init_mlx(t_minirt *minirt);
+void	init_window(t_mlx *mlx);
 void	start_loop(t_minirt *minirt);
 int		close_hook(void *void_minirt);
 int		key(int keycode, void *void_minirt);

@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 15:40:51 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 19:08:28 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ bool	set_elem(char *line, t_scene *scene, t_mlx *mlx)
 		|| check_elem(data, scene, mlx) == false)
 	{
 		free_tab(data);
-		free_scene(scene);
+		free_bonus(scene, mlx);
+		free_scene(scene, mlx);
 		return (put_error_false("parsing line"));
 	}
 	free_tab(data);

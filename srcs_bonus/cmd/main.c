@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:51:06 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 15:42:55 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 19:14:36 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ int	main(int ac, char **av)
 	minirt = malloc (sizeof(*minirt));
 	if (!minirt)
 		return (put_error("malloc failure"), 1);
-	if (init_window(minirt))
-		return (put_error("window failure"), EXIT_FAILURE);
+	if (init_mlx(minirt))
+		return (put_error("mlx failure"), EXIT_FAILURE);
 	minirt->scene = __parse(av[1], minirt->mlx);
 	if (!(minirt->scene))
 		return (free(minirt), put_error("parse error"), EXIT_FAILURE);
+	init_window(minirt->mlx);
 	if (create_image(minirt))
 	{
 		put_error("image failure");
