@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_minirt.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:25:18 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/14 18:59:01 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 16:36:06 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	free_minirt(t_minirt *minirt)
 	__lstclear(&(minirt->scene->sphere), __del);
 	if (minirt->scene->sphere)
 		free(minirt->scene->sphere);
+	free(minirt->scene->cam.cam_to_world);
 	free(minirt->scene);
 	free(minirt);
 }
