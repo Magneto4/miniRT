@@ -6,16 +6,18 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:02:27 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/01 15:59:29 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 12:38:39 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	create_texture(t_mlx *mlx, t_text *text, char *path)
+void	create_texture(t_mlx *mlx, t_text text, char *path)
 {
-	text.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, path, &text->width, &text->height);
-	text.img = mlx_get_data_addr(text.ptr, &text.bpp, &text.size_line, &text.endian);
+	text.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, path,
+			&text.width, &text.height);
+	text.img = mlx_get_data_addr(text.ptr, &text.bpp,
+			&text.size_line, &text.endian);
 }
 
 t_vect	get_normal2(t_point p, int x, int y)
@@ -25,13 +27,16 @@ t_vect	get_normal2(t_point p, int x, int y)
 	t_text	texture;
 
 	i = 0;
+	color.x = 0;
+	color.y = 0;
+	color.z = 0;
 	if (p.bonus.textured == true)
 	{
 		texture = p.bonus.text;
-		i = x * text.size_line + text.bpp / 8 * y;
-		color.x = (double)texture.img[i] / 255;
-		color.y = (double)texture.img[i + 1] / 255;
-		color.z = (double)texture.img[i + 2] / 255;
+		i = x * texture.size_line + texture.bpp / 8 * y;
+		color.z = (double)(unsigned char)texture.img[i] / 255;
+		color.y = (double)(unsigned char)texture.img[i + 1] / 255;
+		color.x = (double)(unsigned char)texture.img[i + 2] / 255;
 	}
 	return (color);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+         #
+#    By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/01/30 12:17:11 by nseniak          ###   ########.fr        #
+#    Updated: 2023/02/03 14:12:47 by ngiroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ include parse.mk
 
 # Names 
 NAME		= minirt
-NAME_B	= minirt_bonus
+NAME_B		= minirt_bonus
 MLX			= minilibx_opengl
 
 LIB			= mlx/libmlx_Linux.a

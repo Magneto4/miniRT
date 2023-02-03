@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:04:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/01 14:57:54 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 12:37:23 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ typedef struct s_ray
 
 typedef struct s_text
 {
-	int		*data;
-	void	*img;
+	void	*ptr;
+	char	*img;
 	int		width;
 	int		height;
 	int		bpp;
