@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/30 13:28:35 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 15:47:31 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ t_vect	normal_cylinder(t_vect p, t_cylinder *cyl, t_vect src);
 int		lit(t_light *light, t_point *point, t_minirt *minirt);
 t_vect2	flat_coord(t_point *point);
 void	normal_mapping(t_point *point, t_vect2 coord);
+
+t_vect	get_normal2(t_point p, int x, int y);
 
 //maths
 t_rgb	int_to_rgb(int colour);
