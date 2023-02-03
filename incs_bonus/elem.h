@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:52:21 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/26 17:48:49 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/01 14:57:27 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_sphere
 	t_vect	pos;
 	double	radius;
 	t_rgb	rgb;
-	// double	n;
 	int		checkered;
 	t_bonus	bonus;
 }	t_sphere;
@@ -51,7 +50,6 @@ typedef struct s_plane
 	t_vect	pos;
 	t_vect	dir;
 	t_rgb	rgb;
-	// double	n;
 	int		checkered;
 	t_bonus	bonus;
 }	t_plane;
@@ -64,7 +62,6 @@ typedef struct s_cylinder
 	double	radius;
 	double	height;
 	t_rgb	rgb;
-	// double	n;
 	int		checkered;
 	t_vect	def;
 	t_bonus	bonus;
@@ -78,7 +75,6 @@ typedef struct s_cone
 	double	radius;
 	double	height;
 	t_rgb	rgb;
-	// double	n;
 	int		checkered;
 	t_bonus	bonus;
 }	t_cone;
