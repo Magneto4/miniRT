@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:21:39 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 15:41:06 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 16:19:00 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ bool	set_cone(char **data, t_scene *scene, t_mlx *mlx);
 bool	check_elem(char **data, t_scene *scene, t_mlx *mlx);
 bool	check_int(char *str);
 bool	check_double(char *str);
+bool	check_double_mute(char *str);
 bool	check_vector(char *str);
 bool	check_vector_norm(char *str);
 bool	check_rgb(char *str);

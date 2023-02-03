@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:25:18 by nseniak           #+#    #+#             */
-/*   Updated: 2023/02/03 16:36:32 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 16:37:59 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ void	free_minirt(t_minirt *minirt)
 	__lstclear(&(minirt->scene->sphere), __del);
 	if (minirt->scene->sphere)
 		free(minirt->scene->sphere);
+	__lstclear(&(minirt->scene->cone), __del);
+	if (minirt->scene->cone)
+		free(minirt->scene->cone);
 	free(minirt->scene->cam.cam_to_world);
 	free(minirt->scene);
 	free(minirt);
