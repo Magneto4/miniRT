@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:17:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/02/03 14:38:39 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 16:04:49 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	normal_mapping(t_point *point, t_vect2 coord)
 	t_vect	t;
 	t_vect	b;
 	t_mat	mat;
+	t_vect	new_norm;
 
 	if (point->init == SP)
 		t = tangent_sphere(point);
@@ -79,7 +80,7 @@ void	normal_mapping(t_point *point, t_vect2 coord)
 	mat[0][2] = point->normal.x;
 	mat[1][2] = point->normal.y;
 	mat[2][2] = point->normal.z;
-	//replace with proper vector
-	(void)coord;
-	point->normal = mat_mult(mat, init_vector(0, 0, 1));
+	new_norm = get_normal2(*point, (int)(coord.u * point->bonus.text.height), (int)(coord.v * point->bonus.text.width));
+	normalise(&new_norm);
+	point->normal = mat_mult(mat, new_norm);
 }
