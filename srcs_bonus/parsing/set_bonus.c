@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:02:27 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 14:55:12 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 15:35:35 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	init_bonus(t_bonus *bonus)
 	bonus->n = REFLECT;
 }
 
-void	set_bonus(t_mlx *mlx, t_bonus *bonus, char **data)
+void	set_bonus(t_mlx *mlx, char **data, t_bonus *bonus)
 {
 	int		n;
 
