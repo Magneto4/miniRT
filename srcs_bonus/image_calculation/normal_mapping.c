@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:17:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/30 13:23:44 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 14:38:39 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	normal_mapping(t_point *point, t_vect2 coord)
 		t = tangent_plane(point);
 	else if (point->init == CY || point->init == CY_T || point->init == CY_B)
 		t = tangent_cylinder(point);
+	else
+		return ;
 	b = cross(point->normal, t);
 	normalise(&b);
 	mat[0][0] = t.x;
