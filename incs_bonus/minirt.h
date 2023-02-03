@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/30 13:28:35 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 16:03:09 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,8 @@ void	normalise(t_vect *v);
 t_vect	init_vector(double x, double y, double z);
 void	invert(t_mat m, t_mat *inv);
 double	self_dot(t_vect v);
+
+//parsing
+t_vect	get_normal2(t_point p, int x, int y);
 
 #endif /* MINIRT_H */
