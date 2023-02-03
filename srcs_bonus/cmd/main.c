@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:51:06 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/24 20:12:24 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 15:42:55 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,11 @@ int	main(int ac, char **av)
 	minirt = malloc (sizeof(*minirt));
 	if (!minirt)
 		return (put_error("malloc failure"), 1);
-	minirt->scene = __parse(av[1]);
-	if (!(minirt->scene))
-		return (free(minirt), put_error("parse error"), EXIT_FAILURE);
-	// normalise_lights(minirt);
 	if (init_window(minirt))
 		return (put_error("window failure"), EXIT_FAILURE);
+	minirt->scene = __parse(av[1], minirt->mlx);
+	if (!(minirt->scene))
+		return (free(minirt), put_error("parse error"), EXIT_FAILURE);
 	if (create_image(minirt))
 	{
 		put_error("image failure");

@@ -6,18 +6,18 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:02:27 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 12:38:39 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 15:35:35 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	create_texture(t_mlx *mlx, t_text text, char *path)
+void	create_texture(t_mlx *mlx, t_text *text, char *path)
 {
-	text.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, path,
-			&text.width, &text.height);
-	text.img = mlx_get_data_addr(text.ptr, &text.bpp,
-			&text.size_line, &text.endian);
+	text->ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, path,
+			&text->width, &text->height);
+	text->img = mlx_get_data_addr(text->ptr, &text->bpp,
+			&text->size_line, &text->endian);
 }
 
 t_vect	get_normal2(t_point p, int x, int y)
@@ -48,12 +48,14 @@ void	init_bonus(t_bonus *bonus)
 	bonus->n = REFLECT;
 }
 
-void	set_bonus(char **data, t_bonus *bonus)
+void	set_bonus(t_mlx *mlx, char **data, t_bonus *bonus)
 {
 	int		n;
 
-	n = __wordcount(data);
 	init_bonus(bonus);
+	n = __wordcount(data);
+	if (n == 0)
+		return ;
 	while (n--)
 	{
 		if (check_checkered(data[n]) == true)
@@ -63,7 +65,7 @@ void	set_bonus(char **data, t_bonus *bonus)
 		else if (check_xpm(data[n]) == true)
 		{
 			bonus->textured = true;
-			// create_texture(mlx, &bonus->text, data[n]);
+			create_texture(mlx, &bonus->text, data[n]);
 		}
 	}
 }

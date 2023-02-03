@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 14:04:51 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 15:40:51 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	check_line(char **data, t_scene *scene)
 	return (ret);
 }
 
-bool	set_elem(char *line, t_scene *scene)
+bool	set_elem(char *line, t_scene *scene, t_mlx *mlx)
 {
 	char	**data;
 
@@ -37,7 +37,8 @@ bool	set_elem(char *line, t_scene *scene)
 		return (free_tab(data), true);
 	if (data[0][0] == '#')
 		return (free_tab(data), true);
-	if (check_line(data, scene) == false || check_elem(data, scene) == false)
+	if (check_line(data, scene) == false
+		|| check_elem(data, scene, mlx) == false)
 	{
 		free_tab(data);
 		free_scene(scene);
@@ -47,7 +48,7 @@ bool	set_elem(char *line, t_scene *scene)
 	return (true);
 }
 
-bool	set_scene(char *file, t_scene *scene)
+bool	set_scene(char *file, t_scene *scene, t_mlx *mlx)
 {
 	int		fd;
 	char	*line;
@@ -58,7 +59,7 @@ bool	set_scene(char *file, t_scene *scene)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (set_elem(line, scene) == false)
+		if (set_elem(line, scene, mlx) == false)
 			return (free_gnl(fd, line), false);
 		free(line);
 		line = get_next_line(fd);
@@ -81,7 +82,7 @@ void	*init_scene(t_scene *scene)
 	return (scene);
 }
 
-t_scene	*__parse(char *file)
+t_scene	*__parse(char *file, t_mlx *mlx)
 {
 	t_scene	*scene;
 
@@ -91,7 +92,7 @@ t_scene	*__parse(char *file)
 	if (!check_file(file))
 		return (NULL);
 	scene = init_scene(scene);
-	if (set_scene(file, scene) == false)
+	if (set_scene(file, scene, mlx) == false)
 		return (put_error_null("setting scene"), free(scene), NULL);
 	return (scene);
 }

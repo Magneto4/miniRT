@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:22:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/19 14:15:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 14:56:09 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	__wordcount(char **line)
 {
 	int	i;
 
+	if (!line || !*line)
+		return (0);
 	i = 0;
 	while (line[i])
 		i++;
@@ -39,6 +41,8 @@ int	__strcmp(const char *s1, const char *s2)
 	size_t	i;
 
 	i = 0;
+	if (!s1 || !s2)
+		return (0);
 	if (!*s1 || !*s2)
 		return (0);
 	while (s1[i] == s2[i] && s1[i])

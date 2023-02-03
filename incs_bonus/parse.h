@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:21:39 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 15:18:30 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 15:41:06 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define MIN_INT -2147483648
 
 // 🏳️ Parse
-t_scene	*__parse(char *file);
+t_scene	*__parse(char *file, t_mlx *mlx);
 bool	check_file(char *file);
 
 bool	set_couple(char **data, t_couple *couple);
@@ -28,12 +28,12 @@ bool	set_rgb(char **data, t_rgb *rgb);
 bool	set_ambiant(char **data, t_scene *scene);
 bool	set_camera(char **data, t_scene *scene);
 bool	set_light(char **data, t_scene *scene);
-bool	set_sphere(char **data, t_scene *scene);
-bool	set_plane(char **data, t_scene *scene);
-bool	set_cylinder(char **data, t_scene *scene);
-bool	set_cone(char **data, t_scene *scene);
+bool	set_sphere(char **data, t_scene *scene, t_mlx *mlx);
+bool	set_plane(char **data, t_scene *scen, t_mlx *mlxe);
+bool	set_cylinder(char **data, t_scene *scene, t_mlx *mlx);
+bool	set_cone(char **data, t_scene *scene, t_mlx *mlx);
 
-bool	check_elem(char **data, t_scene *scene);
+bool	check_elem(char **data, t_scene *scene, t_mlx *mlx);
 bool	check_int(char *str);
 bool	check_double(char *str);
 bool	check_vector(char *str);
@@ -46,7 +46,7 @@ bool	check_xpm(char *data);
 bool	check_bonus(char **data);
 
 void	init_bonus(t_bonus *bonus);
-void	set_bonus(char **data, t_bonus *bonus);
+void	set_bonus(t_mlx *mlx, char **data, t_bonus *bonus);
 
 bool	check_ambiant(char **data);
 bool	check_camera(char **data);
