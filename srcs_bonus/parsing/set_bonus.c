@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:02:27 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 15:35:35 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 16:19:20 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	set_bonus(t_mlx *mlx, char **data, t_bonus *bonus)
 	{
 		if (check_checkered(data[n]) == true)
 			bonus->checkered = true;
-		else if (check_double(data[n]) == true)
+		else if (check_double_mute(data[n]) == true)
 			bonus->n = __atod(data[n]);
 		else if (check_xpm(data[n]) == true)
 		{
