@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 18:45:12 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/19 14:15:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 19:18:07 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	init_window(t_minirt *minirt)
+int	init_mlx(t_minirt *minirt)
 {
 	void	*mlx_ptr;
-	void	*win_ptr;
 	t_mlx	*mlx;
 
 	mlx = malloc(sizeof(*mlx));
@@ -27,11 +26,38 @@ int	init_window(t_minirt *minirt)
 	}
 	mlx_ptr = mlx_init();
 	mlx->mlx_ptr = mlx_ptr;
-	win_ptr = mlx_new_window(mlx_ptr, W, H, "miniRT");
-	mlx->win_ptr = win_ptr;
 	minirt->mlx = mlx;
 	return (0);
 }
+
+void	init_window(t_mlx *mlx)
+{
+	void	*win_ptr;
+
+	win_ptr = mlx_new_window(mlx->mlx_ptr, W, H, "miniRT");
+	mlx->win_ptr = win_ptr;
+}
+
+// int	init_window(t_minirt *minirt)
+// {
+// 	void	*mlx_ptr;
+// 	void	*win_ptr;
+// 	t_mlx	*mlx;
+
+// 	mlx = malloc(sizeof(*mlx));
+// 	if (!mlx)
+// 	{
+// 		free (minirt->scene);
+// 		free (minirt);
+// 		return (1);
+// 	}
+// 	mlx_ptr = mlx_init();
+// 	mlx->mlx_ptr = mlx_ptr;
+// 	win_ptr = mlx_new_window(mlx_ptr, W, H, "miniRT");
+// 	mlx->win_ptr = win_ptr;
+// 	minirt->mlx = mlx;
+// 	return (0);
+// }
 
 void	start_loop(t_minirt *minirt)
 {

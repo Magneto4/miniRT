@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_minirt.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:25:18 by nseniak           #+#    #+#             */
-/*   Updated: 2023/02/03 16:37:59 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 19:21:13 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	__del(void *ptr)
 	free (ptr);
 }
 
-void	free_scene(t_scene *scene)
+void	free_scene(t_scene *scene, t_mlx *mlx)
 {
 	__lstclear(&(scene->cylinder), __del);
 	if (scene->cylinder)
@@ -34,13 +34,14 @@ void	free_scene(t_scene *scene)
 	__lstclear(&(scene->cone), __del);
 	if (scene->cone)
 		free(scene->cone);
+	mlx_destroy_display(mlx->mlx_ptr);
+	free(mlx->mlx_ptr);
+	free(mlx);
 	scene = NULL;
 }
 
 void	free_minirt(t_minirt *minirt)
 {
-	free(minirt->mlx->mlx_ptr);
-	free(minirt->mlx);
 	__lstclear(&(minirt->scene->cylinder), __del);
 	if (minirt->scene->cylinder)
 		free(minirt->scene->cylinder);
@@ -56,6 +57,8 @@ void	free_minirt(t_minirt *minirt)
 	__lstclear(&(minirt->scene->cone), __del);
 	if (minirt->scene->cone)
 		free(minirt->scene->cone);
+	free(minirt->mlx->mlx_ptr);
+	free(minirt->mlx);
 	free(minirt->scene->cam.cam_to_world);
 	free(minirt->scene);
 	free(minirt);

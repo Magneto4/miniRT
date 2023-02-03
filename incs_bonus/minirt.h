@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 16:54:49 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 19:25:30 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # include "parse.h"
 
 // 🕵️‍♂️ Define
-# define H 700.
-# define W 1500.
+# define H 10.
+# define W 10.
 
 # define SP 1
 # define CY 2
@@ -55,11 +55,18 @@
 int		put_error(char *str);
 void	put_error_null(char *str);
 bool	put_error_false(char *str);
-void	free_minirt(t_minirt *minirt);
-void	free_scene(t_scene *scene);
 void	free_tab(char **tab);
 int		__wordcount(char **line);
 int		wordcount_set(char *str, char *sep);
+
+// Free
+void	free_minirt(t_minirt *minirt);
+void	free_bonus(t_scene *scene, t_mlx *mlx);
+void	free_scene(t_scene *scene, t_mlx *mlx);
+void	del_sphere(t_list *lst, t_mlx *mlx);
+void	del_plane(t_list *lst, t_mlx *mlx);
+void	del_cone(t_list *lst, t_mlx *mlx);
+void	del_cylinder(t_list *lst, t_mlx *mlx);
 
 // 📚 Libs
 int		__strlen(char *str);
@@ -74,7 +81,8 @@ double	__atod(char *str);
 char	**split_set(char *s, char *charset);
 
 //window
-int		init_window(t_minirt *minirt);
+int		init_mlx(t_minirt *minirt);
+void	init_window(t_mlx *mlx);
 void	start_loop(t_minirt *minirt);
 int		close_hook(void *void_minirt);
 int		key(int keycode, void *void_minirt);

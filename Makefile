@@ -6,7 +6,7 @@
 #    By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/02/03 14:12:47 by ngiroux          ###   ########.fr        #
+#    Updated: 2023/02/03 17:10:32 by ngiroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ INCS		= $(addprefix -I, $(INCS_PATH))
 FILES_BONUS	= cmd/main.c
 F_GNL_BONUS	= get_next_line.c get_next_line_utils.c
 FILES_BONUS	+= $(addprefix gnl/, $(F_GNL_BONUS))
-F_INT_BONUS	= error.c free_minirt.c
+F_INT_BONUS	= error.c free_minirt.c free_bonus.c
 FILES_BONUS	+= $(addprefix internal/, $(F_INT_BONUS))
 
 FILES_BONUS	+= $(addprefix parsing/, $(F_PARS_BONUS))

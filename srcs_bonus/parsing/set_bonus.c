@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:02:27 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 16:19:20 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/03 18:30:29 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	create_texture(t_mlx *mlx, t_text *text, char *path)
 {
+	if (path == NULL)
+		return ;
 	text->ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, path,
 			&text->width, &text->height);
 	text->img = mlx_get_data_addr(text->ptr, &text->bpp,
@@ -46,6 +48,8 @@ void	init_bonus(t_bonus *bonus)
 	bonus->checkered = false;
 	bonus->textured = false;
 	bonus->n = REFLECT;
+	bonus->text.ptr = NULL;
+	bonus->text.img = NULL;
 }
 
 void	set_bonus(t_mlx *mlx, char **data, t_bonus *bonus)
