@@ -1,4 +1,3 @@
 ## MiniRT
 
-* cam to world leak
-* leak bonus
+* multi parse bonus strange

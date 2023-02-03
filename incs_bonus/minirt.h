@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 16:38:04 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 18:48:38 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # include "parse.h"
 
 // 🕵️‍♂️ Define
-# define H 700.
-# define W 1500.
+# define H 10.
+# define W 10.
 
 # define SP 1
 # define CY 2
@@ -53,11 +53,18 @@
 int		put_error(char *str);
 void	put_error_null(char *str);
 bool	put_error_false(char *str);
-void	free_minirt(t_minirt *minirt);
-void	free_scene(t_scene *scene);
 void	free_tab(char **tab);
 int		__wordcount(char **line);
 int		wordcount_set(char *str, char *sep);
+
+// Free
+void	free_minirt(t_minirt *minirt);
+void	free_bonus(t_minirt *minirt);
+void	free_scene(t_scene *scene);
+void	del_sphere(t_list *lst, t_mlx *mlx);
+void	del_plane(t_list *lst, t_mlx *mlx);
+void	del_cone(t_list *lst, t_mlx *mlx);
+void	del_cylinder(t_list *lst, t_mlx *mlx);
 
 // 📚 Libs
 int		__strlen(char *str);
