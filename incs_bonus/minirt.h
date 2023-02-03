@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 16:38:04 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 16:54:49 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define EPSILON 0.0001
 # define CHECKER 10.
 # define REFLECT 10
+# define BLACK 0xffffff
+# define WHITE 0x000000
 
 # ifndef BONUS
 #  define BONUS 1

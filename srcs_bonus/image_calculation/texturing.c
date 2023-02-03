@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:39:19 by nseniak           #+#    #+#             */
-/*   Updated: 2023/02/03 16:27:27 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/03 16:54:11 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	checkering(t_point *point, t_vect2 coord)
 			if (coord.u <= n / CHECKER && coord.v <= m / CHECKER)
 			{
 				if ((n + m) % 2)
-					point->rgb = int_to_rgb(0x000000);
+					point->rgb = int_to_rgb(BLACK);
 				else
-					point->rgb = int_to_rgb(0xffffff);
+					point->rgb = int_to_rgb(WHITE);
 				return ;
 			}
 			m ++;
