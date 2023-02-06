@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 19:32:53 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/19 14:15:29 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:39:12 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ bool	check_file(char *file)
 {
 	int	fd;
 
+	fd = open(file, O_DIRECTORY);
+	if (fd > 0)
+	{
+		close(fd);
+		return (put_error_false("it's a directory"));
+	}
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (put_error_false("opening file"));
