@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/01/25 14:03:00 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:23:41 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ t_scene	*__parse(char *file)
 	if (!scene)
 		return (put_error_null("mallocing scene"), NULL);
 	if (!check_file(file))
-		return (NULL);
+		return (free(scene), NULL);
 	scene = init_scene(scene);
 	if (set_scene(file, scene) == false)
 		return (put_error_null("setting scene"), free(scene), NULL);
