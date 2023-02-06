@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:02:27 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 18:30:29 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/06 16:04:16 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ t_vect	get_normal2(t_point p, int x, int y)
 	t_text	texture;
 
 	i = 0;
-	color.x = 0;
-	color.y = 0;
-	color.z = 0;
+	color.x = 1;
+	color.y = 1;
+	color.z = 1;
 	if (p.bonus.textured == true)
 	{
 		texture = p.bonus.text;
-		i = x * texture.size_line + texture.bpp / 8 * y;
-		color.z = (double)(unsigned char)texture.img[i] / 255;
-		color.y = (double)(unsigned char)texture.img[i + 1] / 255;
-		color.x = (double)(unsigned char)texture.img[i + 2] / 255;
+		i = y * texture.size_line + texture.bpp / 8 * x;
+		color.z = (double)(unsigned char)texture.img[i];
+		color.y = (double)(unsigned char)texture.img[i + 1];
+		color.x = (double)(unsigned char)texture.img[i + 2];
 	}
 	return (color);
 }

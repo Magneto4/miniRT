@@ -1,10 +1,11 @@
-A	0.2	100,100,100
+A	0.2	255,255,255
 C	0,0,-6		0,0,1		70
-L	0,0,-7		0.8				255,255,255
-pl  0,0,4		0,0,1			250,0,0 textures/earth.xpm
+L	3.5,2,-8		0.8				255,255,255
+pl  0,0,4		0,0,1			250,0,0 textures/earth_normal_map.xpm
+# pl  0,0,-3		0,0,1			200,200,200 textures/earth_normal_map.xpm
 pl  -4,0,0		1,0,0			0,250,0
 pl  4,0,0		1,0,0			0,0,250
 pl  0,-2,0		0,1,0			250,250,0
 pl  0,2,0		0,1,0			0,250,250 
-# sp	0,0,-2				3	50,50,250 100 textures/earth.xpm
-cy	0,-1,-2		-0.4,1,0.2	2 2 255,0,100 textures/earth.xpm
+# sp	-1,0,-1				3	50,50,250 100 textures/earth_normal_map.xpm
+cy	0,-1,-2		0,1,0.2	2 2 255,0,100 textures/earth_normal_map.xpm

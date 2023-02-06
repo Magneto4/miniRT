@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:56:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/25 20:36:21 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/06 16:47:36 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,5 @@ int	calculate_colour(t_minirt *minirt, t_point *point, t_vect v)
 	point->lit_rgb.r /= 255;
 	point->lit_rgb.g /= 255;
 	point->lit_rgb.b /= 255;
-	(void)v;
 	return (0);
 }

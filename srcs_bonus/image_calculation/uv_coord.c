@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:14:30 by nseniak           #+#    #+#             */
-/*   Updated: 2023/02/03 19:23:12 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/06 16:53:01 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@ t_vect2	sphere_coord(t_point *point, t_sphere *sphere)
 	t_vect	d;
 
 	d = sub(point->pos, sphere->pos);
-	coord.v = 0.5 + atan2(d.z, d.x) / 2 / M_PI;
-	coord.u = 0.5 - asin(d.y / sphere->radius) / M_PI;
-	coord.v = fmod(coord.v * 2, 1.);
-	if (coord.v < 0)
-		coord.v += 1.;
+	coord.u = 0.5 + atan2(d.z, d.x) / (2 * M_PI);
+	coord.v = 0.5 - asin(d.y / sphere->radius) / M_PI;
 	return (coord);
 }
 
@@ -32,8 +29,8 @@ t_vect2	plane_coord(t_point *point)
 	t_vect	vax;
 	t_vect2	coord;
 
-	uax = init_vector(point->normal.y, point->normal.z, -1 * point->normal.x);
-	vax = cross(uax, point->normal);
+	vax = init_vector(point->normal.y, point->normal.z, -1 * point->normal.x);
+	uax = cross(vax, point->normal);
 	coord.u = fmod(dot(point->pos, uax) / 2, 1.);
 	if (coord.u < 0)
 		coord.u += 1;
@@ -76,13 +73,13 @@ t_vect2	cylinder_coord(t_point *point, t_cylinder *cyl)
 		return (cylinder_coord_caps(point, cyl));
 	angle = acos(dot(cyl->def, point->normal));
 	v = sub(point->pos, cyl->pos);
-	coord.u = 1 - sqrt(dot(v, v) - cyl->radius * cyl->radius) / cyl->height;
+	coord.v = 1 - sqrt(dot(v, v) - cyl->radius * cyl->radius) / cyl->height;
 	if (dot(cross(cyl->dir, cyl->def), v) < 0)
 		angle = angle * -1;
-	coord.v = fmod(angle / (M_PI), 1.);
-	coord.v += 1.;
-	coord.v /= 2.;
-	coord.v = 1 - coord.v;
+	coord.u = fmod(angle / (M_PI), 1.);
+	coord.u += 1.;
+	coord.u /= 2.;
+	coord.u = 1 - coord.u;
 	return (coord);
 }
 
