@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal_mapping.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:17:00 by nseniak           #+#    #+#             */
-/*   Updated: 2023/02/03 16:04:49 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:41:26 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ t_vect	tangent_cylinder(t_point *point)
 	normalise(&t);
 	return (t);
 }
-
 
 void	normal_mapping(t_point *point, t_vect2 coord)
 {
