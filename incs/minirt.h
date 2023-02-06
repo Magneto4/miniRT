@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/03 16:35:28 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:40:26 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include "parse.h"
 
 // 🕵️‍♂️ Define
-# define H 700.
+# define H 900.
 # define W 1500.
 
 # define SP 1
