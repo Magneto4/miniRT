@@ -6,7 +6,7 @@
 #    By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/02/03 17:10:32 by ngiroux          ###   ########.fr        #
+#    Updated: 2023/02/09 13:53:29 by ngiroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,7 +121,7 @@ clean:
 
 fclean:		clean
 			@rm -rf ${NAME}
-			@rm -rf ${B_NAME}
+			@rm -rf ${NAME_B}
 			@echo "${MSG_RMV}${NAME}"
 
 re:			fclean all
