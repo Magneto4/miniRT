@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/02/09 16:55:45 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/09 17:11:41 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,7 @@ int	generate_pixel(t_minirt *minirt, int x, int y)
 	free(point);
 	return (0);
 }
-void	print_vect(t_vect v)
-{
-	printf("%f %f %f\n", v.x, v.y, v.z);
-}
+
 void	create_cam_to_world(t_camera cam)
 {
 	t_vect	right;

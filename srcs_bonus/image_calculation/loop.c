@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/02/09 16:35:22 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/09 17:10:14 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ void	create_cam_to_world(t_camera cam)
 	t_vect	up;
 	t_mat	world_to_cam;
 
-	up = init_vector(0, 1, 0);
+	if (cam.dir.x == 0 && cam.dir.y == 1 && cam.dir.z == 0)
+		up = init_vector(0, 0, -1);
+	else
+		up = init_vector(0, 1, 0);
 	right = cross(up, cam.dir);
 	normalise(&right);
 	up = cross(cam.dir, right);

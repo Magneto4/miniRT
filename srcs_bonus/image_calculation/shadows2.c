@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 18:53:13 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/24 18:54:33 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/09 17:22:36 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	shade_plane(t_list *planes, t_ray ray, double *t, void **inter)
 		plane = (t_plane *)(planes->value);
 		a = -1 * dot(plane->dir, sub(ray.src, plane->pos));
 		a /= dot(plane->dir, ray.dir);
-		if (*t < 0 || (a > EPSILON && a < *t))
+		if (*t < 0 || (a > EPSILON && a - EPSILON < *t))
 		{
 			*t = a;
 			*inter = plane;
@@ -47,7 +47,7 @@ void	sphere_shade(t_ray ray, t_sphere *sphere, double *t, void **inter)
 		return ;
 	if (x[0] < EPSILON)
 		x[0] = x[1];
-	if (*t > 0 && x[0] > *t)
+	if (*t > 0 && x[0] > *t + EPSILON)
 		return ;
 	*t = x[0];
 	*inter = sphere;
