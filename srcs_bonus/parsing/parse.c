@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:57:18 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/06 17:33:33 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/09 14:34:20 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ bool	set_elem(char *line, t_scene *scene, t_mlx *mlx)
 		|| check_elem(data, scene, mlx) == false)
 	{
 		free_tab(data);
-		free_bonus(scene, mlx);
-		free_scene(scene, mlx);
 		return (put_error_false("parsing line"));
 	}
 	free_tab(data);
@@ -61,13 +59,20 @@ bool	set_scene(char *file, t_scene *scene, t_mlx *mlx)
 	while (line)
 	{
 		if (set_elem(line, scene, mlx) == false)
-			return (free_gnl(fd, line), false);
+		{
+			free_bonus(scene, mlx);
+			return (free_scene(scene, mlx), free_gnl(fd, line), false);
+		}
 		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
 	if (scene->al.ratio == -1 || scene->cam.fov == -1)
+	{
+		free_bonus(scene, mlx);
+		free_scene(scene, mlx);
 		return (put_error_false("missing ambiant light or camera"), false);
+	}
 	return (true);
 }
 

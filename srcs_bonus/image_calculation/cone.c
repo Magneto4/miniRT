@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:58:33 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/25 20:34:51 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/09 14:44:41 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	cap_inter(t_ray ray, t_cone *cone, t_point *closest)
 	plane_inter(ray, &plane, &point);
 	if (!(point.init) || distance(plane.pos, point.pos) > cone->radius)
 		return ;
-	if (point.t > closest->t)
+	if (closest->init && point.t > closest->t)
 		return ;
 	closest->t = point.t;
 	closest->pos = point.pos;

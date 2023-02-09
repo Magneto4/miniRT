@@ -6,13 +6,11 @@
 #    By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 16:14:17 by ngiroux           #+#    #+#              #
-#    Updated: 2023/02/09 13:53:29 by ngiroux          ###   ########.fr        #
+#    Updated: 2023/02/09 14:48:23 by ngiroux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include colors.mk
-include parse.mk
-
 
 # Names 
 NAME		= minirt
@@ -26,7 +24,9 @@ F_GNL		= get_next_line.c get_next_line_utils.c
 FILES		+= $(addprefix gnl/, $(F_GNL))
 F_INT		= error.c free_minirt.c
 FILES		+= $(addprefix internal/, $(F_INT))
-
+F_PARS		= check_elem.c check_elem2.c check_types.c \
+			parse.c utils.c \
+			set_elem.c set_elem2.c set_types.c
 FILES		+= $(addprefix parsing/, $(F_PARS))
 F_PKG		= list.c string.c string_conv.c split.c
 FILES		+= $(addprefix pkg/, $(F_PKG))
@@ -44,6 +44,7 @@ OBJS_PATH	= objs/
 
 # Objects
 OBJS		= $(addprefix $(OBJS_PATH), $(FILES:.c=.o))
+DEP			= $(OBJS:.o=.d)
 
 INCS		= $(addprefix -I, $(INCS_PATH))
 
@@ -55,7 +56,10 @@ F_GNL_BONUS	= get_next_line.c get_next_line_utils.c
 FILES_BONUS	+= $(addprefix gnl/, $(F_GNL_BONUS))
 F_INT_BONUS	= error.c free_minirt.c free_bonus.c
 FILES_BONUS	+= $(addprefix internal/, $(F_INT_BONUS))
-
+F_PARS_BONUS = check_elem.c check_elem2.c check_types.c \
+			parse.c utils.c \
+			set_elem.c set_elem2.c set_types.c \
+			check_bonus.c set_bonus.c
 FILES_BONUS	+= $(addprefix parsing/, $(F_PARS_BONUS))
 F_PKG_BONUS	= list.c string.c string_conv.c split.c
 FILES_BONUS	+= $(addprefix pkg/, $(F_PKG_BONUS))
@@ -73,6 +77,7 @@ OBJS_PATH_BONUS	= objs_bonus/
 
 # Objects
 OBJS_BONUS	= $(addprefix $(OBJS_PATH_BONUS), $(FILES_BONUS:.c=.o))
+DEP_BONUS	= $(OBJS_BONUS:.o=.d)
 
 INCS_BONUS	= $(addprefix -I, $(INCS_PATH_BONUS))
 
@@ -83,7 +88,7 @@ $(OBJS_PATH_BONUS)%.o: $(SRCS_PATH_BONUS)%.c
 			@echo "${MSG_COMP}$<"
 
 # Flags + compilation
-CFLAGS		= -Wall -Wextra -Werror -O0 -g3
+CFLAGS		= -Wall -Wextra -Werror -O0 -g3 -MMD
 CC			= cc
 LIB_INC		= -lm -Lmlx -lmlx_Linux -lmlx -lXext -lX11
 
@@ -109,6 +114,9 @@ ${NAME_B}:	${OBJS_BONUS} ${LIB}
 ${LIB}:
 			@echo "${MSG_LIB}${LIB}"
 			@make -C mlx >/dev/null 2>/dev/null || true
+
+-include $(DEP)
+-include $(DEP_BONUS)
 
 # Other rules
 clean:

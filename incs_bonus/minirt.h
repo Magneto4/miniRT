@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:39:52 by ngiroux           #+#    #+#             */
-/*   Updated: 2023/02/06 16:55:01 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/09 14:30:09 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define CO 6
 # define EPSILON 0.0001
 # define CHECKER 10.
-# define REFLECT 10
+# define REFLECT 100
 # define BLACK 0xffffff
 # define WHITE 0x000000
 

@@ -6,7 +6,7 @@
 /*   By: ngiroux <ngiroux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/02/09 13:02:36 by ngiroux          ###   ########.fr       */
+/*   Updated: 2023/02/09 16:55:45 by ngiroux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,20 @@ int	generate_pixel(t_minirt *minirt, int x, int y)
 	free(point);
 	return (0);
 }
-
+void	print_vect(t_vect v)
+{
+	printf("%f %f %f\n", v.x, v.y, v.z);
+}
 void	create_cam_to_world(t_camera cam)
 {
 	t_vect	right;
 	t_vect	up;
 	t_mat	world_to_cam;
 
-	up = init_vector(0, 1, 0);
+	if (cam.dir.x == 0 && cam.dir.y == 1 && cam.dir.z == 0)
+		up = init_vector(0, 0, -1);
+	else
+		up = init_vector(0, 1, 0);
 	right = cross(up, cam.dir);
 	normalise(&right);
 	up = cross(cam.dir, right);
@@ -78,6 +84,7 @@ void	create_cam_to_world(t_camera cam)
 	world_to_cam[0][2] = -1 * cam.dir.x;
 	world_to_cam[1][2] = -1 * cam.dir.y;
 	world_to_cam[2][2] = -1 * cam.dir.z;
+
 	invert(world_to_cam, cam.cam_to_world);
 }
 

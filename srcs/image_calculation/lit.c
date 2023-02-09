@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 19:35:56 by nseniak           #+#    #+#             */
-/*   Updated: 2023/01/24 19:36:15 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/09 14:02:38 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_inside_cyl(t_vect cam_pos, t_light *light, t_cylinder *cyl)
 	if (d_2 > cyl->radius * cyl->radius || !in_cyl(cyl, cam_pos))
 		return (0);
 	d_2 = self_dot(cross(cyl->dir, sub(cyl->pos, light->pos)));
-	if (d_2 > cyl->radius * cyl->radius || in_cyl(cyl, light->pos))
+	if (d_2 > cyl->radius * cyl->radius || !in_cyl(cyl, light->pos))
 		return (1);
 	return (0);
 }
