@@ -6,7 +6,7 @@
 /*   By: nseniak <nseniak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 18:21:57 by nseniak           #+#    #+#             */
-/*   Updated: 2023/02/09 17:11:41 by nseniak          ###   ########.fr       */
+/*   Updated: 2023/02/10 13:44:29 by nseniak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	create_cam_to_world(t_camera cam)
 	t_vect	up;
 	t_mat	world_to_cam;
 
-	if (cam.dir.x == 0 && cam.dir.y == 1 && cam.dir.z == 0)
+	if (cam.dir.x == 0 && (cam.dir.y == 1 || cam.dir.y == -1) && cam.dir.z == 0)
 		up = init_vector(0, 0, -1);
 	else
 		up = init_vector(0, 1, 0);
@@ -81,7 +81,6 @@ void	create_cam_to_world(t_camera cam)
 	world_to_cam[0][2] = -1 * cam.dir.x;
 	world_to_cam[1][2] = -1 * cam.dir.y;
 	world_to_cam[2][2] = -1 * cam.dir.z;
-
 	invert(world_to_cam, cam.cam_to_world);
 }
 
